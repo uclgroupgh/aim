@@ -1,13 +1,8 @@
 <script>
 	import { fade } from 'svelte/transition';
-    import { showRegisterMenu, showEventMenu } from '../../stores/store'
+    import { showRegisterMenu, showEventMenu, showCourseMenu, showHistoryMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store'
 
-    const handleShowRegisterMenu = () => {
-        $showRegisterMenu = true;
-    }
-    const handleHideRegisterMenu = () => {
-        $showRegisterMenu = false;
-    }
+    
     const handleShowEventMenu = () => {
         $showEventMenu = true;
     }
@@ -15,6 +10,40 @@
         $showEventMenu = false;
     }
 
+    const handleShowCourseMenu = () => {
+        $showCourseMenu = true;
+    }
+    const handleHideCourseMenu = () => {
+        $showCourseMenu = false;
+    }
+
+    const handleShowHistoryMenu = () => {
+        $showHistoryMenu = true;
+    }
+    const handleHideHistoryMenu = () => {
+        $showHistoryMenu = false;
+    }
+
+    const handleShowRegisterMenu = () => {
+        $showRegisterMenu = true;
+    }
+    const handleHideRegisterMenu = () => {
+        $showRegisterMenu = false;
+    }
+
+    const handleShowTrainingMenu = () => {
+        $showTrainingMenu = true;
+    }
+    const handleHideTrainingMenu = () => {
+        $showTrainingMenu = false;
+    }
+
+    const handleShowChampionsMenu = () => {
+        $showChampionsMenu = true;
+    }
+    const handleHideChampionsMenu = () => {
+        $showChampionsMenu = false;
+    }
 </script>
 
 <style lang="postcss">
@@ -73,56 +102,110 @@
     </div>
     <div class="header_bottom">
         <ul class="primary_menu">
-            <li on:mouseenter={handleShowRegisterMenu} on:mouseleave={handleHideRegisterMenu} class="primary_menu_item">
-                <a href="/register" class="link_header">Register</a>
-                {#if $showRegisterMenu}
-                    <ul class="link_list" in:fade>
-                        <li class="link_list_item">
-                            <a href="/register">Marathon</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register">Half Marathon</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register">Relay</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register">10K</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register">5K</a>
-                        </li>          
-                    </ul>
-                {/if}
-            </li>
             <li on:mouseenter={handleShowEventMenu} on:mouseleave={handleHideEventMenu} class="primary_menu_item">
                 <a href="/event" class="link_header">Event</a>
                 {#if $showEventMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/event">Directors' message</a>
+                            <a href="/event">About</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Race map</a>
+                            <a href="/event">Vision</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Event schedule</a>
+                            <a href="/event">Values</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Prize money</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/event">FAQ</a>
+                            <a href="/event">Impact</a>
                         </li>
                     </ul>
                 {/if}
             </li>
-            <li class="primary_menu_item">Training</li>
-            <li class="primary_menu_item">Results</li>
-            <li class="primary_menu_item">News</li>
-            <li class="primary_menu_item">Sponsors</li>
+            <li on:mouseenter={handleShowCourseMenu} on:mouseleave={handleHideCourseMenu} class="primary_menu_item">
+                <a href="/course" class="link_header">Course</a>
+                {#if $showCourseMenu}
+                    <ul class="link_list" in:fade>
+                        <li class="link_list_item">
+                            <a href="/course">Route Map</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/course">Rules</a>
+                        </li>        
+                    </ul>
+                {/if}
+            </li>
+            <li on:mouseenter={handleShowHistoryMenu} on:mouseleave={handleHideHistoryMenu} class="primary_menu_item">
+                <a href="/history" class="link_header">History</a>
+                {#if $showHistoryMenu}
+                    <ul class="link_list" in:fade>
+                        <li class="link_list_item">
+                            <a href="/history">1980's</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/history">1990's</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/history">2000's</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/history">2010's</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/history">2020's</a>
+                        </li>          
+                    </ul>
+                {/if}
+            </li>
+            <li on:mouseenter={handleShowRegisterMenu} on:mouseleave={handleHideRegisterMenu} class="primary_menu_item">
+                <a href="/register" class="link_header">Register</a>
+                {#if $showRegisterMenu}
+                    <ul class="link_list" in:fade>
+                        <li class="link_list_item">
+                            <a href="/register">Forms</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/register">Requirements</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/register">Payment</a>
+                        </li>      
+                    </ul>
+                {/if}
+            </li>
             <li class="primary_menu_item">
-                <img src="/images/search.png" alt="Magnifying glass"/>
+                <a href="/sponsors" class="link_header">Sponsors</a>
+            </li>
+            <li on:mouseenter={handleShowTrainingMenu} on:mouseleave={handleHideTrainingMenu} class="primary_menu_item">
+                <a href="/training" class="link_header">Training</a>
+                {#if $showTrainingMenu}
+                    <ul class="link_list" in:fade>
+                        <li class="link_list_item">
+                            <a href="/training">Preparing for the Race</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/training">Tips</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/training">Training Routines</a>
+                        </li>      
+                    </ul>
+                {/if}
+            </li>
+            <li on:mouseenter={handleShowChampionsMenu} on:mouseleave={handleHideChampionsMenu} class="primary_menu_item">
+                <a href="/champions" class="link_header">Champions</a>
+                {#if $showChampionsMenu}
+                    <ul class="link_list" in:fade>
+                        <li class="link_list_item">
+                            <a href="/champions">Previous Winners</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/champions">Marathon Stories</a>
+                        </li>
+                        <li class="link_list_item">
+                            <a href="/champions">Goodwill messages</a>
+                        </li>      
+                    </ul>
+                {/if}
             </li>
         </ul>
     </div>

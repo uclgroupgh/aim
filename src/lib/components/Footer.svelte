@@ -18,7 +18,7 @@
         @apply flex flex-row;
     }
     .social_link {
-        @apply flex items-center justify-center;
+        @apply flex items-center justify-center ml-2;
     }
     .social_link .logo_img {
         @apply h-8 w-8;
@@ -52,7 +52,22 @@
         <div class="socials_wrapper">
             <div class="social_link">
                 <a href="https://www.facebook.com/aimghana/">
-                    <img src="/images/facebook_white.png" alt="running man" class="logo_img"/>
+                    <img src="/images/facebook_white.png" alt="facebook logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/instagram_white.png" alt="instagram logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/twitter_white.png" alt="twitter logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/youtube_white.png" alt="youtube logo" class="logo_img"/>
                 </a>
             </div>
         </div>
@@ -60,103 +75,39 @@
     <div class="footer_middle">
         <ul class="footer_links_wrapper">
             <li>
-                <a href="event" class="link_header">Event</a>
+                <a href="event" class="link_header">What's New</a>
                 <ul class="link_list">
                     <li>
-                        <a href="#">Lorem ipsum</a>
+                        <a href="#">Updates</a>
                     </li>
                     <li>
-                        <a href="#">Lorem ipsum</a>
+                        <a href="#">News & Events</a>
+                    </li>       
+                </ul>
+            </li>
+            <li>
+                <a href="event" class="link_header">Contact Us</a>
+                <ul class="link_list">
+                    <li>
+                        <a href="#">info@accramarathon.com</a>
                     </li>
                     <li>
-                        <a href="#">Lorem ipsum</a>
+                        <a href="#">055 555 5555</a>
                     </li>
                     <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
+                        <a href="#">Live chat</a>
                     </li>        
                 </ul>
             </li>
             <li>
-                <a href="event" class="link_header">Training</a>
+                <a href="event" class="link_header">Dansoman Keep Fit Club</a>
                 <ul class="link_list">
                     <li>
-                        <a href="#">Lorem ipsum</a>
+                        <a href="#">About the club</a>
                     </li>
                     <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>          
-                </ul>
-            </li>
-            <li>
-                <a href="event" class="link_header">Results</a>
-                <ul class="link_list">
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>           
-                </ul>
-            </li>
-            <li>
-                <a href="event" class="link_header">News</a>
-                <ul class="link_list">
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>          
-                </ul>
-            </li>
-            <li>
-                <a href="event" class="link_header">Sponsors</a>
-                <ul class="link_list">
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                        <a href="#">Lorem ipsum</a>
-                    </li>           
+                        <a href="#">Join the club</a>
+                    </li>        
                 </ul>
             </li>
         </ul>
