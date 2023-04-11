@@ -107,16 +107,16 @@
                 {#if $showEventMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/event">About</a>
+                            <a href="/event/about">About</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Vision</a>
+                            <a href="/event/vision">Vision</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Values</a>
+                            <a href="/event/vision">Values</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/event">Impact</a>
+                            <a href="/event/impact">Impact</a>
                         </li>
                     </ul>
                 {/if}
@@ -126,10 +126,10 @@
                 {#if $showCourseMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/course">Route Map</a>
+                            <a href="/course/map">Route Map</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/course">Rules</a>
+                            <a href="/course/rules">Rules</a>
                         </li>        
                     </ul>
                 {/if}
@@ -139,19 +139,19 @@
                 {#if $showHistoryMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/history">1980's</a>
+                            <a href="/history/1980's">1980's</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/history">1990's</a>
+                            <a href="/history/1990's">1990's</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/history">2000's</a>
+                            <a href="/history/2000's">2000's</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/history">2010's</a>
+                            <a href="/history/2010's">2010's</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/history">2020's</a>
+                            <a href="/history/2020's">2020's</a>
                         </li>          
                     </ul>
                 {/if}
@@ -161,32 +161,29 @@
                 {#if $showRegisterMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/register">Forms</a>
+                            <a href="/register/forms">Forms</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/register">Requirements</a>
+                            <a href="/register/requirements">Requirements</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/register">Payment</a>
+                            <a href="/register/payment">Payment</a>
                         </li>      
                     </ul>
                 {/if}
-            </li>
-            <li class="primary_menu_item">
-                <a href="/sponsors" class="link_header">Sponsors</a>
             </li>
             <li on:mouseenter={handleShowTrainingMenu} on:mouseleave={handleHideTrainingMenu} class="primary_menu_item">
                 <a href="/training" class="link_header">Training</a>
                 {#if $showTrainingMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/training">Preparing for the Race</a>
+                            <a href="/training/preparation">Preparing for the Race</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/training">Tips</a>
+                            <a href="/training/tips">Tips</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/training">Training Routines</a>
+                            <a href="/training/routines">Training Routines</a>
                         </li>      
                     </ul>
                 {/if}
@@ -196,16 +193,19 @@
                 {#if $showChampionsMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/champions">Previous Winners</a>
+                            <a href="/champions/past-winners">Previous Winners</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/champions">Marathon Stories</a>
+                            <a href="/champions/stories">Marathon Stories</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/champions">Goodwill messages</a>
+                            <a href="/champions/goodwill-messages">Goodwill messages</a>
                         </li>      
                     </ul>
                 {/if}
+            </li>
+            <li class="primary_menu_item">
+                <a href="/sponsors" class="link_header">Sponsors</a>
             </li>
         </ul>
     </div>
