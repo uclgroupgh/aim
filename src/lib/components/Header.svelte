@@ -1,14 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-    import { showRegisterMenu, showEventMenu, showCourseMenu, showHistoryMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store'
-
-    
-    const handleShowEventMenu = () => {
-        $showEventMenu = true;
-    }
-    const handleHideEventMenu = () => {
-        $showEventMenu = false;
-    }
+    import { showRegisterMenu, showCourseMenu, showHistoryMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store';
 
     const handleShowCourseMenu = () => {
         $showCourseMenu = true;
@@ -47,6 +39,9 @@
 </script>
 
 <style lang="postcss">
+    .header {
+        @apply z-50;
+    }
     .header_top {
         @apply w-full flex flex-row justify-between items-center px-16 my-6;
     }
@@ -79,13 +74,46 @@
         @apply p-5 border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px];
     }
     .link_list {
-        @apply absolute top-full w-full bg-gray-lighter border-r-[1px] border-gray-border box-content;
+        @apply z-50 absolute top-full w-full bg-gray-lighter border-r-[1px] border-gray-border box-content;
     }
     .link_list_item {
         @apply p-5 border-t-[1px] border-gray-border text-center flex justify-center uppercase tracking-wide cursor-pointer relative ease-in-out hover:bg-gray-border;
     }
     .primary_menu li img {
         @apply h-6 w-6;
+    }
+
+
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .header_bottom {
+            @apply hidden;
+        }
+        .secondary_menu {
+            @apply hidden;
+        }
+        .logo_img {
+        @apply h-9 mr-4;
+    }
+    .logo_title {
+        @apply text-base ;
+    }
+    }
+
+    @media(min-width: 577px)and (max-width: 767.98px) {
+        .header_bottom {
+            @apply hidden;
+        }
+        .secondary_menu {
+            @apply hidden;
+        }
+    }
+
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+        
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
     }
 </style>
 
@@ -102,9 +130,9 @@
     </div>
     <div class="header_bottom">
         <ul class="primary_menu">
-            <li on:mouseenter={handleShowEventMenu} on:mouseleave={handleHideEventMenu} class="primary_menu_item">
-                <a href="/event" class="link_header">Event</a>
-                {#if $showEventMenu}
+            <li class="primary_menu_item">
+                <a href="/about" class="link_header">About</a>
+                <!-- {#if $showEventMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
                             <a href="/event/about">About</a>
@@ -119,7 +147,7 @@
                             <a href="/event/impact">Impact</a>
                         </li>
                     </ul>
-                {/if}
+                {/if} -->
             </li>
             <li on:mouseenter={handleShowCourseMenu} on:mouseleave={handleHideCourseMenu} class="primary_menu_item">
                 <a href="/course" class="link_header">Course</a>

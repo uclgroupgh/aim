@@ -41,6 +41,26 @@
     .footer_bottom {
         @apply text-center text-white bg-gray-footer text-sm py-5 font-extralight;
     }
+
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .footer_middle {
+            @apply mx-8;
+        }
+    }
+
+    @media(min-width: 577px)and (max-width: 767.98px) {
+        .footer_middle {
+            @apply mx-8;
+        }
+    }
+
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+        
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+    }
 </style>
 
 <section class="footer">

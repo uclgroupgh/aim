@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       'blue': '#1fb6ff',
+      'med_blue': '#135cb0',
       'purple': '#7e5bef',
       'pink': '#ff49db',
       'orange': '#ff7849',
@@ -18,12 +19,15 @@ module.exports = {
       'gray-footer': '#333333',
       'gray-footer-secondary': '#b3b3b3',
       'primary_red': '#d11947',
+      'primary_red_dark': '#a31438',
       'white': '#ffffff',
       'off_white': '#f5f5f5'
     },
     extend: {
       backgroundImage: {
-        'hero': "url('/images/hero4.jpg')"
+        'hero': "url('/images/hero4.jpg')",
+        'about_hero': "url('/images/about_hero.jpg')",
+        'about_cofounder': "url('/images/cofounder.jpg')"
       },
       fontFamily: {
         Open: ["Open Sans", "sans-serif"]

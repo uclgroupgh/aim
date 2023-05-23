@@ -6,12 +6,15 @@
     import TextImageRight from '../lib/components/TextImageRight.svelte'
     import NewsletterSignup from '../lib/components/NewsletterSignup.svelte'
     import Sponsors from '../lib/components/Sponsors.svelte'
+    import { fade } from 'svelte/transition'
 </script>
 
-<Hero />
-<Video />
-<TextImageLeft />
-<Collage />
-<TextImageRight />
-<NewsletterSignup />
-<Sponsors />
+<main transition:fade>
+    <Hero />
+    <Video />
+    <TextImageLeft />
+    <Collage />
+    <TextImageRight />
+    <NewsletterSignup />
+    <Sponsors />
+</main>

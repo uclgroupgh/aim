@@ -26,6 +26,26 @@
     .arrow {
         @apply w-8 mr-3;
     }
+
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .text {
+            @apply px-8;
+        }
+    }
+
+    @media(min-width: 577px)and (max-width: 767.98px) {
+        .text {
+            @apply px-8;
+        }
+    }
+
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+        
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+    }
 </style>
 
 <section class="text_image_left">
