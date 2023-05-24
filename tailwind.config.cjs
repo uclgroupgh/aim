@@ -27,7 +27,10 @@ module.exports = {
       backgroundImage: {
         'hero': "url('/images/hero4.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
-        'about_cofounder': "url('/images/cofounder.jpg')"
+        'stories_hero': "url('/images/stories_hero.jpg')",
+        'about_cofounder': "url('/images/cofounder.jpg')",
+        'story_banner': "url('/images/podium.jpg')",
+        'story_banner_2': "url('/images/cofounder_2.jpg')"
       },
       fontFamily: {
         Open: ["Open Sans", "sans-serif"]
