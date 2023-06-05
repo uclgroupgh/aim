@@ -1,8 +1,9 @@
 import { writable } from 'svelte/store'
 
 // Registration fields
-
 export const race_category = writable('Adults')
+
+//Participant Information
 export const first_name = writable('');
 export const last_name = writable('');
 export const phone_number = writable('');
@@ -12,4 +13,16 @@ export const gender = writable('Male');
 export const dob = writable('');
 export const emergency_name = writable('')
 export const emergency_number = writable('');
+
+// Medical Information
+export const has_medical_condition = writable(false);
+export const medical_information = writable('');
+
+// About you
+export const first_marathon_boolean = writable(true);
+export const finish_time = writable('');
+export const heard_from = writable('');
+export const run_frequency = writable('0 to 5');
+
+// Amount
 export const amount = writable(50);

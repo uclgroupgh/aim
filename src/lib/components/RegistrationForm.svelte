@@ -1,9 +1,13 @@
+<svelte:head>
+	<script src="https://js.paystack.co/v1/inline.js"></script>
+</svelte:head>
+
 <script>
     import Nationalities from "../data/Nationalities";
     import { fade } from 'svelte/transition';
     import { FunRun, Juniors, Adults } from '../data/FinishTimes';
     import HeardFrom from '../data/HeardFrom';
-    import { first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, amount } from '../stores/store';
+    import { first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, has_medical_condition, medical_information, first_marathon_boolean, finish_time, heard_from, run_frequency, amount } from '../stores/store';
 
     const set_selected_category = (e) => {
         let category = e.target.innerHTML;
@@ -11,31 +15,87 @@
         switch (category) {
             case 'Adults':
                 finish_time_list = Adults
-                amount.set(50)
+                amount.set(50.00)
                 break;
             case 'Juniors':
                 finish_time_list = Juniors
-                amount.set(30)
+                amount.set(30.00)
                 break;
             case 'Fun Run':
                 finish_time_list = FunRun  
-                amount.set(15)          
+                amount.set(15.00)          
                 break;
         
             default: '';
                 break;
         }
     }
+
+    // Participant information functions
+    const set_first_name = (e) => {
+        first_name.set(e.target.value)
+    }
+    const set_last_name = (e) => {
+        last_name.set(e.target.value)
+    }
+    const set_phone_number = (e) => {
+        phone_number.set(e.target.value)
+    }
+    const set_email = (e) => {
+        email.set(e.target.value)
+    }
     const set_selected_gender = (e) => {
         gender.set(e.target.innerHTML)
-        console.log($gender)
     }
-    const set_selected_first_marathon_answer = () => {
-        console.log('hi')
+    const select_nationality = (e) => {
+        nationality.set(e.target.innerHTML)
+        toggle_nationalities();
     }
-    const set_selected_run_frequency = () => {
-        console.log('hi')
+    const set_day = (e) => {
+        day = e.target.value
     }
+    const set_month = (e) => {
+        month = e.target.value
+    }
+    const set_year = (e) => {
+        year = e.target.value
+    }
+
+    $: dob.set(day + ' ' + month + ' ' + year);
+
+    const set_emergency_name = (e) => {
+        emergency_name.set(e.target.value)
+    }
+    const set_emergency_number = (e) => {
+        emergency_number.set(e.target.value)
+    }
+
+    // Medical information functions
+    const set_medical_information = (e) => {
+        medical_information.set(e.target.value)
+    }
+
+    // About you
+    const select_finish_time = (e) => {
+        finish_time.set(e.target.innerHTML);
+        toggle_finish_times();
+    }
+    const select_heard_from = (e) => {
+        heard_from.set(e.target.innerHTML);
+        toggle_heard_from();
+    }
+    const set_selected_first_marathon_answer = (e) => {
+        if(e.target.innerHTML == 'Yes') {
+            first_marathon_boolean.set(true)
+        } else {
+            first_marathon_boolean.set(false)
+        }
+    }
+    const set_selected_run_frequency = (e) => {
+        run_frequency.set(e.target.innerHTML)
+    }
+
+    //Select field toggle functions
     const toggle_nationalities = () => {
         show_nationalities = !show_nationalities
     }
@@ -45,26 +105,32 @@
     const toggle_heard_from = () => {
         show_heard_from = !show_heard_from
     }
-    const select_nationality = (e) => {
-        selected_nationality = e.target.innerHTML
-        toggle_nationalities();
-    }
-    const select_finish_time = (e) => {
-        finish_time = e.target.innerHTML;
-        toggle_finish_times();
-    }
-    const select_heard_from = (e) => {
-        heard_from = e.target.innerHTML;
-        toggle_heard_from();
-    }
-    let has_medical_condition = false
-    let selected_nationality = '';
-    let finish_time = '';
-    let heard_from = '';
+
+    let day, month, year;
+    let finish_time_list = Adults;
     let show_nationalities = false;
     let show_finish_times = false;
     let show_heard_from = false;
-    let finish_time_list = [];
+
+
+    // Paystack
+
+    const pay_with_paystack = (e) => {
+        e.preventDefault();
+
+        let handler = PaystackPop.setup({
+            key: 'pk_test_a5ce7e0c1640a139f25070cb7824a340cdc6d2ff', // Replace with your public key
+            email: $email,
+            amount: $amount * 100,
+            currency: 'GHS',
+            callback: function(response){
+            let message = 'Payment complete! Reference: ' + response.reference;
+            alert(message);
+            }
+        });
+
+        handler.openIframe();
+    }
 </script>
 
 <style lang="postcss">
@@ -245,25 +311,25 @@
         <div class="participant_info_wrapper">
             <div class="participant_info_field">
                 <label for="first_name"><span class="required">*</span>First Name</label>
-                <input type="text" id="first_name"/>
+                <input type="text" id="first_name" on:change={set_first_name}/>
             </div>
             <div class="participant_info_field">
                 <label for="last_name"><span class="required">*</span>Last Name</label>
-                <input type="text" id="last_name"/>
+                <input type="text" id="last_name" on:change={set_last_name}/>
             </div>
             <div class="participant_info_field">
                 <label for="phone_number"><span class="required">*</span>Phone number</label>
-                <input type="tel" id="phone_number"/>
+                <input type="tel" id="phone_number" on:change={set_phone_number}/>
             </div>
             <div class="participant_info_field">
                 <label for="email"><span class="required">*</span>Email</label>
-                <input type="email" id="email"/>
+                <input type="email" id="email" on:change={set_email}/>
             </div>
             <div class="participant_info_field nationality_container">
                 <label for="nationalities"><span class="required">*</span>Nationality</label>
                 <div class="nationality_input_wrapper" on:click={toggle_nationalities}>
                     <img src="/images/dropdown_caret.png" alt="select your nationality" class="dropdown_caret {show_nationalities ? 'rotate-180' : ''}"/>
-                    <input name="nationalities" id="nationalities" class="nationality_input" type="text" placeholder="Select your Nationality..." value={selected_nationality}/>
+                    <input name="nationalities" id="nationalities" class="nationality_input" type="text" placeholder="Select your Nationality..." value={$nationality}/>
                 </div>
                 {#if show_nationalities}
                     <ul class="nationalities" transition:fade>
@@ -294,26 +360,26 @@
                     <div class="dob_wrapper">
                         <div class="dob_day">
                             <label for="day">Day</label>
-                            <input id="day" type="number" name="dob" placeholder="DD" min="1" max="31"/>
+                            <input id="day" type="number" name="dob" placeholder="DD" min="1" max="31" on:change={set_day} />
                         </div>
                         <div class="dob_month">
                             <label for="month">Month</label>
-                            <input id="month" type="number" name="dob" placeholder="MM" min="1" max="12"/>
+                            <input id="month" type="number" name="dob" placeholder="MM" min="1" max="12" on:change={set_month} />
                         </div>
                         <div class="dob_year">
                             <label for="year">Year</label>
-                            <input id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016"/>
+                            <input id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016" on:change={set_year}/>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="participant_info_field">
                 <label for="emergency_contact_name"><span class="required">*</span>Emergency contact name</label>
-                <input type="text" id="emergency_contact_name"/>
+                <input type="text" id="emergency_contact_name" on:change={set_emergency_name}/>
             </div>
             <div class="participant_info_field">
                 <label for="emergency_contact_number"><span class="required">*</span>Emergency contact number</label>
-                <input type="tel" id="emergency_contact_number"/>
+                <input type="tel" id="emergency_contact_number" on:change={set_emergency_number}/>
             </div>
         </div>
 
@@ -326,22 +392,22 @@
                     <input id="medical_yes" type="radio" name="medical_boolean"/>
                     <div class="cell-bg"></div>
                     <label for="medical_yes" on:click={() => {
-                        has_medical_condition = true
+                        $has_medical_condition = true
                     }}>Yes</label>
                 </div>
                 <div class="medical_boolean_wrapper">
                     <input id="medical_no" type="radio" name="medical_boolean" checked/>
                     <div class="cell-bg"></div>
                     <label for="medical_no" on:click={() => {
-                        has_medical_condition = false
+                        $has_medical_condition = false
                     }}>No</label>
                 </div>
             </div>
 
-            {#if has_medical_condition}
+            {#if $has_medical_condition}
                 <div class="medical_condition" transition:fade>
                     <label class="input_label" for="medical_condition_info">If yes, please provide details here:</label>
-                    <textarea class="medical_condition_info" id="medical_condition_info" name="medical_condition_info" rows="4"></textarea>
+                    <textarea class="medical_condition_info" id="medical_condition_info" name="medical_condition_info" rows="4" on:change={set_medical_information}></textarea>
                 </div>
             {/if}
         </div>
@@ -353,7 +419,7 @@
                 <label for="finish_time_input"><span class="required">*</span>What is your expected finish time?</label>
                 <div class="finish_time_input_wrapper" on:click={toggle_finish_times}>
                     <img src="/images/dropdown_caret.png" alt="select your finish_time" class="dropdown_caret {show_finish_times ? 'rotate-180' : ''}"/>
-                    <input id="finish_time_input" class="finish_time_input" type="text" placeholder="Select your estimated finish time..." value={finish_time}/>
+                    <input id="finish_time_input" class="finish_time_input" type="text" placeholder="Select your estimated finish time..." value={$finish_time}/>
                 </div>
                 {#if show_finish_times}
                     <ul name="finish_times" id="finish_times" transition:fade>
@@ -368,7 +434,7 @@
                 <label for="heard_from_input"><span class="required">*</span>How did you hear about this event?</label>
                 <div class="heard_from_input_wrapper" on:click={toggle_heard_from}>
                     <img src="/images/dropdown_caret.png" alt="select how you heard about us" class="dropdown_caret {show_heard_from ? 'rotate-180' : ''}"/>
-                    <input id="heard_from_input" class="heard_from_input" type="text" placeholder="Select one" value={heard_from}/>
+                    <input id="heard_from_input" class="heard_from_input" type="text" placeholder="Select one" value={$heard_from}/>
                 </div>
                 {#if show_heard_from}
                     <ul name="heard_from" id="heard_from" transition:fade>
@@ -423,9 +489,9 @@
 
         </div>
 
-        <div class="submit_btn">
+        <button type="submit" class="submit_btn" on:click={pay_with_paystack}>
             <span>Register &#8373; {$amount}</span>
-        </div>
+        </button>
 
     </form>
 
