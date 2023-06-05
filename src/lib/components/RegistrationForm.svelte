@@ -3,6 +3,7 @@
     import { fade } from 'svelte/transition';
     import { FunRun, Juniors, Adults } from '../data/FinishTimes';
     import HeardFrom from '../data/HeardFrom';
+    import { first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, amount } from '../stores/store';
 
     const set_selected_category = (e) => {
         let category = e.target.innerHTML;
@@ -10,19 +11,29 @@
         switch (category) {
             case 'Adults':
                 finish_time_list = Adults
+                amount.set(50)
                 break;
             case 'Juniors':
                 finish_time_list = Juniors
+                amount.set(30)
                 break;
             case 'Fun Run':
-                finish_time_list = FunRun            
+                finish_time_list = FunRun  
+                amount.set(15)          
                 break;
         
             default: '';
                 break;
         }
     }
-    const set_selected_gender = () => {
+    const set_selected_gender = (e) => {
+        gender.set(e.target.innerHTML)
+        console.log($gender)
+    }
+    const set_selected_first_marathon_answer = () => {
+        console.log('hi')
+    }
+    const set_selected_run_frequency = () => {
         console.log('hi')
     }
     const toggle_nationalities = () => {
@@ -76,12 +87,12 @@
         @apply mt-6 px-6;
     }
     .form_title {
-        @apply text-2xl font-normal my-6;
+        @apply text-2xl font-normal mt-12 mb-6;
     }
-    .category_wrapper, .gender_wrapper, .medical_boolean_container {
+    .category_wrapper, .gender_wrapper, .medical_boolean_container, .first_marathon_wrapper, .run_freq_wrapper {
         @apply flex flex-row w-full rounded-md border border-gray-border;
     }
-    .category_type_wrapper, .gender_type_wrapper, .medical_boolean_wrapper {
+    .category_type_wrapper, .gender_type_wrapper, .medical_boolean_wrapper, .first_marathon_answer_wrapper, .run_freq_answer_wrapper {
         @apply relative flex flex-[1] justify-center items-center cursor-pointer;
     }
     .category_type_wrapper:nth-of-type(2) {
@@ -93,19 +104,25 @@
     .category_type_wrapper:last-of-type input + .cell-bg {
         @apply rounded-r-md;
     }
-    .category_type_wrapper input[type="radio"], .gender_type_wrapper input[type=radio], .medical_boolean_wrapper input[type=radio]{
+    .category_type_wrapper input[type="radio"], .gender_type_wrapper input[type="radio"], .medical_boolean_wrapper input[type="radio"], .first_marathon_answer_wrapper input[type="radio"], .run_freq_answer_wrapper input[type="radio"] {
         @apply opacity-0 w-0 h-0;
     }
-    .category_type_wrapper label, .gender_type_wrapper label, .medical_boolean_wrapper label {
+    .category_type_wrapper label, .gender_type_wrapper label, .medical_boolean_wrapper label, .first_marathon_answer_wrapper label, .run_freq_answer_wrapper label {
         @apply font-normal text-med_blue text-lg mb-0 w-full h-full py-4 flex justify-center items-center cursor-pointer;
     }
-    .category_type_wrapper .cell-bg, .gender_type_wrapper .cell-bg, .medical_boolean_wrapper .cell-bg {
+    .category_type_wrapper label {
+        @apply flex flex-col items-center justify-center;
+    }
+    .category_type_wrapper label h3 {
+        @apply font-bold text-xl mt-1;
+    }
+    .category_type_wrapper .cell-bg, .gender_type_wrapper .cell-bg, .medical_boolean_wrapper .cell-bg, .first_marathon_answer_wrapper .cell-bg, .run_freq_answer_wrapper .cell-bg {
         @apply h-full w-full absolute -z-10;
     }
-    .category_type_wrapper input:checked ~ label, .gender_type_wrapper input:checked ~ label, .medical_boolean_wrapper input:checked ~ label {
+    .category_type_wrapper input:checked ~ label, .gender_type_wrapper input:checked ~ label, .medical_boolean_wrapper input:checked ~ label, .first_marathon_answer_wrapper input:checked ~ label, .run_freq_answer_wrapper input:checked ~ label {
         @apply text-white;
     }
-    .category_type_wrapper input:checked + .cell-bg, .gender_type_wrapper input:checked + .cell-bg, .medical_boolean_wrapper input:checked + .cell-bg {
+    .category_type_wrapper input:checked + .cell-bg, .gender_type_wrapper input:checked + .cell-bg, .medical_boolean_wrapper input:checked + .cell-bg, .first_marathon_answer_wrapper input:checked + .cell-bg, .run_freq_answer_wrapper input:checked + .cell-bg {
         @apply text-white bg-med_blue;
     }
     .participant_info_field {
@@ -136,7 +153,7 @@
     .participant_info_field_two_col .participant_info_field:last-of-type .input_label {
         @apply mb-4;
     }
-    .participant_info_field_two_col .participant_info_field label {
+    .participant_info_field_two_col .participant_info_field label, .first_marathon_answer_wrapper label, .run_freq_answer_wrapper label {
         @apply m-0;
     }
     .dob_wrapper {
@@ -188,6 +205,11 @@
     .medical_condition .medical_condition_info {
         @apply border border-gray-input-border rounded-md p-2 text-[1.1rem] font-normal;
     }
+
+    .submit_btn {
+        @apply flex flex-row mx-auto mt-12 justify-center items-center font-medium uppercase text-white text-2xl cursor-pointer leading-7 px-9 py-5 w-fit border-b-2 rounded border-primary_red_dark border-[1px] duration-[250ms] ease-in-out bg-primary_red hover:bg-primary_red_dark hover:border-primary_red;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
 </style>
 
 <div class="registration_form">
@@ -203,19 +225,19 @@
         <h2 class="form_title">Race Category</h2>
         <div class="category_wrapper">
             <div class="category_type_wrapper">
-                <input id="adults" type="radio" name="race_category"/>
+                <input id="adults" type="radio" name="race_category" checked/>
                 <div class="cell-bg"></div>
-                <label for="adults" on:click={set_selected_category}>Adults</label>
+                <label for="adults" on:click={set_selected_category}><span>Adults</span><h3>&#8373; 50</h3></label>
             </div>
             <div class="category_type_wrapper">
                 <input id="juniors" type="radio" name="race_category"/>
                 <div class="cell-bg"></div>
-                <label for="juniors" on:click={set_selected_category}>Juniors</label>
+                <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>&#8373; 30</h3></label>
             </div>
             <div class="category_type_wrapper">
                 <input id="fun_run" type="radio" name="race_category"/>
                 <div class="cell-bg"></div>
-                <label for="fun_run" on:click={set_selected_category}>Fun Run</label>
+                <label for="fun_run" on:click={set_selected_category}><span>Fun Run</span><h3>&#8373; 15</h3></label>
             </div>
         </div>
 
@@ -341,6 +363,7 @@
                     </ul>
                 {/if}
             </div>
+
             <div class="participant_info_field heard_from_container">
                 <label for="heard_from_input"><span class="required">*</span>How did you hear about this event?</label>
                 <div class="heard_from_input_wrapper" on:click={toggle_heard_from}>
@@ -355,7 +378,55 @@
                     </ul>
                 {/if}
             </div>
+
+            <div class="participant_info_field">
+                <span class="input_label"><span class="required">*</span>Will this be your first marathon?</span>
+                <div class="first_marathon_wrapper">
+                    <div class="first_marathon_answer_wrapper">
+                        <input id="first_marathon_yes" type="radio" name="first_marathon" checked/>
+                        <div class="cell-bg"></div>
+                        <label for="first_marathon_yes" on:click={set_selected_first_marathon_answer}>Yes</label>
+                    </div>
+                    <div class="first_marathon_answer_wrapper">
+                        <input id="first_marathon_no" type="radio" name="first_marathon"/>
+                        <div class="cell-bg"></div>
+                        <label for="first_marathon_no" on:click={set_selected_first_marathon_answer}>No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="participant_info_field">
+                <span class="input_label"><span class="required">*</span>How many running events do you take part in each year?</span>
+                <div class="run_freq_wrapper">
+                    <div class="run_freq_answer_wrapper">
+                        <input id="0_to_5_freq" type="radio" name="run_freq" checked/>
+                        <div class="cell-bg"></div>
+                        <label for="0_to_5_freq" on:click={set_selected_run_frequency}>0 to 5</label>
+                    </div>
+                    <div class="run_freq_answer_wrapper">
+                        <input id="6_to_10_freq" type="radio" name="run_freq"/>
+                        <div class="cell-bg"></div>
+                        <label for="6_to_10_freq" on:click={set_selected_run_frequency}>6 to 10</label>
+                    </div>
+                    <div class="run_freq_answer_wrapper">
+                        <input id="11_to_15_freq" type="radio" name="run_freq"/>
+                        <div class="cell-bg"></div>
+                        <label for="11_to_15_freq" on:click={set_selected_run_frequency}>11 to 15</label>
+                    </div>
+                    <div class="run_freq_answer_wrapper">
+                        <input id="more_than_15_freq" type="radio" name="run_freq"/>
+                        <div class="cell-bg"></div>
+                        <label for="more_than_15_freq" on:click={set_selected_run_frequency}>More than 15</label>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <div class="submit_btn">
+            <span>Register &#8373; {$amount}</span>
+        </div>
+
     </form>
 
 </div>
