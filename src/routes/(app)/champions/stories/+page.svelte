@@ -1,9 +1,9 @@
 <script>
     import { fade } from 'svelte/transition';
-    import SecondHero from "../../../lib/components/SecondHero.svelte";
-    import ImageTextBanner from '../../../lib/components/ImageTextBanner.svelte';
-    import ThreeColumnSlider from '../../../lib/components/ThreeColumnSlider.svelte';
-    import SectionHeading from '../../../lib/components/SectionHeading.svelte';
+    import SecondHero from "../../../../lib/components/SecondHero.svelte"
+    import ImageTextBanner from '../../../../lib/components/ImageTextBanner.svelte';
+    import ThreeColumnSlider from '../../../../lib/components/ThreeColumnSlider.svelte';
+    import SectionHeading from '../../../../lib/components/SectionHeading.svelte';
 
 </script>
 

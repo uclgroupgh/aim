@@ -18,6 +18,8 @@ module.exports = {
       'gray-border': '#dcdcdc',
       'gray-footer': '#333333',
       'gray-footer-secondary': '#b3b3b3',
+      'gray-input-border': '#cccccc',
+      'gray-input-label': '#4d4d4d',
       'primary_red': '#d11947',
       'primary_red_dark': '#a31438',
       'white': '#ffffff',
@@ -30,7 +32,8 @@ module.exports = {
         'stories_hero': "url('/images/stories_hero.jpg')",
         'about_cofounder': "url('/images/cofounder.jpg')",
         'story_banner': "url('/images/podium.jpg')",
-        'story_banner_2': "url('/images/cofounder_2.jpg')"
+        'story_banner_2': "url('/images/cofounder_2.jpg')",
+        'register_hero': "url('/images/register_bgd.jpg')"
       },
       fontFamily: {
         Open: ["Open Sans", "sans-serif"]

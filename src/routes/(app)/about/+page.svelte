@@ -1,10 +1,10 @@
 <script>
-    import MissionStatement from "../../lib/components/MissionStatement.svelte";
-    import AboutThreeColumn from "../../lib/components/AboutThreeColumn.svelte";
-    import QuoteBanner from "../../lib/components/QuoteBanner.svelte";
-    import AboutStories from "../../lib/components/AboutStories.svelte";
+    import MissionStatement from "../../../lib/components/MissionStatement.svelte";
+    import AboutThreeColumn from "../../../lib/components/AboutThreeColumn.svelte";
+    import QuoteBanner from "../../../lib/components/QuoteBanner.svelte";
+    import AboutStories from "../../../lib/components/AboutStories.svelte";
     import { fade } from 'svelte/transition';
-    import SecondHero from "../../lib/components/SecondHero.svelte";
+    import SecondHero from "../../../lib/components/SecondHero.svelte";
 </script>
 
 <main transition:fade>
