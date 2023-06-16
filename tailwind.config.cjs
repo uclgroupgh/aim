@@ -28,7 +28,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'hero': "url('/images/hero4.jpg')",
+        'hero': "url('/images/hero.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
         'stories_hero': "url('/images/stories_hero.jpg')",
         'about_cofounder': "url('/images/cofounder.jpg')",

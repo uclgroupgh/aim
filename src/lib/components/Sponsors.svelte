@@ -12,11 +12,11 @@
 
 <section class="sponsors">
     <div class="logo_wrapper">
-        <a href="https://www.longevityghana.com/" target="_blank">
-            <img src="/images/LP-logo.png" alt="the longevity project" />
+        <a href="https://www.facebook.com/OfficialMILOGhana/" target="_blank">
+            <img src="/images/milo.png" alt="Nestle Milo" />
         </a>
-        <a href="https://www.facebook.com/profile.php?id=100064569496912" target="_blank">
-            <img src="/images/wyf.png" alt="the wise Youth foundation"/>
+        <a href="https://www.volticghana.com/" target="_blank">
+            <img src="/images/voltic.png" alt="Voltic bottled water"/>
         </a>
     </div>
 </section>

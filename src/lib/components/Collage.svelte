@@ -6,7 +6,7 @@
         @apply cursor-pointer overflow-hidden;
     }
     .grid_item_image {
-        @apply object-cover object-center overflow-hidden scale-[1.15] hover:scale-100 duration-[350ms] ease-in-out;
+        @apply h-full object-cover object-center overflow-hidden scale-[1.15] hover:scale-100 duration-[350ms] ease-in-out;
     }
 </style>
 

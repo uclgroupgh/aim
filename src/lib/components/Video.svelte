@@ -22,7 +22,7 @@
 <section class="video">
     <div class="header">
         <h2>On Your Marks..., Get Set..., Go!</h2>
-        <p>Take a look back at the start of the Accra International Marathon Half Marathon 2017.</p>
+        <p>Take a look back at a prior promo for the Accra Marathon Marathon.</p>
     </div>
     <div class="content">
         <video controls>

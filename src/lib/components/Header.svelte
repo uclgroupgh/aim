@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-    import { showRegisterMenu, showCourseMenu, showHistoryMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store';
+    import { showCourseMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store';
 
     const handleShowCourseMenu = () => {
         $showCourseMenu = true;
@@ -8,34 +8,19 @@
     const handleHideCourseMenu = () => {
         $showCourseMenu = false;
     }
-
-    const handleShowHistoryMenu = () => {
-        $showHistoryMenu = true;
-    }
-    const handleHideHistoryMenu = () => {
-        $showHistoryMenu = false;
-    }
-
-    const handleShowRegisterMenu = () => {
-        $showRegisterMenu = true;
-    }
-    const handleHideRegisterMenu = () => {
-        $showRegisterMenu = false;
-    }
-
     const handleShowTrainingMenu = () => {
         $showTrainingMenu = true;
     }
     const handleHideTrainingMenu = () => {
         $showTrainingMenu = false;
     }
-
     const handleShowChampionsMenu = () => {
         $showChampionsMenu = true;
     }
     const handleHideChampionsMenu = () => {
         $showChampionsMenu = false;
     }
+    
 </script>
 
 <style lang="postcss">
@@ -132,22 +117,6 @@
         <ul class="primary_menu">
             <li class="primary_menu_item">
                 <a href="/about" class="link_header">About</a>
-                <!-- {#if $showEventMenu}
-                    <ul class="link_list" in:fade>
-                        <li class="link_list_item">
-                            <a href="/event/about">About</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/event/vision">Vision</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/event/vision">Values</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/event/impact">Impact</a>
-                        </li>
-                    </ul>
-                {/if} -->
             </li>
             <li on:mouseenter={handleShowCourseMenu} on:mouseleave={handleHideCourseMenu} class="primary_menu_item">
                 <a href="/course" class="link_header">Course</a>
@@ -162,43 +131,11 @@
                     </ul>
                 {/if}
             </li>
-            <li on:mouseenter={handleShowHistoryMenu} on:mouseleave={handleHideHistoryMenu} class="primary_menu_item">
+            <li class="primary_menu_item">
                 <a href="/history" class="link_header">History</a>
-                {#if $showHistoryMenu}
-                    <ul class="link_list" in:fade>
-                        <li class="link_list_item">
-                            <a href="/history/1980's">1980's</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/history/1990's">1990's</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/history/2000's">2000's</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/history/2010's">2010's</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/history/2020's">2020's</a>
-                        </li>          
-                    </ul>
-                {/if}
             </li>
-            <li on:mouseenter={handleShowRegisterMenu} on:mouseleave={handleHideRegisterMenu} class="primary_menu_item">
+            <li class="primary_menu_item">
                 <a href="/register" class="link_header">Register</a>
-                {#if $showRegisterMenu}
-                    <ul class="link_list" in:fade>
-                        <li class="link_list_item">
-                            <a href="/register/forms">Forms</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register/requirements">Requirements</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/register/payment">Payment</a>
-                        </li>      
-                    </ul>
-                {/if}
             </li>
             <li on:mouseenter={handleShowTrainingMenu} on:mouseleave={handleHideTrainingMenu} class="primary_menu_item">
                 <a href="/training" class="link_header">Training</a>

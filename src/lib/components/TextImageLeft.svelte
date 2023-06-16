@@ -54,8 +54,8 @@
         <img class="fluff" src="/images/fluff.png"/>
     </div>
     <div class="text">
-        <h2 class="text_title">AIMing to reduce plastic waste</h2>
-        <p class="text_content">An eco-friendly race is what we seek to achieve at the 18th edition of the race and we are partnering with @plastic_punch as each participant AIMs to reduce plastic waste and give our habitat a chance of survival.<br /><br />Purchase your refillable bottle at the race packet pick up for only GHS10.</p>
+        <h2 class="text_title">MILO Distributes 2000 Sports Boots</h2>
+        <p class="text_content">Nestlé Ghana Limited and Alhaji Mohammed Kassim, winner of the 2013 Accra MILO Marathon have donated 2,000 boots to under-privileged children who have shown an inclination for sports, part of the Accra MILO Marathon reward initiative.</p>
         <div class="btn">
             <img src="/images/right-arrow.png" class="arrow"/>
             <span>Learn more</span>
