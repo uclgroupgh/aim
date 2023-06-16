@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+import { Adults } from '../data/FinishTimes'
 
 // Registration fields
 export const race_category = writable('Adults')
@@ -16,10 +17,11 @@ export const emergency_number = writable('');
 
 // Medical Information
 export const has_medical_condition = writable(false);
-export const medical_information = writable('');
+export const medical_information = writable('None');
 
 // About you
 export const first_marathon_boolean = writable(true);
+export const finish_time_list = writable(Adults)
 export const finish_time = writable('');
 export const heard_from = writable('');
 export const run_frequency = writable('0 to 5');

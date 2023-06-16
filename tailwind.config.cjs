@@ -22,6 +22,7 @@ module.exports = {
       'gray-input-label': '#4d4d4d',
       'primary_red': '#d11947',
       'primary_red_dark': '#a31438',
+      'error_red': '#e03400',
       'white': '#ffffff',
       'off_white': '#f5f5f5'
     },

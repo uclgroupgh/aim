@@ -3,26 +3,38 @@
 </svelte:head>
 
 <script>
+    import { onMount } from 'svelte';
     import Nationalities from "../data/Nationalities";
     import { fade } from 'svelte/transition';
     import { FunRun, Juniors, Adults } from '../data/FinishTimes';
     import HeardFrom from '../data/HeardFrom';
-    import { first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, has_medical_condition, medical_information, first_marathon_boolean, finish_time, heard_from, run_frequency, amount } from '../stores/store';
+    import { race_category, first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, has_medical_condition, medical_information, first_marathon_boolean, finish_time, finish_time_list, heard_from, run_frequency, amount } from '../stores/store';
+
+    let day, month, year, category;
+    let show_nationalities = false;
+    let show_finish_times = false;
+    let show_heard_from = false;
+    let has_attempted_first_submit = false;
+    let error_nodes = [];
+    let dob_errors, first_name_element, last_name_element, phone_number_element, email_element, nationality_element, dob_day_element, dob_month_element, dob_year_element, emergency_name_element, emergency_number_element, finish_time_element, heard_from_element;
 
     const set_selected_category = (e) => {
-        let category = e.target.innerHTML;
+        category = e.target.htmlFor;
 
         switch (category) {
-            case 'Adults':
-                finish_time_list = Adults
+            case 'adults':
+                race_category.set('1')
+                finish_time_list.set(Adults)
                 amount.set(50.00)
                 break;
-            case 'Juniors':
-                finish_time_list = Juniors
+            case 'juniors':
+                race_category.set('2')
+                finish_time_list.set(Juniors)
                 amount.set(30.00)
                 break;
-            case 'Fun Run':
-                finish_time_list = FunRun  
+            case 'fun_run':
+                race_category.set('3')
+                finish_time_list.set(FunRun)  
                 amount.set(15.00)          
                 break;
         
@@ -32,42 +44,146 @@
     }
 
     // Participant information functions
-    const set_first_name = (e) => {
-        first_name.set(e.target.value)
+    const set_first_name = () => {
+        first_name.set(first_name_element.value)
+        if($first_name.length < 3) {
+            if(!error_nodes.includes(first_name_element.nextElementSibling)){
+                error_nodes.push(first_name_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else {
+            first_name_element.nextElementSibling.classList.remove('flex')
+            first_name_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(first_name_element.nextElementSibling)
+        }
     }
-    const set_last_name = (e) => {
-        last_name.set(e.target.value)
+    const set_last_name = () => {
+        last_name.set(last_name_element.value)
+        if($last_name.length < 3) {
+            if(!error_nodes.includes(last_name_element.nextElementSibling)){
+                error_nodes.push(last_name_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else {
+            last_name_element.nextElementSibling.classList.remove('flex')
+            last_name_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(last_name_element.nextElementSibling)
+        }
     }
-    const set_phone_number = (e) => {
-        phone_number.set(e.target.value)
+    const set_phone_number = () => {
+        phone_number.set(phone_number_element.value)
+        if($phone_number.length != 10) {
+            if(!error_nodes.includes(phone_number_element.nextElementSibling)){
+                error_nodes.push(phone_number_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else { 
+            phone_number_element.nextElementSibling.classList.remove('flex')
+            phone_number_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(phone_number_element.nextElementSibling)
+        }
     }
-    const set_email = (e) => {
-        email.set(e.target.value)
+    const set_email = () => {
+        let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        email.set(email_element.value)
+        if(emailPattern.test($email) == false) {
+            if(!error_nodes.includes(email_element.nextElementSibling)){
+                error_nodes.push(email_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else {
+            email_element.nextElementSibling.classList.remove('flex')
+            email_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(email_element.nextElementSibling)
+        }
     }
     const set_selected_gender = (e) => {
         gender.set(e.target.innerHTML)
     }
     const select_nationality = (e) => {
         nationality.set(e.target.innerHTML)
-        toggle_nationalities();
+        show_nationalities = false;
+
+        nationality_element.parentElement.lastChild.classList.remove('flex')
+        nationality_element.parentElement.lastChild.classList.add('hidden')
+        error_nodes.pop(nationality_element.parentElement.lastChild)
     }
-    const set_day = (e) => {
-        day = e.target.value
+    const set_day = () => {
+        day = dob_day_element.value
+        if(!day || day < 1 || day > 31) {
+            if(!error_nodes.includes(dob_errors.children[0])){
+                error_nodes.push(dob_errors.children[0])
+            } else {
+                return;
+            }
+        } else {
+            dob_errors.children[0].classList.remove('flex')
+            dob_errors.children[0].classList.add('hidden')
+            error_nodes.pop(dob_errors.children[0])
+        }
     }
-    const set_month = (e) => {
-        month = e.target.value
+    const set_month = () => {
+        month = dob_month_element.value
+        if(!month || month < 1 || month > 12) {
+            if(!error_nodes.includes(dob_errors.children[1])) {
+                error_nodes.push(dob_errors.children[1])
+            } else {
+                return;
+            }
+        } else {
+            dob_errors.children[1].classList.remove('flex')
+            dob_errors.children[1].classList.add('hidden')
+            error_nodes.pop(dob_errors.children[1])
+        }
     }
-    const set_year = (e) => {
-        year = e.target.value
+    const set_year = () => {
+        year = dob_year_element.value
+        if(!year || year < 1903 || year > 2016) {
+            if(!error_nodes.includes(dob_errors.children[2])) {
+                error_nodes.push(dob_errors.children[2])
+            } else {
+                return;
+            }
+        } else {
+            dob_errors.children[2].classList.remove('flex')
+            dob_errors.children[2].classList.add('hidden')
+            error_nodes.pop(dob_errors.children[2])
+        }
     }
 
-    $: dob.set(day + ' ' + month + ' ' + year);
+    $: dob.set(year + '-' + month + '-' + day);
 
-    const set_emergency_name = (e) => {
-        emergency_name.set(e.target.value)
+    const set_emergency_name = () => {
+        emergency_name.set(emergency_name_element.value)
+        if($emergency_name.length < 3){
+            if(!error_nodes.includes(emergency_name_element.nextElementSibling)) {
+                error_nodes.push(emergency_name_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else {
+            emergency_name_element.nextElementSibling.classList.remove('flex')
+            emergency_name_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(emergency_name_element.nextElementSibling)
+        }
     }
-    const set_emergency_number = (e) => {
-        emergency_number.set(e.target.value)
+    const set_emergency_number = () => {
+        emergency_number.set(emergency_number_element.value)
+        if($emergency_number.length != 10) {
+            if(!error_nodes.includes(emergency_number_element.nextElementSibling)) {
+                error_nodes.push(emergency_number_element.nextElementSibling)
+            } else {
+                return;
+            }
+        } else {
+            emergency_number_element.nextElementSibling.classList.remove('flex')
+            emergency_number_element.nextElementSibling.classList.add('hidden')
+            error_nodes.pop(emergency_number_element.nextElementSibling)
+        }
     }
 
     // Medical information functions
@@ -78,11 +194,19 @@
     // About you
     const select_finish_time = (e) => {
         finish_time.set(e.target.innerHTML);
-        toggle_finish_times();
+        show_finish_times = false;
+
+        finish_time_element.parentElement.lastChild.classList.remove('flex')
+        finish_time_element.parentElement.lastChild.classList.add('hidden')
+        error_nodes.pop(finish_time_element.parentElement.lastChild)
     }
     const select_heard_from = (e) => {
         heard_from.set(e.target.innerHTML);
-        toggle_heard_from();
+        show_heard_from = false;
+
+        heard_from_element.parentElement.lastChild.classList.remove('flex')
+        heard_from_element.parentElement.lastChild.classList.add('hidden')
+        error_nodes.pop(heard_from_element.parentElement.lastChild)
     }
     const set_selected_first_marathon_answer = (e) => {
         if(e.target.innerHTML == 'Yes') {
@@ -95,6 +219,46 @@
         run_frequency.set(e.target.innerHTML)
     }
 
+
+    const check_nationality = () => {
+        if($nationality == '') {
+            if(!error_nodes.includes(nationality_element.parentElement.lastChild)) {
+                error_nodes.push(nationality_element.parentElement.lastChild)
+            } else {
+                return;
+            }
+        } else {
+            nationality_element.parentElement.lastChild.classList.remove('flex')
+            nationality_element.parentElement.lastChild.classList.add('hidden')
+            error_nodes.pop(nationality_element.parentElement.lastChild)
+        }
+    }
+    const check_finish_time = () => {
+        if($finish_time == '') {
+            if(!error_nodes.includes(finish_time_element.parentElement.lastChild)) {
+                error_nodes.push(finish_time_element.parentElement.lastChild)
+            } else {
+                return;
+            }
+        } else {
+            finish_time_element.parentElement.lastChild.classList.remove('flex')
+            finish_time_element.parentElement.lastChild.classList.add('hidden')
+            error_nodes.pop(finish_time_element.parentElement.lastChild)
+        }
+    }
+    const check_heard_from = () => {
+        if($heard_from == '') {
+            if(!error_nodes.includes(heard_from_element.parentElement.lastChild)) {
+                error_nodes.push(heard_from_element.parentElement.lastChild)
+            } else {
+                return;
+            }
+        } else {
+            heard_from_element.parentElement.lastChild.classList.remove('flex')
+            heard_from_element.parentElement.lastChild.classList.add('hidden')
+            error_nodes.pop(heard_from_element.parentElement.lastChild)
+        }
+    }
     //Select field toggle functions
     const toggle_nationalities = () => {
         show_nationalities = !show_nationalities
@@ -106,36 +270,163 @@
         show_heard_from = !show_heard_from
     }
 
-    let day, month, year;
-    let finish_time_list = Adults;
-    let show_nationalities = false;
-    let show_finish_times = false;
-    let show_heard_from = false;
 
 
-    // Paystack
+
+    // Submission functions
+
+    const init_fields = () => {
+        set_first_name();
+        set_last_name();
+        set_phone_number();
+        set_email();
+        check_nationality();
+        set_day();
+        set_month();
+        set_year();
+        set_emergency_name();
+        set_emergency_number();
+        check_finish_time();
+        check_heard_from();
+
+    }
+    const send_registered_user_data_to_server = () => {
+        
+        const post_url = 'http://192.168.1.36:80/marathon/endpoints/atheletes/addAthelete.php'
+
+        var addBody = new FormData()
+            addBody.append("firstname", $first_name)
+            addBody.append("lastname", $last_name)
+            addBody.append("gender", $gender)
+            addBody.append("phone", $phone_number)
+            addBody.append("email", $email)
+            addBody.append("nationality", $nationality)
+            addBody.append("date_of_birth", $dob)
+            addBody.append("emergency_contact_name", $emergency_name)
+            addBody.append("emergency_contact_number", $emergency_number)
+            addBody.append("race_category_id", $race_category)
+            addBody.append("any_medical_condition", $has_medical_condition)
+            addBody.append("medical_info", $medical_information)
+            addBody.append("expected_finish_time", $finish_time)
+            addBody.append("heard_about_race", $heard_from)
+            addBody.append("first_marathon", $first_marathon_boolean)
+            addBody.append("yearly_race_count", $run_frequency)
+            addBody.append("race_date_id", 1)
+            addBody.append("racers_id", 2023)
+
+        var addRequestOptions = {
+            method: 'POST',
+            body: addBody
+        };
+
+        fetch(post_url, addRequestOptions)
+                .then((res) => {
+                    res.text()
+                })
+                .then((data) => {
+                    console.log(data)
+                    console.log('posted successfully')
+                })
+                .catch((error) => {
+                    console.log('error', error)
+                    console.log('Unsuccessfully')
+                })
+    }
 
     const pay_with_paystack = (e) => {
         e.preventDefault();
 
-        let handler = PaystackPop.setup({
-            key: 'pk_test_a5ce7e0c1640a139f25070cb7824a340cdc6d2ff', // Replace with your public key
+        init_fields();
+
+        if(error_nodes.length > 0) {
+            for(let i = 0; i < error_nodes.length; i++) {
+                error_nodes[i].classList.remove('hidden')
+                error_nodes[i].classList.add('flex')
+            } 
+        }
+
+        if(error_nodes.length == 0){
+            console.log('begin paystack')
+            let handler = PaystackPop.setup({
+            key: 'pk_test_a5ce7e0c1640a139f25070cb7824a340cdc6d2ff',
             email: $email,
             amount: $amount * 100,
             currency: 'GHS',
-            callback: function(response){
-            let message = 'Payment complete! Reference: ' + response.reference;
-            alert(message);
+            callback: send_registered_user_data_to_server,
+            metadata:{
+                custom_fields:[
+                    {
+                    "display_name":"Racer's name",
+                    "variable_name":"Participant's name",
+                    "value": $first_name + ' ' + $last_name
+                    },
+                    {
+                    "display_name":"Phone number",
+                    "variable_name":"Phone number",
+                    "value": $phone_number
+                    },
+                    {
+                    "display_name":"Email",
+                    "variable_name":"Email",
+                    "value": $email
+                    },
+                    {
+                    "display_name":"Nationality",
+                    "variable_name":"Nationality",
+                    "value": $nationality
+                    },
+                    {
+                    "display_name":"Date of birth",
+                    "variable_name":"Date of birth",
+                    "value": $dob
+                    },
+                    {
+                    "display_name":"Race category",
+                    "variable_name":"Race category",
+                    "value": $race_category
+                    },
+                    {
+                    "display_name":"Gender",
+                    "variable_name":"Gender",
+                    "value": $gender
+                    },
+                    {
+                    "display_name":"Emergency contact name",
+                    "variable_name":"Emergency contact name",
+                    "value": $emergency_name
+                    },
+                    {
+                    "display_name":"Emergency contact number",
+                    "variable_name":"Emergency contact number",
+                    "value": $emergency_number
+                    },
+                    {
+                    "display_name":"Expected finish time",
+                    "variable_name":"Expected finish time",
+                    "value": $finish_time
+                    },
+                    {
+                    "display_name":"Medical conditions",
+                    "variable_name":"Medical conditions",
+                    "value": $medical_information
+                    }
+                ]
             }
         });
 
         handler.openIframe();
+        }
     }
+
+    onMount(() => {
+        init_fields();
+    })
+
 </script>
 
 <style lang="postcss">
     .registration_form {
-        @apply w-1/2 p-6 h-full overflow-y-scroll;
+        @apply w-1/2 px-6 pt-6 pb-20 h-full overflow-y-scroll;
     }
     .logo_wrapper {
         @apply flex flex-row items-center block;
@@ -180,7 +471,10 @@
         @apply flex flex-col items-center justify-center;
     }
     .category_type_wrapper label h3 {
-        @apply font-bold text-xl mt-1;
+        @apply font-bold text-xl mt-1 pointer-events-none;
+    }
+    .category_type_wrapper label span {
+        @apply pointer-events-none;
     }
     .category_type_wrapper .cell-bg, .gender_type_wrapper .cell-bg, .medical_boolean_wrapper .cell-bg, .first_marathon_answer_wrapper .cell-bg, .run_freq_answer_wrapper .cell-bg {
         @apply h-full w-full absolute -z-10;
@@ -208,10 +502,10 @@
         @apply text-primary_red mr-2;
     }
     .participant_info_field_two_col {
-        @apply flex flex-row gap-8 h-auto;
+        @apply flex flex-row gap-8 h-auto relative;
     }
     .participant_info_field_two_col .participant_info_field {
-        @apply w-1/2 h-full;
+        @apply w-1/2 h-full mb-2;
     }
     .participant_info_field_two_col .participant_info_field:first-of-type {
         @apply h-[inherit] flex flex-col justify-between;
@@ -276,6 +570,15 @@
         @apply flex flex-row mx-auto mt-12 justify-center items-center font-medium uppercase text-white text-2xl cursor-pointer leading-7 px-9 py-5 w-fit border-b-2 rounded border-primary_red_dark border-[1px] duration-[250ms] ease-in-out bg-primary_red hover:bg-primary_red_dark hover:border-primary_red;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
     }
+    .error {
+        @apply flex-row items-center text-error_red font-light text-sm pt-2 ml-1;
+    }
+    .error small {
+        @apply font-bold;
+    }
+    .dob_errors {
+        @apply flex flex-col mb-10;
+    }
 </style>
 
 <div class="registration_form">
@@ -311,23 +614,27 @@
         <div class="participant_info_wrapper">
             <div class="participant_info_field">
                 <label for="first_name"><span class="required">*</span>First Name</label>
-                <input type="text" id="first_name" on:change={set_first_name}/>
+                <input bind:this={first_name_element} type="text" id="first_name" on:change={set_first_name}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us your first name</span>
             </div>
             <div class="participant_info_field">
                 <label for="last_name"><span class="required">*</span>Last Name</label>
-                <input type="text" id="last_name" on:change={set_last_name}/>
+                <input bind:this={last_name_element} type="text" id="last_name" on:change={set_last_name}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us your last name</span>
             </div>
             <div class="participant_info_field">
                 <label for="phone_number"><span class="required">*</span>Phone number</label>
-                <input type="tel" id="phone_number" on:change={set_phone_number}/>
+                <input bind:this={phone_number_element} type="tel" id="phone_number" on:change={set_phone_number}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Please tell us your phone number with no dashes and no spaces</span>
             </div>
             <div class="participant_info_field">
                 <label for="email"><span class="required">*</span>Email</label>
-                <input type="email" id="email" on:change={set_email}/>
+                <input bind:this={email_element} type="email" id="email" on:change={set_email}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;We need your email to send you your receipt</span>
             </div>
             <div class="participant_info_field nationality_container">
                 <label for="nationalities"><span class="required">*</span>Nationality</label>
-                <div class="nationality_input_wrapper" on:click={toggle_nationalities}>
+                <div bind:this={nationality_element} class="nationality_input_wrapper" on:click={toggle_nationalities}>
                     <img src="/images/dropdown_caret.png" alt="select your nationality" class="dropdown_caret {show_nationalities ? 'rotate-180' : ''}"/>
                     <input name="nationalities" id="nationalities" class="nationality_input" type="text" placeholder="Select your Nationality..." value={$nationality}/>
                 </div>
@@ -338,6 +645,7 @@
                         {/each}
                     </ul>
                 {/if}
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us your nationality</span>
             </div>
             <div class="participant_info_field_two_col">
                 <div class="participant_info_field">
@@ -360,26 +668,33 @@
                     <div class="dob_wrapper">
                         <div class="dob_day">
                             <label for="day">Day</label>
-                            <input id="day" type="number" name="dob" placeholder="DD" min="1" max="31" on:change={set_day} />
+                            <input bind:this={dob_day_element} id="day" type="number" name="dob" placeholder="DD" min="1" max="31" on:change={set_day} />
                         </div>
                         <div class="dob_month">
                             <label for="month">Month</label>
-                            <input id="month" type="number" name="dob" placeholder="MM" min="1" max="12" on:change={set_month} />
+                            <input bind:this={dob_month_element} id="month" type="number" name="dob" placeholder="MM" min="1" max="12" on:change={set_month} />
                         </div>
                         <div class="dob_year">
                             <label for="year">Year</label>
-                            <input id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016" on:change={set_year}/>
+                            <input bind:this={dob_year_element} id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016" on:change={set_year}/>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="dob_errors" bind:this={dob_errors}>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Please enter a day between 1 and 31</span>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Please enter a month between 1 and 12</span>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Please enter a four digit year between 1903 and 2016</span>
+            </div>
             <div class="participant_info_field">
                 <label for="emergency_contact_name"><span class="required">*</span>Emergency contact name</label>
-                <input type="text" id="emergency_contact_name" on:change={set_emergency_name}/>
+                <input bind:this={emergency_name_element} type="text" id="emergency_contact_name" on:change={set_emergency_name}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us your emergency contact's name</span>
             </div>
             <div class="participant_info_field">
                 <label for="emergency_contact_number"><span class="required">*</span>Emergency contact number</label>
-                <input type="tel" id="emergency_contact_number" on:change={set_emergency_number}/>
+                <input bind:this={emergency_number_element} type="tel" id="emergency_contact_number" on:change={set_emergency_number}/>
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us your emergency contact's number</span>
             </div>
         </div>
 
@@ -417,22 +732,23 @@
 
             <div class="participant_info_field finish_time_container">
                 <label for="finish_time_input"><span class="required">*</span>What is your expected finish time?</label>
-                <div class="finish_time_input_wrapper" on:click={toggle_finish_times}>
+                <div bind:this={finish_time_element} class="finish_time_input_wrapper" on:click={toggle_finish_times}>
                     <img src="/images/dropdown_caret.png" alt="select your finish_time" class="dropdown_caret {show_finish_times ? 'rotate-180' : ''}"/>
                     <input id="finish_time_input" class="finish_time_input" type="text" placeholder="Select your estimated finish time..." value={$finish_time}/>
                 </div>
                 {#if show_finish_times}
                     <ul name="finish_times" id="finish_times" transition:fade>
-                        {#each finish_time_list as finish_time}
+                        {#each $finish_time_list as finish_time}
                             <li class="finish_time" on:click={select_finish_time}>{finish_time}</li>
                         {/each}
                     </ul>
                 {/if}
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Don't forget your finish time</span>
             </div>
 
             <div class="participant_info_field heard_from_container">
                 <label for="heard_from_input"><span class="required">*</span>How did you hear about this event?</label>
-                <div class="heard_from_input_wrapper" on:click={toggle_heard_from}>
+                <div bind:this={heard_from_element} class="heard_from_input_wrapper" on:click={toggle_heard_from}>
                     <img src="/images/dropdown_caret.png" alt="select how you heard about us" class="dropdown_caret {show_heard_from ? 'rotate-180' : ''}"/>
                     <input id="heard_from_input" class="heard_from_input" type="text" placeholder="Select one" value={$heard_from}/>
                 </div>
@@ -443,6 +759,7 @@
                         {/each}
                     </ul>
                 {/if}
+                <span class="error hidden"><small>&#9587;</small>&nbsp;&nbsp;Tell us where you heard about the Accra marathon</span>
             </div>
 
             <div class="participant_info_field">
