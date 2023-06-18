@@ -51,7 +51,7 @@
     >
       <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       <a-entity
-        gltf-model="<path-to-your-model>"
+        gltf-model="https://aim-xi.vercel.app/images/kk/scene.gltf"
         scale="5 5 5"
         position="50 150 0"
       >
