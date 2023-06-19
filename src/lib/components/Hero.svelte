@@ -17,10 +17,11 @@
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
         .hero_title {
-            @apply text-4xl text-center leading-normal mb-12;
+            @apply text-3xl text-center leading-normal mb-12;
         }
         .hero_content {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            @apply px-4;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
         }
         .hero_btn {
             @apply text-lg font-medium;
@@ -45,7 +46,7 @@
 
 <section class="hero">
     <div class="hero_content">
-        <h2 class="hero_title">Proudly AIMing to keep Africa alive</h2>
+        <h2 class="hero_title">Nurturing a nation of champions.</h2>
         <a href="/register" class="hero_btn">
             <span>Register</span>
         </a>

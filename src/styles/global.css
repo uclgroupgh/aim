@@ -7,3 +7,7 @@
 * {
     @apply font-Open box-border;
 }
+
+body {
+    @apply w-screen;
+}
