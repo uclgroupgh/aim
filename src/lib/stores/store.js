@@ -27,4 +27,4 @@ export const heard_from = writable('');
 export const run_frequency = writable('0 to 5');
 
 // Amount
-export const amount = writable(50);
+export const amount = writable(100);
