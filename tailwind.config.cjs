@@ -43,7 +43,8 @@ module.exports = {
       gridTemplateColumns: {
         'three_column': 'repeat(3, minmax(0, 1fr))',
         'text_image_left': '1fr 2fr',
-        'text_image_right': '2fr 1fr'
+        'text_image_right': '2fr 1fr',
+        'mobile_radio_btn_selector': 'repeat(2, minmax(0, 1fr))'
       },
       gridTemplateRows: {
         'three_row': 'repeat(3, 300px)',

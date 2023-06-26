@@ -6,7 +6,7 @@
     import { onMount } from 'svelte';
     import Nationalities from "../data/Nationalities";
     import { fade } from 'svelte/transition';
-    import { FunRun, Juniors, Adults } from '../data/FinishTimes';
+    import { CivilService, Juniors, Adults, Corporate } from '../data/FinishTimes';
     import HeardFrom from '../data/HeardFrom';
     import { race_category, first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, has_medical_condition, medical_information, first_marathon_boolean, finish_time, finish_time_list, heard_from, run_frequency, amount } from '../stores/store';
 
@@ -22,20 +22,25 @@
         category = e.target.htmlFor;
 
         switch (category) {
-            case 'adults':
+            case 'marathon':
                 race_category.set('1')
                 finish_time_list.set(Adults)
+                amount.set(100.00)
+                break;
+            case 'civil_service':
+                race_category.set('2')
+                finish_time_list.set(CivilService)
                 amount.set(50.00)
                 break;
-            case 'juniors':
-                race_category.set('2')
-                finish_time_list.set(Juniors)
-                amount.set(30.00)
-                break;
-            case 'fun_run':
+            case 'corporate':
                 race_category.set('3')
-                finish_time_list.set(FunRun)  
-                amount.set(15.00)          
+                finish_time_list.set(Corporate)
+                amount.set(70.00)
+                break;
+            case 'juniors':
+                race_category.set('4')
+                finish_time_list.set(Juniors)  
+                amount.set(30.00)          
                 break;
         
             default: '';
@@ -440,6 +445,9 @@
     .form_header {
         @apply mt-12 text-primary_red text-5xl tracking-wide font-normal leading-tight px-6;
     }
+    .heading_banner {
+        @apply hidden;
+    }
     .marathon_form {
         @apply mt-6 px-6;
     }
@@ -579,34 +587,91 @@
     .dob_errors {
         @apply flex flex-col mb-10;
     }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .registration_form {
+            @apply w-full px-0 pt-6 pb-20 h-full overflow-y-scroll;
+        }
+        .logo_wrapper {
+            @apply px-6;
+        }
+        .heading_banner {
+            @apply bg-register_hero bg-center bg-cover h-64 block;
+        }
+        .form_header {
+            @apply my-6 text-primary_red text-3xl tracking-wide font-normal leading-tight py-2 px-6;
+        }
+        .category_wrapper, .run_freq_wrapper {
+            @apply grid grid-cols-mobile_radio_btn_selector;
+        }
+        .category_type_wrapper:nth-of-type(2), .run_freq_answer_wrapper:nth-of-type(2) {
+            @apply border-l border-b border-r-0 border-gray-border;
+        }
+        .category_type_wrapper:nth-of-type(3), .run_freq_answer_wrapper:nth-of-type(3)  {
+            @apply border-r border-t border-gray-border;
+        }
+        .participant_info_field_two_col {
+            @apply flex flex-col gap-8 h-auto relative;
+        }
+        .participant_info_field_two_col .participant_info_field {
+            @apply w-full h-full mb-2;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+    
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <div class="registration_form">
     <div class="form_heading">
         <a href="/" class="logo_wrapper">
-            <img src="/images/logo.png" alt="Accra International Marathon logo" class="logo_img"/>
-            <h1 class="logo_title">Accra International Marathon</h1>
+            <img src="/images/logo.png" alt="Accra Marathon logo" class="logo_img"/>
+            <h1 class="logo_title">Accra Marathon</h1>
         </a>
         <h1 class="form_header">Join the Journey,<br/>Register for the<br/>Accra Marathon</h1>
+        <div class="heading_banner">
+            <div class="caption">
+                <span class="caption_text"></span>
+            </div>
+        </div>
     </div>
 
     <form class="marathon_form">
         <h2 class="form_title">Race Category</h2>
         <div class="category_wrapper">
             <div class="category_type_wrapper">
-                <input id="adults" type="radio" name="race_category" checked/>
+                <input id="marathon" type="radio" name="race_category" checked/>
                 <div class="cell-bg"></div>
-                <label for="adults" on:click={set_selected_category}><span>Adults</span><h3>&#8373; 50</h3></label>
+                <label for="marathon" on:click={set_selected_category}><span>Marathon</span><h3>&#8373; 100</h3></label>
+            </div>
+            <div class="category_type_wrapper">
+                <input id="corporate" type="radio" name="race_category"/>
+                <div class="cell-bg"></div>
+                <label for="corporate" on:click={set_selected_category}><span>Corporate</span><h3>&#8373; 70</h3></label>
+            </div>
+            <div class="category_type_wrapper">
+                <input id="civil_service" type="radio" name="race_category"/>
+                <div class="cell-bg"></div>
+                <label for="civil_service" on:click={set_selected_category}><span>Civil Service</span><h3>&#8373; 50</h3></label>
             </div>
             <div class="category_type_wrapper">
                 <input id="juniors" type="radio" name="race_category"/>
                 <div class="cell-bg"></div>
                 <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>&#8373; 30</h3></label>
-            </div>
-            <div class="category_type_wrapper">
-                <input id="fun_run" type="radio" name="race_category"/>
-                <div class="cell-bg"></div>
-                <label for="fun_run" on:click={set_selected_category}><span>Fun Run</span><h3>&#8373; 15</h3></label>
             </div>
         </div>
 
@@ -734,7 +799,7 @@
                 <label for="finish_time_input"><span class="required">*</span>What is your expected finish time?</label>
                 <div bind:this={finish_time_element} class="finish_time_input_wrapper" on:click={toggle_finish_times}>
                     <img src="/images/dropdown_caret.png" alt="select your finish_time" class="dropdown_caret {show_finish_times ? 'rotate-180' : ''}"/>
-                    <input id="finish_time_input" class="finish_time_input" type="text" placeholder="Select your estimated finish time..." value={$finish_time}/>
+                    <input id="finish_time_input" class="finish_time_input" type="text" placeholder="Select a finish time" value={$finish_time}/>
                 </div>
                 {#if show_finish_times}
                     <ul name="finish_times" id="finish_times" transition:fade>
