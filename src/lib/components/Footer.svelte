@@ -43,8 +43,20 @@
     }
 
     @media(min-width: 300px)and (max-width: 575.98px) {
+        .footer {
+            @apply flex flex-col-reverse;
+        }
+        .footer_top {
+            @apply mx-4 border-0 flex-col pt-4;
+        }
         .footer_middle {
-            @apply mx-8;
+            @apply hidden;
+        }
+        .logo_wrapper {
+            @apply mb-4;
+        }
+        .logo_wrapper .logo_img {
+            @apply h-7 mr-2;
         }
     }
 
@@ -67,7 +79,7 @@
     <div class="footer_top">
         <div class="logo_wrapper">
             <img src="/images/logo_white.png" alt="running man" class="logo_img" />
-            <h1 class="logo_title">Accra International Marathon</h1>
+            <h1 class="logo_title">Accra Marathon</h1>
         </div>
         <div class="socials_wrapper">
             <div class="social_link">
@@ -133,6 +145,6 @@
         </ul>
     </div>
     <div class="footer_bottom">
-        <span>© Copyright 2023. Accra International Marathon</span>
+        <span>© Copyright 2023. Accra Marathon</span>
     </div>
 </section>

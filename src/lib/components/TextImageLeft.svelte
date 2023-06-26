@@ -28,8 +28,26 @@
     }
 
     @media(min-width: 300px)and (max-width: 575.98px) {
+        .text_image_left {
+            @apply flex flex-col px-4;
+        }
+        .image_wrapper {
+            @apply w-full relative h-[20rem];
+        }
+        .image {
+            @apply w-full h-full relative object-cover object-center z-10;
+        }
         .text {
-            @apply px-8;
+            @apply px-6 mt-6 py-8;
+        }
+        .text_title {
+            @apply text-2xl;
+        }
+        .text_content {
+            @apply text-lg text-justify;
+        }
+        .btn {
+            @apply mt-8;
         }
     }
 

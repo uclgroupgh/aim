@@ -8,6 +8,29 @@
     .grid_item_image {
         @apply h-full object-cover object-center overflow-hidden scale-[1.15] hover:scale-100 duration-[350ms] ease-in-out;
     }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .collage {
+            @apply grid-rows-three_row_mobile;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+    
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <section class="collage">

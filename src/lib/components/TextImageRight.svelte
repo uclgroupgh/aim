@@ -1,6 +1,6 @@
 <style lang="postcss">
     .text_image_right {
-        @apply grid grid-cols-text_image_right w-full px-32 pb-16 pt-32;
+        @apply grid grid-cols-text_image_right w-full px-32 py-16;
     }
     .image_wrapper {
         @apply w-[120%] relative h-[28rem];
@@ -9,7 +9,7 @@
         @apply w-[110%] h-full absolute -translate-y-10 -translate-x-20 object-cover object-center z-10;
     }
     .fluff {
-        @apply absolute z-10 bottom-0 right-10 w-1/2;
+        @apply absolute z-10 -bottom-10 right-10 w-1/2;
     }
     .text {
         @apply flex flex-col py-16 px-32 bg-off_white;
@@ -28,8 +28,26 @@
     }
 
     @media(min-width: 300px)and (max-width: 575.98px) {
+        .text_image_right {
+            @apply flex flex-col px-4;
+        }
+        .image_wrapper {
+            @apply w-full relative h-[20rem] mt-12;
+        }
+        .image {
+            @apply w-full h-full relative object-cover object-center z-10 translate-y-0 translate-x-0;
+        }
         .text {
-            @apply px-8;
+            @apply px-6 py-8;
+        }
+        .text_title {
+            @apply text-2xl;
+        }
+        .text_content {
+            @apply text-lg text-justify;
+        }
+        .btn {
+            @apply mt-8;
         }
     }
 

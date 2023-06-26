@@ -46,7 +46,8 @@ module.exports = {
         'text_image_right': '2fr 1fr'
       },
       gridTemplateRows: {
-        'three_row': 'repeat(3, 300px)'
+        'three_row': 'repeat(3, 300px)',
+        'three_row_mobile': 'repeat(3, 120px)'
       }
     },
   },
