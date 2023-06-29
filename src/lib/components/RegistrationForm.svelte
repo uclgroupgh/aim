@@ -297,7 +297,7 @@
     }
     const send_registered_user_data_to_server = () => {
         
-        const post_url = 'http://192.168.1.36:80/marathon/endpoints/atheletes/addAthelete.php'
+        const post_url = 'http://10.10.11.83:80/marathon/endpoints/atheletes/addAthelete.php'
 
         var addBody = new FormData()
             addBody.append("firstname", $first_name)
