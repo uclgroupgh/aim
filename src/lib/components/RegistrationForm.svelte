@@ -331,6 +331,9 @@
                 .then((data) => {
                     console.log(data)
                     console.log('posted successfully')
+                    setTimeout(() => {
+                        window.location.replace('/')
+                    }, 5000)
                 })
                 .catch((error) => {
                     console.log('error', error)

@@ -24,6 +24,10 @@
     const handleHideChampionsMenu = () => {
         $showChampionsMenu = false;
     }
+    const close_mobile_menu = () => {
+        open = false;
+        toggle_body();
+    }
     
     let open;
     
@@ -156,30 +160,30 @@
             <nav class="mobile_menu" transition:slide>
 
                 <div class="mobile_menu_cta_btns">
-                    <a href="/register" class="mobile_menu_cta_btn mobile_menu_cta_btn_one">
+                    <a on:click={close_mobile_menu} href="/register" class="mobile_menu_cta_btn mobile_menu_cta_btn_one">
                         <span class="mobile_menu_cta_btn_text">Register</span>
                     </a>
-                    <a href="register" class="mobile_menu_cta_btn mobile_menu_cta_btn_two">
+                    <a on:click={close_mobile_menu} href="register" class="mobile_menu_cta_btn mobile_menu_cta_btn_two">
                         <span class="mobile_menu_cta_btn_text">Donate</span>
                     </a>
                 </div>
                 <ul>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 0 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 0 }}>
                         <a href="/about">About</a>
                     </li>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 1 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 1 }}>
                         <a href="/course">Course</a>
                     </li>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 2 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 2 }}>
                         <a href="/history">History</a>
                     </li>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 4 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 4 }}>
                         <a href="/training">Training</a>
                     </li>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 5 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 5 }}>
                         <a href="/champions">Champions</a>
                     </li>
-                    <li class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 6 }}>
+                    <li on:click={close_mobile_menu} class="mobile_menu_link" transition:fly={{ y: -15, delay: 50 * 6 }}>
                         <a href="/sponsors">Sponsors</a>
                     </li>
                 </ul>
