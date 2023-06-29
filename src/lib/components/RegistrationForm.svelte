@@ -338,6 +338,9 @@
                 .catch((error) => {
                     console.log('error', error)
                     console.log('Unsuccessfully')
+                    setTimeout(() => {
+                        window.location.replace('/')
+                    }, 5000)
                 })
     }
 
