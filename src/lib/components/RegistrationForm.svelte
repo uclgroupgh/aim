@@ -333,14 +333,14 @@
                     console.log('posted successfully')
                     setTimeout(() => {
                         window.location.replace('/')
-                    }, 5000)
+                    }, 3000)
                 })
                 .catch((error) => {
                     console.log('error', error)
                     console.log('Unsuccessfully')
                     setTimeout(() => {
                         window.location.replace('/')
-                    }, 5000)
+                    }, 3000)
                 })
     }
 
