@@ -13,6 +13,35 @@
     .section_heading_subtitle {
         @apply text-lg leading-loose tracking-wide;
     }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .section_heading {
+            @apply px-4 pt-12 pb-10;
+        }
+        .section_heading_title {
+            @apply text-3xl mb-6;
+        }
+        .section_heading_subtitle {
+            @apply text-base leading-loose tracking-wide text-justify;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <section class="section_heading">

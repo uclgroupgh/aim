@@ -50,6 +50,44 @@
     .author_caption {
         @apply text-center leading-relaxed mb-5;
     }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .image_text_banner {
+            @apply flex-col h-auto;
+        }
+        .image_col {
+            @apply h-[50vh] w-full;
+        }
+        .image_col_caption {
+            @apply hidden;
+        }
+        .text_col {
+            @apply w-full h-auto px-4 py-8;
+        }
+        .text_col_para {
+            @apply text-base mb-6 text-justify leading-8;
+        }
+        .text_col_btn {
+            @apply px-6;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <section class="image_text_banner">

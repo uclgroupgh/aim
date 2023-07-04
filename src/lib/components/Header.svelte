@@ -69,13 +69,13 @@
         @apply w-full flex flex-row justify-center items-center bg-gray-lighter font-light;
     }
     .primary_menu_item {
-        @apply p-5 border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px];
+        @apply p-5 border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px] duration-[250ms] ease-in-out hover:bg-white;
     }
     .link_list {
         @apply z-50 absolute top-full w-full bg-gray-lighter border-r-[1px] border-gray-border box-content;
     }
     .link_list_item {
-        @apply p-5 border-t-[1px] border-gray-border text-center flex justify-center uppercase tracking-wide cursor-pointer relative ease-in-out hover:bg-gray-border;
+        @apply p-5 border-t-[1px] border-gray-border text-center flex justify-center uppercase tracking-wide cursor-pointer relative duration-[250ms] ease-in-out bg-white hover:bg-gray-lighter;
     }
     .primary_menu li img {
         @apply h-6 w-6;

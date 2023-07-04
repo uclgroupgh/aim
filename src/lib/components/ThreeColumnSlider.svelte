@@ -23,9 +23,17 @@
                 nextEl: next_btn,
                 prevEl: prev_btn
                 },
-            loop: true,
-            spaceBetween: 20,
-            slidesPerView: 3
+            breakpoints: {
+                300: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+                },
+                577: {
+                    spaceBetween: 20,
+                    slidesPerView: 3
+                }
+            },
+            loop: true
             });
         })
 </script>
@@ -73,6 +81,35 @@
     }
     .next_btn {
         @apply -rotate-90;
+    }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .three_col_slider {
+            @apply relative mx-4 pb-12;
+        }
+        .prev_btn_wrapper, .next_btn_wrapper {
+            @apply hidden;
+        }
+        swiper-container {
+            @apply py-4;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
     }
 </style>
 
