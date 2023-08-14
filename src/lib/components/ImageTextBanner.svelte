@@ -4,12 +4,14 @@
     export let bgd_image;
     export let captionText;
     export let bgd_color;
+    export let text_color;
     export let para_text;
     export let cta_btn_text;
     export let cta_btn_link;
     export let quote_text;
     export let quote_caption;
     export let has_link_span;
+    export let heading;
 </script>
 
 <style lang="postcss">
@@ -28,11 +30,14 @@
     .text_col {
         @apply w-3/5  px-16 py-20 flex flex-col items-center;
     }
+    .text_col_heading {
+        @apply text-3xl font-semibold mb-6;
+    }
     .text_col_para {
         @apply text-xl tracking-wide leading-loose mb-8 text-center;
     }
     .text_col_btn {
-        @apply block w-fit font-normal text-black text-base cursor-pointer leading-7 px-8 py-3.5 border-b-2 rounded border-black border-[1px] bg-yellow duration-[250ms] ease-in-out hover:bg-black hover:text-white;
+        @apply block w-fit font-normal text-base cursor-pointer leading-7 px-8 py-3.5 border-b-2 rounded border-black border-[1px] bg-yellow duration-[250ms] ease-in-out hover:bg-black hover:text-white;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
     }
     .quote_wrapper {
@@ -92,11 +97,16 @@
 
 <section class="image_text_banner">
     <div class="image_col {bgd_image}">
-        <div class="image_col_caption">
-            <span class="image_col_caption_text">{captionText}</span>
-        </div>
+        {#if captionText}
+            <div class="image_col_caption">
+                <span class="image_col_caption_text">{captionText}</span>
+            </div>
+        {/if}
     </div>
-    <div class="text_col {bgd_color}">
+    <div class="text_col {bgd_color} {text_color}">
+        {#if heading}
+            <h2 class="text_col_heading">{heading}</h2>
+        {/if}
         {#if para_text}
             <p class="text_col_para">{para_text}</p>
         {/if}

@@ -5,13 +5,13 @@
 
 <style lang="postcss">
     .section_heading {
-        @apply px-64 pt-16 text-center;
+        @apply px-64 pt-12 text-center;
     }
     .section_heading_title {
-        @apply text-4xl leading-[3.375rem] mb-6;
+        @apply text-4xl leading-[3.375rem];
     }
     .section_heading_subtitle {
-        @apply text-lg leading-loose tracking-wide;
+        @apply text-lg leading-loose tracking-wide mt-6;
     }
 
     /* // X-Small devices (portrait phones, less than 576px) */
@@ -46,5 +46,7 @@
 
 <section class="section_heading">
     <h2 class="section_heading_title">{title}</h2>
-    <p class="section_heading_subtitle">{subtitle}</p>
+    {#if subtitle}
+        <p class="section_heading_subtitle">{subtitle}</p>
+    {/if}
 </section>

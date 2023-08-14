@@ -129,10 +129,10 @@
             </swiper-slide>
         {/each}
     </swiper-container>
-    <button on:click={goPrev} bind:this={prev_btn} class="prev_btn_wrapper">
+    <button  bind:this={prev_btn} class="prev_btn_wrapper" on:click={goPrev}>
         <img class="prev_btn" src="/images/down_arrow.png" alt="previous button"/>
     </button>
-    <button on:click={goNext} bind:this={next_btn} class="next_btn_wrapper">
+    <button  bind:this={next_btn} class="next_btn_wrapper" on:click={goNext}>
         <img class="next_btn" src="/images/down_arrow.png" alt="previous button"/>
     </button>
 </div>

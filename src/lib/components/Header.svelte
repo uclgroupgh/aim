@@ -47,7 +47,7 @@
         @apply flex flex-row items-center;
     }
     .logo_img {
-        @apply h-12 mr-4;
+        @apply h-20 mr-4;
     }
     .logo_title {
         @apply text-2xl font-extralight tracking-wide text-primary_red;
@@ -146,8 +146,7 @@
 <section class="header">
     <div class="header_top">
         <a href="/" class="logo_wrapper">
-            <img src="/images/logo.png" alt="Accra Marathon logo" class="logo_img"/>
-            <h1 class="logo_title">Accra Marathon</h1>
+            <img src="/images/accramarathonlogo.png" alt="Accra Marathon logo" class="logo_img"/>
         </a>
         <ul class="secondary_menu">
             <li class="link">Contact Us</li>

@@ -110,9 +110,11 @@
             </a>
         {/if}
     </div>
-    <div class="background_caption">
-        <span class="background_caption_text">{captionText}</span>
-    </div>
+    {#if captionText}
+      <div class="background_caption">
+          <span class="background_caption_text">{captionText}</span>
+      </div>
+    {/if}
     {#if needsScrollTo}
         <div class="scroll_to">
             <img class="down_arrow" src="/images/down_arrow.png" alt="arrow"/>

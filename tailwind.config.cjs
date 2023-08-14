@@ -6,14 +6,17 @@ module.exports = {
       'blue': '#1fb6ff',
       'med_blue': '#135cb0',
       'purple': '#7e5bef',
+      'violet': '#4b2884',
       'pink': '#ff49db',
       'orange': '#ff7849',
       'green': '#13ce66',
       'yellow': '#ffc82c',
       'black': '#1a1a1a',
       'mobile-gray': '#63666b',
+      'impact_gray': '#e6e6e6',
       'gray-dark': '#273444',
       'gray': '#8492a6',
+      'gray_hero_bg': '#4c4c4c',
       'gray-light': '#d3dce6',
       'gray-lighter': '#f5f5f5',
       'gray-border': '#dcdcdc',
@@ -25,19 +28,25 @@ module.exports = {
       'primary_red_dark': '#a31438',
       'error_red': '#e03400',
       'white': '#ffffff',
-      'off_white': '#f5f5f5'
+      'off_white': '#f5f5f5',
+      'transparent': 'transparent'
     },
     extend: {
       backgroundImage: {
         'hero': "url('/images/hero.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
         'stories_hero': "url('/images/stories_hero.jpg')",
+        'impact_hero': "url('/images/impact_hero.jpg')",
+        'values_hero': "url('/images/collage4.jpg')",
         'about_cofounder': "url('/images/cofounder.jpg')",
         'story_banner': "url('/images/podium.jpg')",
         'story_banner_2': "url('/images/cofounder_2.jpg')",
-        'register_hero': "url('/images/register_bgd.jpg')"
+        'register_hero': "url('/images/register_bgd.jpg')",
+        'past_winners_two_col_hero': "url('/images/about_hero.jpg')",
+        'parallax_past_winners': "url('/images/values.jpg')"
       },
       fontFamily: {
+        Comfortaa: ["Comfortaa", "sans-serif"],
         Open: ["Open Sans", "sans-serif"]
       },
       gridTemplateColumns: {
