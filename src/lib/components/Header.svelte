@@ -218,13 +218,10 @@
                 {#if $showTrainingMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/training/preparation">Preparing for the Race</a>
+                            <a href="/training#preparation">Preparing for the Race</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/training/tips">Tips</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/training/routines">Training Routines</a>
+                            <a href="/training#routines">Training Routines</a>
                         </li>      
                     </ul>
                 {/if}

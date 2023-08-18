@@ -5,7 +5,7 @@
     onMount(() => {
 
         // Set the date we're counting down to
-        let countDownDate = new Date("Oct 29, 2023 09:00:00").getTime();
+        let countDownDate = new Date("Nov 11, 2023 09:00:00").getTime();
         
         // Update the count down every 1 second
         let x = setInterval(function() {

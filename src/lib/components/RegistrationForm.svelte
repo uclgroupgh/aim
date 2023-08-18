@@ -443,7 +443,7 @@
         @apply flex flex-row items-center block;
     }
     .logo_img {
-        @apply h-12 mr-4;
+        @apply h-20 mr-4;
     }
     .logo_title {
         @apply text-2xl font-extralight tracking-wide text-primary_red;
@@ -645,8 +645,7 @@
 <div class="registration_form">
     <div class="form_heading">
         <a href="/" class="logo_wrapper">
-            <img src="/images/logo.png" alt="Accra Marathon logo" class="logo_img"/>
-            <h1 class="logo_title">Accra Marathon</h1>
+            <img src="/images/accramarathonlogo.png" alt="Accra Marathon logo" class="logo_img"/>
         </a>
         <h1 class="form_header">Join the Journey,<br/>Register for the<br/>Accra Marathon</h1>
         <div class="heading_banner">

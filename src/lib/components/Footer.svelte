@@ -9,7 +9,7 @@
         @apply flex flex-row items-center;
     }
     .logo_wrapper .logo_img {
-        @apply h-12 mr-4;
+        @apply h-16 mr-4;
     }
     .logo_title {
         @apply text-xl font-extralight tracking-wide text-white;
@@ -78,8 +78,7 @@
 <section class="footer">
     <div class="footer_top">
         <div class="logo_wrapper">
-            <img src="/images/logo_white.png" alt="running man" class="logo_img" />
-            <h1 class="logo_title">Accra Marathon</h1>
+            <img src="/images/accramarathonlogo_white.png" alt="running man" class="logo_img" />
         </div>
         <div class="socials_wrapper">
             <div class="social_link">
