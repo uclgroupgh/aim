@@ -21,7 +21,7 @@
 
 <style lang="postcss">
     .two_column_hero {
-        @apply h-[65vh] flex;
+        @apply h-[65vh] flex flex-row;
     }
     .img_col, .text_col {
         @apply w-1/2 h-full;
@@ -41,6 +41,44 @@
     .two_column_text_col_btn {
       @apply block w-fit font-normal text-white text-base cursor-pointer leading-7 mt-12 px-8 py-3.5 border-b-2 rounded border-white border-[1px] bg-transparent duration-[250ms] ease-in-out hover:bg-white hover:text-black;
       box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .two_column_hero {
+            @apply h-fit flex flex-col-reverse;
+        }
+        .img_col, .text_col {
+            @apply w-full;
+        }
+        .img_col {
+            @apply h-[40vh];
+        }
+        .text_col {
+            @apply h-auto px-4 py-8;
+        }
+        .text_col h1 {
+            @apply text-2xl;
+        }
+        .subtitle {
+            @apply mt-6;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
     }
 </style>
 

@@ -1,18 +1,27 @@
 <style lang="postcss">
     .sponsors {
-        @apply bg-off_white px-32 py-32;
+        @apply bg-off_white px-32 pb-32 pt-16;
+    }
+    h3 {
+        @apply text-3xl font-semibold text-center mb-16;
     }
     .logo_wrapper {
-        @apply flex flex-row justify-center items-center gap-16;
+        @apply flex flex-row justify-center items-center gap-20;
     }
     img {
-        @apply w-96;
+        @apply h-48;
     }
 
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
         .sponsors {
             @apply px-8 py-16;
+        }
+        .logo_wrapper {
+            @apply flex-col gap-16;
+        }
+        img {
+            @apply h-32;
         }
     }
 
@@ -34,12 +43,13 @@
 </style>
 
 <section class="sponsors">
+    <h3>Thanks to all our partners</h3>
     <div class="logo_wrapper">
-        <a href="https://www.facebook.com/OfficialMILOGhana/" target="_blank">
-            <img src="/images/milo.png" alt="Nestle Milo" />
+        <a href="https://www.instagram.com/dkfc_rats_rabbits/" target="_blank">
+            <img src="/images/dkfc_logo.png" alt="Dansoman Keep Fit Club" />
         </a>
-        <a href="https://www.volticghana.com/" target="_blank">
-            <img src="/images/voltic.png" alt="Voltic bottled water"/>
+        <a href="https://www.firstnationalbank.com.gh/" target="_blank">
+            <img src="/images/FNB_new_logo.png" alt="First National Bank"/>
         </a>
     </div>
 </section>

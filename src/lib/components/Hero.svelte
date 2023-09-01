@@ -1,27 +1,75 @@
 <style lang="postcss">
     .hero {
-        @apply h-[80vh] bg-hero bg-no-repeat bg-center bg-cover;
+        @apply h-[100vh] bg-hero bg-no-repeat bg-center bg-cover;
     }
     .hero_content {
-        @apply w-full h-full flex flex-col justify-center items-center bg-blend-multiply;
-        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5));
+        @apply w-full h-full flex flex-row justify-center items-center bg-blend-multiply;
+        background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.5));
+    }
+    .hero_content_left_col, .hero_content_right_col {
+        @apply w-1/2 h-full py-24 flex flex-col items-center;
+    }
+    .hero_content_left_col {
+        @apply pr-24 pl-12 justify-start;
+    }
+    .hero_content_right_col {
+        @apply pl-24 pr-12 justify-center;
     }
     .hero_title {
-        @apply text-white text-[3rem] font-bold mb-8 capitalize;
+        @apply text-white text-4xl font-semibold mb-4 capitalize text-center;
+    }
+    .hero_subtitle {
+        @apply text-white text-3xl font-medium mt-16 capitalize text-center leading-10 mb-3;
+    }
+    .hero_card_divider {
+        @apply hidden;
+    }
+    .main_sponsor {
+        @apply flex text-white flex-row w-full justify-center;
+    }
+    .main_sponsor span {
+        @apply text-xs mr-4;
+    }
+    .main_sponsor_img {
+        @apply w-56;
     }
     .hero_btn {
-        @apply font-normal tracking-wide uppercase text-white text-sm cursor-pointer leading-7 px-9 py-2.5 border-b-2 rounded border-white border-[1px] duration-[250ms] ease-in-out hover:bg-primary_red hover:text-white hover:border-primary_red;
+        @apply mt-9 font-normal tracking-wide uppercase text-white text-sm cursor-pointer leading-7 px-9 py-2.5 border-b-2 rounded border-white border-[1px] duration-[250ms] ease-in-out hover:bg-primary_red hover:text-white hover:border-primary_red;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
+    .hero_content_date {
+        @apply text-5xl text-white text-center font-bold leading-relaxed;
     }
 
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
+        .hero {
+            @apply h-auto;
+        }
+        .hero_content_left_col {
+            @apply px-4 w-full;
+        }
+        .hero_content_right_col {
+            @apply hidden;
+        }
         .hero_title {
-            @apply text-3xl text-center leading-normal mb-12;
+            @apply text-4xl text-center leading-normal mb-3;
+        }
+        .hero_subtitle {
+            @apply text-3xl text-center leading-normal mt-10 mb-4;
         }
         .hero_content {
             @apply px-4;
             background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+        }
+        .hero_card_divider {
+            @apply w-14 h-1 bg-primary_red rounded-full my-5 block;
+        }
+        .main_sponsor {
+            @apply flex-col items-center;
+        }
+        .main_sponsor span {
+            @apply mb-3;
         }
         .hero_btn {
             @apply text-lg font-medium;
@@ -46,9 +94,25 @@
 
 <section class="hero">
     <div class="hero_content">
-        <h2 class="hero_title">Nurturing a nation of champions.</h2>
-        <a href="/register" class="hero_btn">
-            <span>Register</span>
-        </a>
+        <div class="hero_content_left_col">
+            <h2 class="hero_title">Accra Marathon 2023</h2><br/>
+            <div class="main_sponsor">
+                <span>presented by</span>
+                <div class="main_sponsor_img">
+                    <img src="/images/FNB-Logo.png" alt="logo"/>
+                </div>
+            </div>
+            <h2 class="hero_subtitle">Nurturing a nation<br/>of champions.</h2>
+            <div class="hero_card_divider"></div>
+            <a href="/register" class="hero_btn">
+                <span>Register now</span>
+            </a>
+            <a href="/register" class="hero_btn">
+                <span>Make a Donation</span>
+            </a>
+        </div>
+        <div class="hero_content_right_col">
+            <h2 class="hero_content_date">Saturday,<br/>November 11,<br/>2023</h2>
+        </div>
     </div>
 </section>

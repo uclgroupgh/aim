@@ -45,6 +45,47 @@
     .card_content h4 {
         @apply text-xl mb-6;
     }
+
+    /* // X-Small devices (portrait phones, less than 576px) */
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .main_impact_component {
+            @apply px-4;
+        }
+        .call_to_action_component {
+            @apply px-4;
+        }
+        .two_column {
+            @apply flex-col gap-12;
+        }
+        .column_card {
+            @apply w-full;
+        }
+        .impact_header {
+            @apply text-2xl text-justify px-4 leading-8;
+        }
+        .impact_paragraph {
+            @apply mb-12 px-4 text-justify;
+        }
+        .call_to_action_component h3 {
+            @apply text-3xl text-left mb-10 px-4;
+        }
+    }
+
+    /* // Small devices (landscape phones, less than 768px) */
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    /* // Medium devices (tablets, less than 992px) */
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    /* // Large devices (desktops, less than 1200px) */
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <main transition:fade>

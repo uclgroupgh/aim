@@ -1,6 +1,6 @@
 <style lang="postcss">
     .text_image_right {
-        @apply grid grid-cols-text_image_right w-full px-32 py-16;
+        @apply grid grid-cols-text_image_right w-full px-32 py-32;
     }
     .image_wrapper {
         @apply w-[120%] relative h-[28rem];
@@ -23,13 +23,14 @@
     .btn {
         @apply mt-16 flex flex-row items-center font-semibold cursor-pointer;
     }
+
     .arrow {
         @apply w-8 mr-3;
     }
 
     @media(min-width: 300px)and (max-width: 575.98px) {
         .text_image_right {
-            @apply flex flex-col px-4;
+            @apply flex flex-col px-4 py-16;
         }
         .image_wrapper {
             @apply w-full relative h-[20rem] mt-12;

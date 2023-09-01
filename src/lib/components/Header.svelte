@@ -3,7 +3,13 @@
     import { Hamburger } from 'svelte-hamburgers';
     import { showCourseMenu, showTrainingMenu, showChampionsMenu } from '../../stores/store';
 
+    let header_top_height, mobile_menu;
     const toggle_body = () => {
+        console.log(mobile_menu.style)
+        console.log(header_top_height)
+        // if(window.document.body.classList.includes('mobile_nav_active')){
+        //     mobile_menu.style.top = header_top_height
+        // }
         window.document.body.classList.toggle('mobile_nav_active')
     }
     const handleShowCourseMenu = () => {
@@ -69,13 +75,16 @@
         @apply w-full flex flex-row justify-center items-center bg-gray-lighter font-light;
     }
     .primary_menu_item {
-        @apply p-5 border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px] duration-[250ms] ease-in-out hover:bg-white;
+        @apply border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px] duration-[250ms] ease-in-out hover:bg-white;
     }
     .link_list {
         @apply z-50 absolute top-full w-full bg-gray-lighter border-r-[1px] border-gray-border box-content;
     }
     .link_list_item {
-        @apply p-5 border-t-[1px] border-gray-border text-center flex justify-center uppercase tracking-wide cursor-pointer relative duration-[250ms] ease-in-out bg-white hover:bg-gray-lighter;
+        @apply border-t-[1px] border-gray-border text-center flex justify-center uppercase tracking-wide cursor-pointer relative duration-[250ms] ease-in-out bg-white hover:bg-gray-lighter;
+    }
+    .primary_menu_item .link_header, .link_list_item a {
+        @apply w-full h-full p-5;
     }
     .primary_menu li img {
         @apply h-6 w-6;
@@ -87,7 +96,7 @@
 
     @media(min-width: 300px)and (max-width: 575.98px) {
         .header_top {
-            @apply px-6 my-3 relative;
+            @apply px-6 py-3 my-0 relative;
         }
         .header_bottom {
             @apply hidden;
@@ -96,19 +105,20 @@
             @apply hidden;
         }
         .logo_img {
-        @apply hidden;
-        }
-        .logo_title {
-            @apply text-2xl font-medium;
+            @apply h-16;
         }
         .mobile_menu_toggle_btn {
             @apply flex;
         }
         .mobile_menu {
-            @apply absolute top-full h-screen left-0 right-0 bg-mobile-gray flex flex-col z-50 overflow-y-scroll;
+            @apply absolute left-0 right-0 bg-mobile-gray flex flex-col z-50 overflow-y-scroll top-[88px];
+            height: calc(100vh - 88px);
         }
         .mobile_menu_link {
-            @apply text-white text-xl border-b border-gray-input-label px-6 py-3;
+            @apply text-white text-xl border-b border-gray-input-label h-fit;
+        }
+        .mobile_menu_link a {
+            @apply w-full h-full px-6 py-3 block;
         }
         .mobile_menu_cta_btns {
             @apply flex flex-col justify-center items-center py-6 gap-3 px-8;
@@ -144,7 +154,7 @@
 </style>
 
 <section class="header">
-    <div class="header_top">
+    <div class="header_top" bind:clientHeight={header_top_height}>
         <a href="/" class="logo_wrapper">
             <img src="/images/accramarathonlogo.png" alt="Accra Marathon logo" class="logo_img"/>
         </a>
@@ -153,16 +163,18 @@
             <li class="btn">Register Now</li>
         </ul>
         <div class="mobile_menu_toggle_btn" on:click={toggle_body}>
-            <Hamburger bind:open/>
+            <Hamburger 
+            --color="#333333"
+            bind:open/>
         </div>
         {#if open}
-            <nav class="mobile_menu" transition:slide>
+            <nav bind:this={mobile_menu} class="mobile_menu" transition:slide>
 
                 <div class="mobile_menu_cta_btns">
                     <a on:click={close_mobile_menu} href="/register" class="mobile_menu_cta_btn mobile_menu_cta_btn_one">
                         <span class="mobile_menu_cta_btn_text">Register</span>
                     </a>
-                    <a on:click={close_mobile_menu} href="register" class="mobile_menu_cta_btn mobile_menu_cta_btn_two">
+                    <a on:click={close_mobile_menu} href="/register" class="mobile_menu_cta_btn mobile_menu_cta_btn_two">
                         <span class="mobile_menu_cta_btn_text">Donate</span>
                     </a>
                 </div>
@@ -199,10 +211,10 @@
                 {#if $showCourseMenu}
                     <ul class="link_list" in:fade>
                         <li class="link_list_item">
-                            <a href="/course/map">Route Map</a>
+                            <a href="/course#map">Route Map</a>
                         </li>
                         <li class="link_list_item">
-                            <a href="/course/rules">Rules</a>
+                            <a href="/course#rules">Rules</a>
                         </li>        
                     </ul>
                 {/if}
@@ -235,10 +247,7 @@
                         </li>
                         <li class="link_list_item">
                             <a href="/champions/stories">Marathon Stories</a>
-                        </li>
-                        <li class="link_list_item">
-                            <a href="/champions/goodwill-messages">Goodwill messages</a>
-                        </li>      
+                        </li>    
                     </ul>
                 {/if}
             </li>

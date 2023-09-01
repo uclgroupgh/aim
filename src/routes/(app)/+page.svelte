@@ -11,10 +11,10 @@
 
 <main transition:fade>
     <Hero />
+    <NewsletterSignup />
     <Video />
     <TextImageLeft />
     <Collage />
     <TextImageRight />
-    <NewsletterSignup />
     <Sponsors />
 </main>

@@ -36,18 +36,22 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'hero': "url('/images/hero.jpg')",
+        'hero': "url('/images/hero2.0.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
         'stories_hero': "url('/images/stories_hero.jpg')",
         'impact_hero': "url('/images/impact_hero.jpg')",
         'values_hero': "url('/images/collage4.jpg')",
+        'history_hero': "url('/images/adongo_88.png')",
         'sponsor_hero': "url('/images/sponsor_hero.jpg')",
         'about_cofounder': "url('/images/cofounder.jpg')",
         'story_banner': "url('/images/podium.jpg')",
         'story_banner_2': "url('/images/cofounder_2.jpg')",
         'register_hero': "url('/images/register_bgd.jpg')",
         'past_winners_two_col_hero': "url('/images/about_hero.jpg')",
-        'parallax_past_winners': "url('/images/values.jpg')"
+        'parallax_past_winners': "url('/images/values.jpg')",
+        'parallax_course_background': "url('/images/skyline.jpg')",
+        'dkfc': "url('/images/dkfc.jpg')",
+        'nestle_union': "url('/images/nestle_union.jpg')"
       },
       fontFamily: {
         Comfortaa: ["Comfortaa", "sans-serif"],

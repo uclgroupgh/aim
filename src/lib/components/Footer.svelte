@@ -47,16 +47,22 @@
             @apply flex flex-col-reverse;
         }
         .footer_top {
-            @apply mx-4 border-0 flex-col pt-4;
+            @apply mx-4 border-0 flex-col pt-4 justify-center;
         }
         .footer_middle {
             @apply hidden;
         }
         .logo_wrapper {
-            @apply mb-4;
+            @apply mb-8;
         }
         .logo_wrapper .logo_img {
-            @apply h-7 mr-2;
+            @apply h-14 mr-0;
+        }
+        .socials_wrapper {
+            @apply gap-3;
+        }
+        .social_link {
+            @apply ml-0;
         }
     }
 

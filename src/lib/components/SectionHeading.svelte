@@ -5,7 +5,7 @@
 
 <style lang="postcss">
     .section_heading {
-        @apply px-64 pt-12 text-center;
+        @apply px-64 py-12 text-center;
     }
     .section_heading_title {
         @apply text-4xl leading-[3.375rem];
@@ -17,13 +17,13 @@
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
         .section_heading {
-            @apply px-4 pt-12 pb-10;
+            @apply px-4 pt-12 pb-0;
         }
         .section_heading_title {
             @apply text-3xl mb-6;
         }
         .section_heading_subtitle {
-            @apply text-base leading-loose tracking-wide text-justify;
+            @apply text-base leading-loose tracking-wide text-justify pb-8;
         }
     }
 
