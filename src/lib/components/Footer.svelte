@@ -1,8 +1,26 @@
 <style lang="postcss">
+    /* Giner template start*/
     .footer {
-        @apply bg-gray-footer;
+        @apply bg-white;
     }
-    .footer_top {
+    .container {
+        @apply max-w-[1300px] px-4 mx-auto;
+    }
+    .footer_content {
+        @apply grid grid-cols-footer_grid;
+    }
+    .footer_col {
+        @apply flex flex-col px-4;
+    }
+    .logo_img {
+        @apply h-16;
+    }
+    /* Giner template end */
+
+    /* .footer {
+        @apply bg-gray-footer;
+    } */
+    /* .footer_top {
         @apply flex flex-row justify-between items-center mx-32 px-6 py-8 border-[1px] border-b-gray-border border-x-0 border-t-0;
     }
     .logo_wrapper {
@@ -78,11 +96,82 @@
 
     @media(min-width: 991.99px)and (max-width: 1199.98px) {
         
-    }
+    } */
 </style>
 
 <section class="footer">
-    <div class="footer_top">
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_col footer_col_1">
+                <a class="logo_wrapper" href="/">
+                    <img class="logo_img" src="/images/desktop_header_logo.png" alt="Accra Marathon logo"/>
+                </a>
+                <p class="address">562 Nyonmotso St, Accra</p>
+                <ul>
+                    <li class="phone">
+                        <img src="/images/phone_icon.png" alt="phone icon" />
+                        <span>055 555 5555</span>
+                    </li>
+                    <li class="email">
+                        <span>accramarathon2023@gmail.com</span>
+                    </li>
+                </ul>
+                <span class="copyright">Accra Marathon &#169; 2023. All Rights Reserved</span>
+            </div>
+            <div class="footer_col footer_col_2">
+                <h4>Event</h4>
+                <ul>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#">News</a>
+                    </li>
+                    <li>
+                        <a href="#">Key figures</a>
+                    </li>
+                    <li>
+                        <a href="#">Runners' Photo</a>
+                    </li>
+                    <li>
+                        <a href="#results">Results</a>
+                    </li>
+                    <li>
+                        <a href="#partners">Partners</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_col footer_col_3">
+                <h4>Social</h4>
+                <ul>
+                    <li>
+                        <a href="#">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="#">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="#">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="#">Youtube</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="footer_col footer_col_4">
+                <h4>Subscribe to our newsletter. Stay up to date with our latest news and updates.</h4>
+                <form>
+                    <input type="email" placeholder="Email"/>
+                    <button type="submit">
+                        <img src="" alt="submit email"/>
+                    </button>
+                    <p>By clicking the button you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="footer_top">
         <div class="logo_wrapper">
             <img src="/images/accramarathonlogo_white.png" alt="running man" class="logo_img" />
         </div>
@@ -151,5 +240,5 @@
     </div>
     <div class="footer_bottom">
         <span>© Copyright 2023. Accra Marathon</span>
-    </div>
+    </div> -->
 </section>

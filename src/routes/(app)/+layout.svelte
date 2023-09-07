@@ -5,7 +5,10 @@
     import Countdown from '../../lib/components/Countdown.svelte'
   </script>
   
+  <style lang="postcss">
+    
+  </style>
   <Header />
-  <Countdown />
+  <!-- <Countdown /> -->
     <slot />
   <Footer />

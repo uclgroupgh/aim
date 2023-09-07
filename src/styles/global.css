@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Londrina+Solid&display=swap');
+
+
+@font-face {
+    font-family: "Paladins_solid";
+    src: url("../fonts/paladins/paladins.ttf");
+}
+@font-face {
+    font-family: "Paladins_outline";
+    src: url("../fonts/paladins/paladinsout.ttf");
+}
+@font-face {
+    font-family: "saxMono";
+    src: url("../fonts/saxmono/saxmono.ttf");
+}
 
 @tailwind base;
 @tailwind components;
@@ -12,5 +27,29 @@
  */
 
 body {
-    @apply w-screen;
+    @apply w-screen relative;
 }
+.bg-effect {
+    @apply bg-body_bg absolute top-[200px] left-0 w-full;
+    will-change: transform;
+    height: calc(100% - 70px);
+    background-repeat: no-repeat;
+    background-position: -5px -64px;
+    -webkit-transition: 0.7s cubic-bezier(0, 0, 0.51, 0.99);
+    transition: 0.7s cubic-bezier(0, 0, 0.51, 0.99);
+  }
+
+
+  .error, .error:hover, .error:focus {
+    border-color: #e03400;
+    -webkit-box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
+    box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
+}
+
+
+#form .form_item input[type=text].error, #form .form_item input[type=tel].error, #form .form_item input[type=number].error, #form .form_item input[type=email].error, #form .form_item .nationality_input.error, #form .form_item input[type=text].error:focus, #form .form_item input[type=tel].error:focus, #form .form_item input[type=number].error:focus, #form .form_item input[type=email].error:focus, #form .form_item .nationality_input.error:focus, #form .form_item input[type=text].error:hover, #form .form_item input[type=tel].error:hover, #form .form_item input[type=number].error:hover, #form .form_item input[type=email].error:hover, #form .form_item .nationality_input.error:hover {
+    border-color: #e03400;
+    -webkit-box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
+    box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
+}
+  

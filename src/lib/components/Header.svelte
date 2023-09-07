@@ -12,24 +12,24 @@
         // }
         window.document.body.classList.toggle('mobile_nav_active')
     }
-    const handleShowCourseMenu = () => {
-        $showCourseMenu = true;
-    }
-    const handleHideCourseMenu = () => {
-        $showCourseMenu = false;
-    }
-    const handleShowTrainingMenu = () => {
-        $showTrainingMenu = true;
-    }
-    const handleHideTrainingMenu = () => {
-        $showTrainingMenu = false;
-    }
-    const handleShowChampionsMenu = () => {
-        $showChampionsMenu = true;
-    }
-    const handleHideChampionsMenu = () => {
-        $showChampionsMenu = false;
-    }
+    // const handleShowCourseMenu = () => {
+    //     $showCourseMenu = true;
+    // }
+    // const handleHideCourseMenu = () => {
+    //     $showCourseMenu = false;
+    // }
+    // const handleShowTrainingMenu = () => {
+    //     $showTrainingMenu = true;
+    // }
+    // const handleHideTrainingMenu = () => {
+    //     $showTrainingMenu = false;
+    // }
+    // const handleShowChampionsMenu = () => {
+    //     $showChampionsMenu = true;
+    // }
+    // const handleHideChampionsMenu = () => {
+    //     $showChampionsMenu = false;
+    // }
     const close_mobile_menu = () => {
         open = false;
         toggle_body();
@@ -40,21 +40,58 @@
 </script>
 
 <style lang="postcss">
-    :global(body.mobile_nav_active) {
+    /* /* :global(body.mobile_nav_active) {
         @apply overflow-hidden fixed;
-    }
+    } */
+
+    /* Giner template start */
     .header {
-        @apply z-50 w-screen;
+        @apply z-50 w-screen bg-primary_turquoise;
     }
     .header_top {
-        @apply w-full flex flex-row justify-between items-center px-16 my-6;
+        @apply w-full flex flex-row justify-between items-center px-2 py-7 mx-auto max-w-[1300px];
     }
     .logo_wrapper {
-        @apply flex flex-row items-center;
+        @apply flex flex-row items-center text-lg;
     }
     .logo_img {
-        @apply h-20 mr-4;
+        @apply h-16 mr-4;
     }
+    .socials_wrapper {
+        @apply flex flex-row;
+    }
+    .social_link {
+        @apply flex items-center justify-center ml-3;
+    }
+    .social_link .logo_img {
+        @apply h-6 w-6;
+    }
+    .header_bottom {
+        @apply w-full flex flex-row justify-between items-center py-6 mx-auto max-w-[1300px] border-t-[1px] border-white border-opacity-30;
+    }
+    .primary_menu {
+        @apply w-auto flex flex-row justify-center items-center font-bold text-white;
+    }
+    .primary_menu_link {
+        @apply px-6 my-1 text-base text-center flex justify-center uppercase tracking-wide cursor-pointer duration-[250ms] ease-in-out hover:text-primary_amber;
+    }
+    .primary_menu_link:first-of-type {
+        @apply pl-0 ml-2;
+    }
+    .primary_menu_link a {
+        @apply tracking-widest;
+    }
+    .register_btn_wrapper {
+        @apply bg-white text-primary_turquoise duration-[250ms] ease-in-out border-white border-2 hover:text-white hover:border-primary_amber hover:border-2 hover:bg-primary_turquoise;
+    }
+    .register_btn_wrapper a {
+        @apply uppercase font-bold tracking-widest w-full h-full py-2.5 px-12 block;
+    }
+    /* Giner template end */
+
+
+    /* 
+    
     .logo_title {
         @apply text-2xl font-extralight tracking-wide text-primary_red;
     }
@@ -68,15 +105,8 @@
     .link {
         @apply mx-7 cursor-pointer uppercase text-black text-sm;
     }
-    .header_bottom {
-        @apply w-full flex flex-row;
-    }
-    .primary_menu {
-        @apply w-full flex flex-row justify-center items-center bg-gray-lighter font-light;
-    }
-    .primary_menu_item {
-        @apply border-gray-border grow text-center flex justify-center uppercase tracking-wide cursor-pointer relative border-r-[1px] duration-[250ms] ease-in-out hover:bg-white;
-    }
+    
+    
     .link_list {
         @apply z-50 absolute top-full w-full bg-gray-lighter border-r-[1px] border-gray-border box-content;
     }
@@ -91,11 +121,11 @@
     }
     .mobile_menu_toggle_btn {
         @apply hidden;
-    }
+    } */
 
 
     @media(min-width: 300px)and (max-width: 575.98px) {
-        .header_top {
+        /* .header_top {
             @apply px-6 py-3 my-0 relative;
         }
         .header_bottom {
@@ -132,16 +162,16 @@
         }
         .mobile_menu_cta_btn_two {
             @apply bg-primary_red border-primary_red hover:bg-primary_red_dark;
-        }
+        } */
     }
 
     @media(min-width: 577px)and (max-width: 767.98px) {
-        .header_bottom {
+        /* .header_bottom {
             @apply hidden;
         }
         .secondary_menu {
             @apply hidden;
-        }
+        } */
     }
 
     @media(min-width: 767.99px)and (max-width: 991.98px) {
@@ -154,7 +184,57 @@
 </style>
 
 <section class="header">
-    <div class="header_top" bind:clientHeight={header_top_height}>
+
+    <div class="header_top">
+        <a href="/" class="logo_wrapper">
+            <img src="/images/desktop_header_logo.png" alt="Accra Marathon logo" class="logo_img"/>
+        </a>
+        <div class="socials_wrapper">
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/facebook_white.png" alt="facebook logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/twitter_white.png" alt="twitter logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/instagram_white.png" alt="instagram logo" class="logo_img"/>
+                </a>
+            </div>
+            <div class="social_link">
+                <a href="https://www.facebook.com/aimghana/">
+                    <img src="/images/youtube_white.png" alt="youtube logo" class="logo_img"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <ul class="primary_menu">
+            <li class="primary_menu_link">
+                <a href="">Home</a>
+            </li>
+            <li class="primary_menu_link">
+                <a href="">course</a>
+            </li>
+            <li class="primary_menu_link">
+                <a href="">Training</a>
+            </li>
+            <li class="primary_menu_link">
+                <a href="">Champions</a>
+            </li>
+            <li class="primary_menu_link">
+                <a href="">Sponsors</a>
+            </li>
+        </ul>
+        <div class="register_btn_wrapper">
+            <a href="#register">Register</a>
+        </div>
+    </div>
+    <!-- <div class="header_top" bind:clientHeight={header_top_height}>
         <a href="/" class="logo_wrapper">
             <img src="/images/accramarathonlogo.png" alt="Accra Marathon logo" class="logo_img"/>
         </a>
@@ -255,5 +335,5 @@
                 <a href="/sponsors" class="link_header">Sponsors</a>
             </li>
         </ul>
-    </div>
+    </div> -->
 </section>

@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     colors: {
+      'select_option_hover': '#f6f6f6',
+      'primary_turquoise': '#00A9AC',
+      'primary_amber': '#FA9D1E',
       'blue': '#1fb6ff',
       'med_blue': '#135cb0',
       'primary_blue': '#1577be',
@@ -36,6 +39,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        'body_bg': "url('/images/main-bg.svg')",
         'hero': "url('/images/hero2.0.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
         'stories_hero': "url('/images/stories_hero.jpg')",
@@ -51,16 +55,26 @@ module.exports = {
         'parallax_past_winners': "url('/images/values.jpg')",
         'parallax_course_background': "url('/images/skyline.jpg')",
         'dkfc': "url('/images/dkfc.jpg')",
-        'nestle_union': "url('/images/nestle_union.jpg')"
+        'nestle_union': "url('/images/nestle_union.jpg')",
+        'four_col': "url('/images/four_col_bg.svg')",
+        'registration_bg': "url('/images/bg-form.svg')",
+        'registration_bg_after': "url('/images/bg-register.svg')"
       },
       fontFamily: {
         Comfortaa: ["Comfortaa", "sans-serif"],
-        Open: ["Open Sans", "sans-serif"]
+        saxMono: ["saxMono", "sans-serif"],
+        Open: ["Open Sans", "sans-serif"],
+        Londrina_solid: ["Londrina Solid", "cursive"],
+        Londrina_outline: ["Londrina Outline", "cursive"],
+        Paladins_solid: ["Paladins_solid", "cursive"],
+        Paladins_outline: ["Paladins_outline", "cursive"]
       },
       gridTemplateColumns: {
         'three_column': 'repeat(3, minmax(0, 1fr))',
+        'four_cols': '1fr 1fr 1fr 1fr',
         'text_image_left': '1fr 2fr',
         'text_image_right': '2fr 1fr',
+        'footer_grid': '2fr 1fr 1fr 2fr',
         'mobile_radio_btn_selector': 'repeat(2, minmax(0, 1fr))'
       },
       gridTemplateRows: {

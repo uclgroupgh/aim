@@ -1,6 +1,50 @@
+<script>
+    import Countdown from "./Countdown.svelte";
+</script>
+
 <style lang="postcss">
     .hero {
-        @apply h-[100vh] bg-hero bg-no-repeat bg-center bg-cover;
+        @apply h-[95vh] bg-primary_turquoise relative mb-12;
+    }
+    .abstract_svg {
+        @apply absolute top-full w-full z-20;
+    }
+    .hero_content {
+        @apply w-full h-full flex flex-row justify-center items-center px-8 py-12;
+    }
+    .hero_slide {
+        @apply h-full w-full relative;
+    }
+    .center_img {
+        @apply w-full h-full;
+    }
+    .center_img img {
+        @apply mx-auto h-full -translate-x-16;
+    }
+    .hero_text_right, .hero_text_left, .hero_event  {
+        @apply absolute text-white text-[6.5rem] w-full h-full top-0;
+    }
+    .hero_text_right, .hero_event {
+        @apply right-0;
+    }
+    .hero_text_left {
+        @apply left-0;
+    }
+    .hero_text_right_content {
+        @apply font-Paladins_solid absolute top-[42%] left-[50%] leading-[5rem];
+    }
+    .hero_text_left_content {
+        @apply font-Paladins_outline absolute top-[16%] left-[10%] leading-[5rem];
+    }
+    .hero_event_content {
+        @apply text-xl font-saxMono font-semibold tracking-wide absolute top-[30%] left-[65%]; 
+    }
+    .hero_event_content .amber_text {
+        @apply text-primary_amber font-bold;
+    }
+    /* Giner template start */
+    /* .hero {
+        @apply h-[100vh] bg-hero  bg-no-repeat bg-center bg-cover;
     }
     .hero_content {
         @apply w-full h-full flex flex-row justify-center items-center bg-blend-multiply;
@@ -39,7 +83,9 @@
     }
     .hero_content_date {
         @apply text-5xl text-white text-center font-bold leading-relaxed;
-    }
+    } */
+
+    /* Giner template end */
 
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
@@ -93,7 +139,26 @@
 </style>
 
 <section class="hero">
+    <img class="abstract_svg" src="/images/home-shape.svg" alt="abstract shape" />
     <div class="hero_content">
+        <div class="hero_slide">
+            <div class="center_img">
+                <img src="/images/slider-1.png"/>
+            </div>
+            <div class="hero_text_left">
+                <h5 class="hero_text_left_content">ARE<br/>&nbsp;&nbsp;YOU</h5>
+            </div>
+            <div class="hero_text_right">
+                <h5 class="hero_text_right_content">READY</h5>
+            </div>
+            <div class="hero_event">
+                <p class="hero_event_content">ACCRA MARATHON<br/><span class="amber_text">11 NOVEMBER 2023</span></p>
+            </div>
+        </div>
+    </div>
+    <Countdown />
+
+    <!-- <div class="hero_content">
         <div class="hero_content_left_col">
             <h2 class="hero_title">Accra Marathon 2023</h2><br/>
             <div class="main_sponsor">
@@ -114,5 +179,5 @@
         <div class="hero_content_right_col">
             <h2 class="hero_content_date">Saturday,<br/>November 11,<br/>2023</h2>
         </div>
-    </div>
+    </div> -->
 </section>

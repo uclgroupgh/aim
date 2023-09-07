@@ -34,19 +34,31 @@
 
 <style lang="postcss">
     .countdown {
-        @apply fixed z-30 flex flex-col justify-between items-center right-0 top-1/2 bg-off_white py-3 px-4 -translate-y-1/3;
+        @apply absolute z-30 flex flex-row justify-between items-center right-1/2 top-full translate-x-1/2 -translate-y-40;
     }
     .item {
-        @apply p-3 border-b-gray-border border-b-[1px] flex flex-col items-center;
+        @apply p-2.5 min-w-[130px] flex flex-col items-center relative;
     }
-    .item:last-of-type {
-        @apply border-0;
+    .item img {
+        @apply absolute -translate-y-1/2 -translate-x-1/2;
+    }
+    .days img {
+        @apply top-[46%] left-[37%];
+    }
+    .hours img {
+        @apply top-[40%] left-[56%];
+    }
+    .minutes img {
+        @apply top-[39%] left-[50%];
+    }
+    .seconds img {
+        @apply top-[60%] left-[50%];
     }
     span {
-        @apply text-[0.6rem] text-gray;
+        @apply text-xl capitalize text-white font-bold tracking-wide block z-30;
     }
     h3 {
-        @apply text-2xl font-bold;
+        @apply text-6xl font-bold text-primary_amber tracking-wide mb-1 leading-[1.3em] z-30;
     }
     
 
@@ -76,19 +88,23 @@
 <!-- Display the countdown timer in an element -->
 <section class="countdown">
     <div class="days item">
-        <span>DAYS</span>
+        <img src="/images/days_counter.svg" alt="days counter svg" />
         <h3 bind:this={days}></h3>
+        <span>days</span>
     </div>
     <div class="hours item">
-        <span>HOURS</span>
+        <img src="/images/hours_counter.svg" alt="hours counter svg" />
         <h3 bind:this={hours}></h3>
+        <span>hours</span>
     </div>
     <div class="minutes item">
-        <span>MINUTES</span>
+        <img src="/images/minutes_counter.svg" alt="minutes counter svg" />
         <h3 bind:this={minutes}></h3>
+        <span>minutes</span>
     </div>
     <div class="seconds item">
-        <span>SECONDS</span>
+        <img src="/images/seconds_counter.svg" alt="seconds counter svg" />
         <h3 bind:this={seconds}></h3>
+        <span>seconds</span>
     </div>
 </section>
