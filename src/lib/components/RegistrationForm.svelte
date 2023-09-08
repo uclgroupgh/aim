@@ -276,8 +276,6 @@
     }
 
 
-
-
     // Submission functions
 
     const init_fields = () => {
@@ -314,8 +312,6 @@
             addBody.append("medical_info", $medical_information)
             addBody.append("expected_finish_time", $finish_time)
             addBody.append("heard_about_race", $heard_from)
-            addBody.append("first_marathon", $first_marathon_boolean)
-            addBody.append("yearly_race_count", $run_frequency)
             addBody.append("race_date_id", 1)
             addBody.append("racers_id", 2023)
 

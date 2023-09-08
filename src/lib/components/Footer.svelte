@@ -1,10 +1,10 @@
 <style lang="postcss">
     /* Giner template start*/
     .footer {
-        @apply bg-white;
+        @apply bg-white z-50 relative;
     }
     .container {
-        @apply max-w-[1300px] px-4 mx-auto;
+        @apply max-w-[1300px] px-4 mx-auto py-32;
     }
     .footer_content {
         @apply grid grid-cols-footer_grid;
@@ -12,9 +12,62 @@
     .footer_col {
         @apply flex flex-col px-4;
     }
+    .logo_wrapper {
+        @apply mb-12;
+    }
     .logo_img {
         @apply h-16;
     }
+    .address {
+        @apply mb-6 text-lg text-gray font-thin;
+    }
+    .phone {
+        @apply flex flex-row items-center mb-6;
+    }
+    .phone img {
+        @apply h-6 rotate-[270deg];
+    }
+    .phone span {
+        @apply ml-4 text-2xl font-medium;
+    }
+    .email {
+        @apply mb-12 text-primary_turquoise font-medium text-lg;
+    }
+    .copyright {
+        @apply font-thin text-xs text-gray;
+    }
+    .footer_col_2 h4, .footer_col_3 h4, .footer_col_4 h4 {
+        @apply text-xl font-semibold mb-12 h-16;
+    }
+    .footer_col_2 ul li, .footer_col_3 ul li {
+        @apply mb-4 text-base text-gray font-thin;
+    }
+    .email_input {
+        @apply flex flex-row;
+    }
+    .email_input button {
+        @apply bg-primary_turquoise max-h-[50px] max-w-[50px] w-full block;
+    }
+    .email_input button img {
+        @apply h-5 w-5 mx-auto;
+    }
+    input[type="email"] {
+        @apply w-full h-[50px] px-[20px] border border-gray-input-border text-[1.1rem] font-normal;
+        -webkit-transition: .35s ease;
+        transition: .35s ease;
+    }
+    input[type="email"]:hover, input[type="email"]:focus {
+        @apply outline-0;
+        border-color: #00A9AC;
+        -webkit-box-shadow: 0px 0px 10px rgba(0,169,172,0.3);
+        box-shadow: 0px 0px 10px rgba(0,169,172,0.3);
+    }
+    .footer_col_4 form p {
+        @apply mt-12 text-sm text-gray;
+    }
+    .footer_col_4 form p a {
+        @apply font-bold text-primary_turquoise leading-7;
+    } 
     /* Giner template end */
 
     /* .footer {
@@ -162,10 +215,12 @@
             <div class="footer_col footer_col_4">
                 <h4>Subscribe to our newsletter. Stay up to date with our latest news and updates.</h4>
                 <form>
-                    <input type="email" placeholder="Email"/>
-                    <button type="submit">
-                        <img src="" alt="submit email"/>
-                    </button>
+                    <div class="email_input">
+                        <input type="email" placeholder="Email"/>
+                        <button type="submit">
+                            <img src="/images/paper-plane.png" alt="submit email"/>
+                        </button>
+                    </div>
                     <p>By clicking the button you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a></p>
                 </form>
             </div>

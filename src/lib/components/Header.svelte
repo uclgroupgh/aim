@@ -49,7 +49,7 @@
         @apply z-50 w-screen bg-primary_turquoise;
     }
     .header_top {
-        @apply w-full flex flex-row justify-between items-center px-2 py-7 mx-auto max-w-[1300px];
+        @apply w-full flex flex-row justify-between items-center px-2 py-5 mx-auto max-w-[1300px];
     }
     .logo_wrapper {
         @apply flex flex-row items-center text-lg;
@@ -85,7 +85,7 @@
         @apply bg-white text-primary_turquoise duration-[250ms] ease-in-out border-white border-2 hover:text-white hover:border-primary_amber hover:border-2 hover:bg-primary_turquoise;
     }
     .register_btn_wrapper a {
-        @apply uppercase font-bold tracking-widest w-full h-full py-2.5 px-12 block;
+        @apply uppercase font-bold tracking-wider w-full h-full py-2.5 px-12 block;
     }
     /* Giner template end */
 

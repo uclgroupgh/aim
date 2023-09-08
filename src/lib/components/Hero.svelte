@@ -4,13 +4,13 @@
 
 <style lang="postcss">
     .hero {
-        @apply h-[95vh] bg-primary_turquoise relative mb-12;
+        @apply h-[90vh] bg-primary_turquoise relative mb-12;
     }
     .abstract_svg {
         @apply absolute top-full w-full z-20;
     }
     .hero_content {
-        @apply w-full h-full flex flex-row justify-center items-center px-8 py-12;
+        @apply w-full h-full flex flex-row justify-center items-center px-8 py-2;
     }
     .hero_slide {
         @apply h-full w-full relative;
@@ -22,7 +22,7 @@
         @apply mx-auto h-full -translate-x-16;
     }
     .hero_text_right, .hero_text_left, .hero_event  {
-        @apply absolute text-white text-[6.5rem] w-full h-full top-0;
+        @apply absolute text-white text-[7.5rem] w-full h-full top-0;
     }
     .hero_text_right, .hero_event {
         @apply right-0;
@@ -34,7 +34,7 @@
         @apply font-Paladins_solid absolute top-[42%] left-[50%] leading-[5rem];
     }
     .hero_text_left_content {
-        @apply font-Paladins_outline absolute top-[16%] left-[10%] leading-[5rem];
+        @apply font-Paladins_outline absolute top-[16%] left-[5%] leading-[6rem];
     }
     .hero_event_content {
         @apply text-xl font-saxMono font-semibold tracking-wide absolute top-[30%] left-[65%]; 
