@@ -31,8 +31,29 @@
 
     
     @media(min-width: 300px)and (max-width: 575.98px) {
+        .four_column_section {
+            @apply pt-16 pb-24 px-4;
+        }
+        .four_column_title {
+            @apply text-2xl mb-16;
+        }
         .four_column_grid {
-            @apply flex flex-col;
+            @apply flex flex-col gap-12;
+        }
+        .col {
+            @apply px-6;
+        }
+        .col_icon_wrapper {
+            @apply mb-4 h-12;
+        }
+        .col_icon_wrapper img {
+            @apply h-full;
+        }
+        .col h6 {
+            @apply text-xl font-bold mb-4;
+        }
+        .col p {
+            @apply text-center text-base font-light text-mobile-gray;
         }
     }
 

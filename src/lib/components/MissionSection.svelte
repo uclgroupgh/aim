@@ -53,17 +53,44 @@
 
     @media(min-width: 300px)and (max-width: 575.98px) {
         .mission_section {
-        @apply px-8;
-    }
-        .mission_content {
-            @apply flex flex-col gap-24 h-auto;
+            @apply px-4 pt-16 pb-16;
         }
-    .participants h6, .distance h6 {
-        @apply text-3xl mb-2;
-    }
-    .participants, .distance {
-        @apply px-4;
-    }
+        .mission_content {
+            @apply flex flex-col gap-10 h-auto;
+        }
+        h4 {
+            @apply text-2xl mb-12;
+        }
+        .image_wrapper {
+            @apply w-full h-auto;
+        }
+        .text_content_wrapper {
+            @apply w-full h-fit;
+        }
+        .location_wrapper img, .date_wrapper img {
+            @apply h-5;
+        }
+        .location_wrapper span, .date_wrapper span {
+            @apply text-base;
+        }
+        .event_info {
+            @apply mb-6 mx-auto;
+        }
+        .description {
+            @apply text-xl font-bold mb-8 max-w-lg text-center;
+        }
+        .paragraph {
+            @apply text-mobile-gray text-base font-light mb-8 text-center;
+        }
+        .event_facts {
+            @apply flex flex-row justify-center;
+        }
+        .participants h6, .distance h6 {
+            @apply text-3xl mb-2;
+        }
+        .participants, .distance {
+            @apply px-4;
+        }
     }
 
     @media(min-width: 577px)and (max-width: 767.98px) {

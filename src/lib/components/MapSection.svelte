@@ -44,6 +44,55 @@
     .distance span {
         @apply text-lg font-semibold;
     }
+
+    
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .map_section {
+            @apply px-4 pt-16 pb-16;
+        }
+        h4 {
+            @apply text-2xl mb-8;
+        }
+        .map_content {
+            @apply flex-col gap-10 h-auto;
+        }
+        .image_wrapper {
+            @apply w-full h-auto;
+        }
+        .text_content_wrapper {
+            @apply w-full items-center;
+        }
+        .description {
+            @apply text-xl font-bold mb-6 text-center;
+        }
+        .paragraph {
+            @apply text-base font-light text-center mb-6;
+        }
+        .distance {
+            @apply items-center;
+        }
+        .distance h6 {
+            @apply text-4xl;
+        }
+        .distance span {
+            @apply text-base;
+        }
+    }
+
+    
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 <section class="map_section">
     <h4>Race route</h4>

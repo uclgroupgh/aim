@@ -412,6 +412,46 @@
     .first_page_btn span, .submit_btn span  {
         @apply uppercase font-bold tracking-wider text-lg;
     }
+    
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .register_section {
+            @apply before:h-[155px] py-[20px];
+        }
+        .register_form {
+            @apply px-4;
+        }
+        .nationalities, .finish_times, .heard_froms {
+            @apply h-28;
+        }
+        .category_wrapper {
+            @apply grid grid-cols-two_column;
+        }
+        .first_page_btn, .submit_btn {
+            @apply px-6;
+        }
+        .first_page_btn span, .submit_btn span  {
+            @apply text-base;
+        }
+        .second_page_btn span {
+            @apply text-base;
+        }
+        .register_img {
+            @apply hidden;
+        }
+    }
+
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
+    }
 </style>
 
 <section class="register_section">
@@ -546,7 +586,7 @@
                             <div class="form_item">
                                 <input type="tel" placeholder="Emergency contact number" on:change={set_emergency_number} bind:this={emergency_number_element}/>
                             </div>
-                            <div class="form_item finish_time_input_wrapper">
+                            <!-- <div class="form_item finish_time_input_wrapper">
                                 <span class="finish_time_input" on:click={toggle_finish_times} bind:this={finish_time_element}>{$finish_time}</span>
                                 
                                 {#if show_finish_times}
@@ -556,7 +596,7 @@
                                         {/each}
                                     </ul>
                                 {/if}
-                            </div>
+                            </div> -->
                             <div class="form_item heard_from_input_wrapper">
                                 <span class="heard_from_input" on:click={toggle_heard_from} bind:this={heard_from_element}>{$heard_from}</span>
                                 
@@ -572,7 +612,7 @@
                                 <div class="first_page_btn" transition:fade on:click={go_to_first_page}>
                                     <span>Back</span>
                                 </div>
-                                {#if has_finish_time && has_heard_from && has_emergency_number && has_emergency_name}
+                                {#if has_heard_from && has_emergency_number && has_emergency_name}
                                     <div class="submit_btn" transition:fade on:click={submit_registration}>
                                         <span>Register &#8373; {$amount}</span>
                                     </div>
