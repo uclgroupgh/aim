@@ -11,7 +11,7 @@
         @apply text-4xl font-bold text-center mb-16;
     }
     .four_column_grid {
-        @apply grid grid-cols-four_cols relative gap-6;
+        @apply grid grid-cols-four_cols relative gap-6 max-w-[1300px] mx-auto;
     }
     .col {
         @apply flex flex-col items-center h-auto;
@@ -27,6 +27,29 @@
     }
     .col p {
         @apply text-center text-lg;
+    }
+
+    
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .four_column_grid {
+            @apply flex flex-col;
+        }
+    }
+
+   
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+    
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+  
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
     }
 </style>
 <section class="four_column_section">

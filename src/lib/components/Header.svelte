@@ -163,6 +163,46 @@
         .mobile_menu_cta_btn_two {
             @apply bg-primary_red border-primary_red hover:bg-primary_red_dark;
         } */
+
+        /* Giner template */
+        .header_top {
+            @apply px-6 py-3 my-0 relative;
+        }
+        .header_bottom {
+            @apply hidden;
+        }
+        .socials_wrapper {
+            @apply hidden;
+        }
+        .logo_img {
+            @apply h-16;
+        }
+        .mobile_menu_toggle_btn {
+            @apply flex;
+        }
+        .mobile_menu {
+            @apply absolute left-0 right-0 bg-mobile-gray flex flex-col z-50 overflow-y-scroll top-[88px];
+            height: calc(100vh - 88px);
+        }
+        .mobile_menu_link {
+            @apply text-white text-xl border-b border-gray-input-label h-fit;
+        }
+        .mobile_menu_link a {
+            @apply w-full h-full px-6 py-3 block;
+        }
+        .mobile_menu_cta_btns {
+            @apply flex flex-col justify-center items-center py-6 gap-3 px-8;
+        }
+        .mobile_menu_cta_btn {
+            @apply flex items-center justify-center w-full font-normal text-white text-xl cursor-pointer leading-7 px-8 py-3.5 border-b-2 rounded  border-[1px] duration-[250ms] ease-in-out;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+        }
+        .mobile_menu_cta_btn_one {
+            @apply bg-med_blue border-med_blue hover:bg-blue;
+        }
+        .mobile_menu_cta_btn_two {
+            @apply bg-primary_red border-primary_red hover:bg-primary_red_dark;
+        }
     }
 
     @media(min-width: 577px)and (max-width: 767.98px) {

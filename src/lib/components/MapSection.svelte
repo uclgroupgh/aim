@@ -1,6 +1,6 @@
 <style lang="postcss">
     .map_section {
-        @apply relative px-16 pt-24 pb-36 font-saxMono;
+        @apply relative px-16 pt-24 pb-36 font-saxMono max-w-[1300px] mx-auto;
     }
     h4 {
         @apply text-center text-4xl font-bold mb-24;

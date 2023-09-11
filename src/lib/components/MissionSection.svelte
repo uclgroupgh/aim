@@ -1,6 +1,6 @@
 <style lang="postcss">
     .mission_section {
-        @apply relative px-16 pt-40 pb-36 font-saxMono;
+        @apply relative px-16 pt-40 pb-36 font-saxMono max-w-[1300px] mx-auto;
     }
     h4 {
         @apply text-center text-4xl font-bold mb-24;
@@ -49,6 +49,35 @@
     }
     .participants span, .distance span {
         @apply text-lg font-semibold;
+    }
+
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        .mission_section {
+        @apply px-8;
+    }
+        .mission_content {
+            @apply flex flex-col gap-24 h-auto;
+        }
+    .participants h6, .distance h6 {
+        @apply text-3xl mb-2;
+    }
+    .participants, .distance {
+        @apply px-4;
+    }
+    }
+
+    @media(min-width: 577px)and (max-width: 767.98px) {
+
+    }
+
+
+    @media(min-width: 767.99px)and (max-width: 991.98px) {
+
+    }
+
+    @media(min-width: 991.99px)and (max-width: 1199.98px) {
+        
+        
     }
 </style>
 

@@ -150,6 +150,19 @@
     @media(min-width: 991.99px)and (max-width: 1199.98px) {
         
     } */
+
+    @media(min-width: 300px)and (max-width: 575.98px) {
+        
+        .footer_content {
+            @apply flex flex-col;
+        }
+        .footer_col {
+            @apply flex flex-col px-4;
+        }
+        .footer_col_2, .footer_col_3 {
+            @apply hidden;
+        }
+    }
 </style>
 
 <section class="footer">

@@ -10,7 +10,7 @@
         @apply absolute top-full w-full z-20;
     }
     .hero_content {
-        @apply w-full h-full flex flex-row justify-center items-center px-8 py-2;
+        @apply w-full h-full flex flex-row justify-center items-center px-8 py-2 max-w-[1300px] mx-auto;
     }
     .hero_slide {
         @apply h-full w-full relative;
@@ -89,7 +89,7 @@
 
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
-        .hero {
+        /* .hero {
             @apply h-auto;
         }
         .hero_content_left_col {
@@ -119,6 +119,47 @@
         }
         .hero_btn {
             @apply text-lg font-medium;
+        } */
+
+        /* Giner template */
+        .hero {
+            @apply h-[70vh] bg-primary_turquoise relative mb-12;
+        }
+        .abstract_svg {
+            @apply absolute top-full w-full z-20;
+        }
+        .hero_content {
+            @apply w-full h-full flex flex-row justify-center items-center px-4 py-2 max-w-[1300px] mx-auto;
+        }
+        .hero_slide {
+            @apply h-full w-full relative flex justify-center pt-16;
+        }
+        .center_img {
+            @apply w-auto h-3/5;
+        }
+        .center_img img {
+            @apply mx-auto h-full -translate-x-10;
+        }
+        .hero_text_right, .hero_text_left, .hero_event  {
+            @apply absolute text-white text-[2rem] w-full h-full top-0;
+        }
+        .hero_text_right, .hero_event {
+            @apply right-0;
+        }
+        .hero_text_left {
+            @apply left-0;
+        }
+        .hero_text_right_content {
+            @apply font-Paladins_solid absolute top-[52%] left-[30%] leading-[5rem];
+        }
+        .hero_text_left_content {
+            @apply font-Paladins_outline absolute top-[7%] left-[2%] leading-[2rem];
+        }
+        .hero_event_content {
+            @apply text-sm font-saxMono font-semibold tracking-wide absolute top-[45%] left-[55%] w-max; 
+        }
+        .hero_event_content .amber_text {
+            @apply text-primary_amber font-bold block;
         }
     }
 

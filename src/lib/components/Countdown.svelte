@@ -65,8 +65,32 @@
     /* // X-Small devices (portrait phones, less than 576px) */
     @media(min-width: 300px)and (max-width: 575.98px) {
         .countdown {
-            @apply hidden;
-        }
+        @apply absolute z-30 grid grid-cols-four_cols gap-14 right-1/2 top-full translate-x-1/2 -translate-y-32;
+    }
+    .item {
+        @apply p-1.5 min-w-[0px] w-full flex flex-col items-center relative;
+    }
+    .item img {
+        @apply absolute -translate-y-1/2 -translate-x-1/2;
+    }
+    .days img {
+        @apply top-[46%] left-[37%];
+    }
+    .hours img {
+        @apply top-[40%] left-[56%];
+    }
+    .minutes img {
+        @apply top-[39%] left-[50%];
+    }
+    .seconds img {
+        @apply top-[60%] left-[50%];
+    }
+    span {
+        @apply text-xs capitalize text-white font-bold tracking-wide block z-30;
+    }
+    h3 {
+        @apply text-3xl font-bold text-primary_amber tracking-wide mb-1 leading-[1.3em] z-30;
+    }
     }
 
     /* // Small devices (landscape phones, less than 768px) */
