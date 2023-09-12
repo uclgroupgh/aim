@@ -1,10 +1,16 @@
 <script>
     import Countdown from "./Countdown.svelte";
+    export let bg_color;
+    export let slide_one;
+    export let text_left_one;
+    export let text_left_two;
+    export let text_right_one;
+    export let text_right_two;
 </script>
 
 <style lang="postcss">
     .hero {
-        @apply h-[90vh] bg-primary_turquoise relative mb-12;
+        @apply h-[90vh] relative mb-12;
     }
     .abstract_svg {
         @apply absolute top-full w-full z-20;
@@ -31,10 +37,10 @@
         @apply left-0;
     }
     .hero_text_right_content {
-        @apply font-Paladins_solid absolute top-[42%] left-[50%] leading-[5rem];
+        @apply font-Paladins_solid absolute top-[45%] left-[53%] leading-[5rem];
     }
     .hero_text_left_content {
-        @apply font-Paladins_outline absolute top-[16%] left-[5%] leading-[6rem];
+        @apply font-Paladins_outline absolute top-[16%] left-[1%] leading-[6rem];
     }
     .hero_event_content {
         @apply text-xl font-saxMono font-semibold tracking-wide absolute top-[30%] left-[65%]; 
@@ -179,18 +185,18 @@
     }
 </style>
 
-<section class="hero">
-    <img class="abstract_svg" src="/images/home-shape.svg" alt="abstract shape" />
+<section class="hero" style="background-color: {bg_color};">
+    <img class="abstract_svg" src={"/images/home-shape.svg"} alt="abstract shape" />
     <div class="hero_content">
         <div class="hero_slide">
             <div class="center_img">
-                <img src="/images/slider-1.png"/>
+                <img src={slide_one}/>
             </div>
             <div class="hero_text_left">
-                <h5 class="hero_text_left_content">ARE<br/>&nbsp;&nbsp;YOU</h5>
+                <h5 class="hero_text_left_content">{text_left_one}<br/>&nbsp;{text_left_two}</h5>
             </div>
             <div class="hero_text_right">
-                <h5 class="hero_text_right_content">READY</h5>
+                <h5 class="hero_text_right_content">{text_right_one}</h5>
             </div>
             <div class="hero_event">
                 <p class="hero_event_content">ACCRA MARATHON<br/><span class="amber_text">11 NOVEMBER 2023</span></p>

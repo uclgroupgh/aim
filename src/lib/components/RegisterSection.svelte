@@ -1,3 +1,7 @@
+<svelte:head>
+	<script src="https://js.paystack.co/v1/inline.js"></script>
+</svelte:head>
+
 <script>
     import Nationalities from "../data/Nationalities";
     import { fade, slide } from 'svelte/transition';
@@ -257,8 +261,132 @@
         show_first_page = true;
         show_second_page = false;
     }
-    const submit_registration = () => {
-        console.log('added new athlete')
+    const init_fields = () => {
+        set_first_name();
+        set_last_name();
+        set_phone_number();
+        set_email();
+        check_nationality();
+        set_day();
+        set_month();
+        set_year();
+        set_emergency_name();
+        set_emergency_number();
+        check_heard_from();
+
+    }
+    const send_registered_user_data_to_server = () => {
+        
+        const post_url = 'https://mega.acorns.life/marathon/endpoints/atheletes/addAthelete.php'
+
+        var addBody = new FormData()
+            addBody.append("firstname", $first_name)
+            addBody.append("lastname", $last_name)
+            addBody.append("gender", $gender)
+            addBody.append("phone", $phone_number)
+            addBody.append("email", $email)
+            addBody.append("nationality", $nationality)
+            addBody.append("date_of_birth", $dob)
+            addBody.append("emergency_contact_name", $emergency_name)
+            addBody.append("emergency_contact_number", $emergency_number)
+            addBody.append("race_category_id", $race_category)
+            addBody.append("any_medical_condition", $has_medical_condition)
+            addBody.append("medical_info", $medical_information)
+            addBody.append("heard_about_race", $heard_from)
+            addBody.append("racers_id", 2023)
+
+        var addRequestOptions = {
+            method: 'POST',
+            body: addBody
+        };
+
+        fetch(post_url, addRequestOptions)
+                .then((res) => {
+                    res.text()
+                })
+                .then((data) => {
+                    console.log(data)
+                    console.log('posted successfully')
+                    setTimeout(() => {
+                        window.location.replace('/')
+                    }, 3000)
+                })
+                .catch((error) => {
+                    console.log('error', error)
+                    console.log('Unsuccessfully')
+                    setTimeout(() => {
+                        window.location.replace('/')
+                    }, 3000)
+                })
+    }
+
+    const pay_with_paystack = (e) => {
+        e.preventDefault();
+
+            
+            let handler = PaystackPop.setup({
+            key: 'pk_test_a5ce7e0c1640a139f25070cb7824a340cdc6d2ff',
+            email: $email,
+            amount: $amount * 100,
+            currency: 'GHS',
+            callback: send_registered_user_data_to_server,
+            metadata:{
+                custom_fields:[
+                    {
+                    "display_name":"Racer's name",
+                    "variable_name":"Participant's name",
+                    "value": $first_name + ' ' + $last_name
+                    },
+                    {
+                    "display_name":"Phone number",
+                    "variable_name":"Phone number",
+                    "value": $phone_number
+                    },
+                    {
+                    "display_name":"Email",
+                    "variable_name":"Email",
+                    "value": $email
+                    },
+                    {
+                    "display_name":"Nationality",
+                    "variable_name":"Nationality",
+                    "value": $nationality
+                    },
+                    {
+                    "display_name":"Date of birth",
+                    "variable_name":"Date of birth",
+                    "value": $dob
+                    },
+                    {
+                    "display_name":"Race category",
+                    "variable_name":"Race category",
+                    "value": $race_category
+                    },
+                    {
+                    "display_name":"Gender",
+                    "variable_name":"Gender",
+                    "value": $gender
+                    },
+                    {
+                    "display_name":"Emergency contact name",
+                    "variable_name":"Emergency contact name",
+                    "value": $emergency_name
+                    },
+                    {
+                    "display_name":"Emergency contact number",
+                    "variable_name":"Emergency contact number",
+                    "value": $emergency_number
+                    },
+                    {
+                    "display_name":"Medical conditions",
+                    "variable_name":"Medical conditions",
+                    "value": $medical_information
+                    }
+                ]
+            }
+        });
+
+        handler.openIframe();
     }
 </script>
 
@@ -613,7 +741,7 @@
                                     <span>Back</span>
                                 </div>
                                 {#if has_heard_from && has_emergency_number && has_emergency_name}
-                                    <div class="submit_btn" transition:fade on:click={submit_registration}>
+                                    <div class="submit_btn" transition:fade on:click={pay_with_paystack}>
                                         <span>Register &#8373; {$amount}</span>
                                     </div>
                                 {/if}

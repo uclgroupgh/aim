@@ -1,3 +1,10 @@
+<script>
+    export let image;
+    export let title;
+    export let description;
+    export let paragraph;
+</script>
+
 <style lang="postcss">
     .mission_section {
         @apply relative px-16 pt-40 pb-36 font-saxMono max-w-[1300px] mx-auto;
@@ -109,10 +116,10 @@
 </style>
 
 <section class="mission_section">
-    <h4>Our mission</h4>
+    <h4>{title}</h4>
     <div class="mission_content">
         <div class="image_wrapper">
-            <img src="/images/mission_statement.jpg" />
+            <img src={image} />
         </div>
         <div class="text_content_wrapper">
             <div class="event_info">
@@ -125,15 +132,15 @@
                     <span class="date">11.11.2023</span>
                 </div>
             </div>
-            <h5 class="description">Od tempor incididunt ut labore aliqua. ullamco laboris nisi ut aliquip.</h5>
-            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+            <h5 class="description">{description}</h5>
+            <p class="paragraph">{paragraph}</p>
             <div class="event_facts">
                 <div class="participants">
                     <h6>2000+</h6>
                     <span>Participants</span>
                 </div>
                 <div class="distance">
-                    <h6>42.4km</h6>
+                    <h6>42.2km</h6>
                     <span>Run Distance</span>
                 </div>
             </div>

@@ -1,3 +1,10 @@
+<script>
+    export let image;
+    export let title;
+    export let description;
+    export let paragraph;
+</script>
+
 <style lang="postcss">
     .map_section {
         @apply relative px-16 pt-24 pb-36 font-saxMono max-w-[1300px] mx-auto;
@@ -95,17 +102,17 @@
     }
 </style>
 <section class="map_section">
-    <h4>Race route</h4>
+    <h4>{title}</h4>
     <div class="map_content">
         <div class="image_wrapper">
-            <img src="/images/map.jpg" />
+            <img src={image} />
         </div>
         <div class="text_content_wrapper">
-            <h5 class="description">Od tempor incididunt ut labore aliqua. ullamco laboris nisi ut aliquip.</h5>
-            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm od tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+            <h5 class="description">{description}</h5>
+            <p class="paragraph">{paragraph}</p>
             <div class="event_facts">
                 <div class="distance">
-                    <h6>42.4km</h6>
+                    <h6>42.2km</h6>
                     <span>Run Distance</span>
                 </div>
             </div>
