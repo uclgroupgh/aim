@@ -57,7 +57,7 @@
     <Collage />
     <TextImageRight />
     <Sponsors /> -->
-    <MissionSection
+    <!-- <MissionSection
         image={mission_image}
         title={mission_title}
         description={mission_description}
@@ -70,5 +70,5 @@
         description={map_description}
         paragraph={map_paragraph}
     />
-    <RegisterSection />
+    <RegisterSection /> -->
 </main>

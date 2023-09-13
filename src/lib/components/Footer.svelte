@@ -4,10 +4,10 @@
         @apply bg-white z-50 relative;
     }
     .container {
-        @apply max-w-[1300px] px-4 mx-auto py-32;
+        @apply max-w-[1300px] px-4 mx-auto py-16;
     }
     .footer_content {
-        @apply grid grid-cols-footer_grid;
+        @apply grid grid-cols-footer_grid_two;
     }
     .footer_col {
         @apply flex flex-col px-4;
@@ -68,6 +68,15 @@
     .footer_col_4 form p a {
         @apply font-bold text-primary_turquoise leading-7;
     } 
+    .footer_col_4 {
+        @apply flex flex-row justify-evenly items-center;
+    }
+    .footer_col_4 a {
+        @apply h-48;
+    }
+    .footer_col_4 a img {
+        @apply h-full;
+    }
     /* Giner template end */
 
     /* .footer {
@@ -176,7 +185,7 @@
                 <ul>
                     <li class="phone">
                         <img src="/images/phone_icon.png" alt="phone icon" />
-                        <span>055 555 5555</span>
+                        <span>050 132 3781</span>
                     </li>
                     <li class="email">
                         <span>accramarathon2023@gmail.com</span>
@@ -184,7 +193,7 @@
                 </ul>
                 <span class="copyright">Accra Marathon &#169; 2023. All Rights Reserved</span>
             </div>
-            <div class="footer_col footer_col_2">
+            <!-- <div class="footer_col footer_col_2">
                 <h4>Event</h4>
                 <ul>
                     <li>
@@ -206,18 +215,18 @@
                         <a href="#partners">Partners</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div class="footer_col footer_col_3">
-                <h4>Social</h4>
+                <h4></h4>
                 <ul>
                     <li>
-                        <a href="#">Facebook</a>
+                        <a href="https://web.facebook.com/dansomankeepfitclub">Facebook</a>
                     </li>
                     <li>
                         <a href="#">Twitter</a>
                     </li>
                     <li>
-                        <a href="#">Instagram</a>
+                        <a href="https://www.instagram.com/dkfc_rats_rabbits/">Instagram</a>
                     </li>
                     <li>
                         <a href="#">Youtube</a>
@@ -226,7 +235,7 @@
 
             </div>
             <div class="footer_col footer_col_4">
-                <h4>Subscribe to our newsletter. Stay up to date with our latest news and updates.</h4>
+                <!-- <h4>Subscribe to our newsletter. Stay up to date with our latest news and updates.</h4>
                 <form>
                     <div class="email_input">
                         <input type="email" placeholder="Email"/>
@@ -235,7 +244,14 @@
                         </button>
                     </div>
                     <p>By clicking the button you agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a></p>
-                </form>
+                </form> -->
+
+                <a target="_blank" href="https://www.firstnationalbank.com.gh/">
+                    <img src="/images/fnb_footer_logo.png" alt="fnb_logo"/>
+                </a>
+                <a href="https://www.instagram.com/dkfc_rats_rabbits/" target="_blank">
+                    <img src="/images/dkfc_footer_logo.png" alt="dkfc_logo"/>
+                </a>
             </div>
         </div>
     </div>

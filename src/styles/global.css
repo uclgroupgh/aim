@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Londrina+Solid&display=swap');
-
+ */
 
 @font-face {
     font-family: "Paladins_solid";
@@ -15,13 +15,21 @@
     font-family: "saxMono";
     src: url("../fonts/saxmono/saxmono.ttf");
 }
+@font-face {
+    font-family: "FNB";
+    src: url("../fonts/FNB_sans/FNB-Sans-Regular.otf");
+}
+@font-face {
+    font-family: "FNB_bold";
+    src: url("../fonts/FNB_sans/FNB-Sans-Bold.otf");
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    @apply font-Open box-border;
+    @apply font-FNB box-border;
 }
 /* 
  */
@@ -29,7 +37,7 @@
 body {
     @apply w-screen relative;
 }
-.bg-effect {
+/* .bg-effect {
     @apply bg-body_bg absolute top-[200px] left-0 w-full;
     will-change: transform;
     height: calc(100% - 250px);
@@ -51,11 +59,11 @@ body {
     border-color: #e03400;
     -webkit-box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
     box-shadow: 0px 0px 10px rgba(224,52,0,0.3);
-}
+} */
 
 @media(min-width: 300px)and (max-width: 575.98px) {
-    .bg-effect {
+    /* .bg-effect {
         @apply hidden;
-    }
+    } */
 }
   

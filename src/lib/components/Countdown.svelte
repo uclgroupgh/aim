@@ -34,7 +34,7 @@
 
 <style lang="postcss">
     .countdown {
-        @apply absolute z-30 flex flex-row justify-between items-center right-1/2 top-full translate-x-1/2 -translate-y-40;
+        @apply absolute z-30 flex flex-row justify-between items-center right-1/2 top-full translate-x-1/2 -translate-y-44 font-FNB_bold font-black;
     }
     .item {
         @apply p-2.5 min-w-[130px] flex flex-col items-center relative;
@@ -55,10 +55,10 @@
         @apply top-[60%] left-[50%];
     }
     span {
-        @apply text-xl capitalize text-white font-bold tracking-wide block z-30;
+        @apply text-xl capitalize text-primary_amber font-bold tracking-wide block z-30;
     }
     h3 {
-        @apply text-6xl font-bold text-primary_amber tracking-wide mb-1 leading-[1.3em] z-30;
+        @apply text-5xl font-bold text-white tracking-wide mb-1 leading-[1.3em] z-30;
     }
     
 
@@ -112,22 +112,18 @@
 <!-- Display the countdown timer in an element -->
 <section class="countdown">
     <div class="days item">
-        <img src="/images/days_counter.svg" alt="days counter svg" />
         <h3 bind:this={days}></h3>
         <span>days</span>
     </div>
     <div class="hours item">
-        <img src="/images/hours_counter.svg" alt="hours counter svg" />
         <h3 bind:this={hours}></h3>
         <span>hours</span>
     </div>
     <div class="minutes item">
-        <img src="/images/minutes_counter.svg" alt="minutes counter svg" />
         <h3 bind:this={minutes}></h3>
         <span>minutes</span>
     </div>
     <div class="seconds item">
-        <img src="/images/seconds_counter.svg" alt="seconds counter svg" />
         <h3 bind:this={seconds}></h3>
         <span>seconds</span>
     </div>

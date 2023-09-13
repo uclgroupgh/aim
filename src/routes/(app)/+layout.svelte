@@ -8,7 +8,7 @@
   <style lang="postcss">
     
   </style>
-  <Header />
+  <!-- <Header /> -->
   <!-- <Countdown /> -->
     <slot />
   <Footer />

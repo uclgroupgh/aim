@@ -39,6 +39,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        'design3_hero_bg': "url('/images/design3_hero_bg.png')",
         'body_bg': "url('/images/main-bg.svg')",
         'hero': "url('/images/hero2.0.jpg')",
         'about_hero': "url('/images/about_hero.jpg')",
@@ -67,7 +68,9 @@ module.exports = {
         Londrina_solid: ["Londrina Solid", "cursive"],
         Londrina_outline: ["Londrina Outline", "cursive"],
         Paladins_solid: ["Paladins_solid", "cursive"],
-        Paladins_outline: ["Paladins_outline", "cursive"]
+        Paladins_outline: ["Paladins_outline", "cursive"],
+        FNB: ["FNB", "cursive"],
+        FNB_bold: ["FNB_bold", "cursive"]
       },
       gridTemplateColumns: {
         'three_column': 'repeat(3, minmax(0, 1fr))',
@@ -76,6 +79,7 @@ module.exports = {
         'text_image_left': '1fr 2fr',
         'text_image_right': '2fr 1fr',
         'footer_grid': '2fr 1fr 1fr 2fr',
+        'footer_grid_two': '2fr 1fr 3fr',
         'mobile_radio_btn_selector': 'repeat(2, minmax(0, 1fr))'
       },
       gridTemplateRows: {
