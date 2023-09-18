@@ -17,8 +17,8 @@
     $: $loading = ($location == "") ? true : false;
 
     onMount(async () => {
-    
-      const [response1, response2] = await Promise.all([
+      try {
+        const [response1, response2] = await Promise.all([
         fetch('https://accramarathon.com/manager/endpoints/home_hero/getHomeHeros.php'),
         fetch('https://accramarathon.com/manager/endpoints/info/getInfo.php?id=1')
       ]);
@@ -35,6 +35,10 @@
       $youtube = data2.data.youtube_url
       $contact_email = data2.data.email
       $contact_number = data2.data.phone
+      } catch (error){
+        console.log(`The error is: ${error}`);
+      }
+      
     })
   </script>
 

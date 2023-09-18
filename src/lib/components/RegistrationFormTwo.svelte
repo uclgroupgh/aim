@@ -41,17 +41,17 @@
           case 'marathon':
               race_category.set('1')
               finish_time_list.set(Adults)
-              amount.set(50.00)
+              amount.set(20.00)
               break;
           case 'civil_service':
               race_category.set('2')
               finish_time_list.set(CivilService)
-              amount.set(50.00)
+              amount.set(20.00)
               break;
           case 'corporate':
               race_category.set('3')
               finish_time_list.set(Corporate)
-              amount.set(50.00)
+              amount.set(150.00)
               break;
           case 'juniors':
               race_category.set('4')
@@ -653,22 +653,22 @@
                 <div class="category_type_wrapper">
                     <input id="marathon" type="radio" name="race_category" checked/>
                     <div class="cell-bg"></div>
-                    <label for="marathon" on:click={set_selected_category}><span>Marathon</span><h3>&#8373; 50</h3></label>
+                    <label for="marathon" on:click={set_selected_category}><span>Marathon</span><h3>&#x20B5; 20</h3></label>
                 </div>
                 <div class="category_type_wrapper">
                     <input id="corporate" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="corporate" on:click={set_selected_category}><span>Corporate</span><h3>&#8373; 50</h3></label>
+                    <label for="corporate" on:click={set_selected_category}><span>Corporate</span><h3>&#x20B5; 150</h3></label>
                 </div>
                 <div class="category_type_wrapper">
                     <input id="civil_service" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="civil_service" on:click={set_selected_category}><span>Civil Service</span><h3>&#8373; 50</h3></label>
+                    <label for="civil_service" on:click={set_selected_category}><span>Civil Service</span><h3>&#x20B5; 20</h3></label>
                 </div>
                 <div class="category_type_wrapper">
                     <input id="juniors" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>&#8373; 20</h3></label>
+                    <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>&#x20B5; 20</h3></label>
                 </div>
             </div>
         </div>

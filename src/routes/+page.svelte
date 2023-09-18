@@ -55,6 +55,12 @@ onMount(async () => {
 })
 </script>
 
+<svelte:head>
+	<title>FNB Accra Marathon 2023 - Celebrating Africa's Premier Running Event</title>
+	<meta name="description" content="Welcome to the FNB Accra Marathon - Africa's Premier Running Event! Explore the rich history, community spirit, and the journey of champions. Join us in celebrating the African spirit through sportsmanship, well-being, and social responsibility." />
+	<link rel="canonical" href="https://www.accramarathon.com/" />
+</svelte:head>
+
 <main>
     <Hero
     hero_bg={$hero_bg_design_three}

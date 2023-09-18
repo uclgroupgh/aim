@@ -27,7 +27,7 @@ export const heard_from = writable('Where did you hear about us...');
 export const run_frequency = writable('0 to 5');
 
 // Amount
-export const amount = writable(50);
+export const amount = writable(20);
 
 //Loader
 export const loading = writable(true);
