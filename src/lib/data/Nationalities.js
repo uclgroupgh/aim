@@ -1,5 +1,8 @@
 const Nationalities = [
-    'Afghan',
+
+        'Ghanaian',
+        'Nigerian',
+        'Afghan',
         'Albanian',
         'Algerian',
         'American',

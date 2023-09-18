@@ -1,9 +1,12 @@
 <script>
     import { onMount } from 'svelte';
 
-    var days, hours, minutes, seconds;
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
     onMount(() => {
-
+        
         // Set the date we're counting down to
         let countDownDate = new Date("Nov 11, 2023 09:00:00").getTime();
         
@@ -23,14 +26,14 @@
         let seconds_left = Math.floor((time_left % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-            days.innerHTML = days_left;
-            hours.innerHTML = hours_left;
-            minutes.innerHTML = minutes_left;
-            seconds.innerHTML = seconds_left;
+            $: days = days_left;
+            $: hours = hours_left;
+            $: minutes = minutes_left;
+            $: seconds = seconds_left;
 
         }, 1000);
     })
-</script>
+    </script>
 
 <style lang="postcss">
     .countdown {
@@ -112,19 +115,19 @@
 <!-- Display the countdown timer in an element -->
 <section class="countdown">
     <div class="days item">
-        <h3 bind:this={days}></h3>
+        <h3>{days}</h3>
         <span>days</span>
     </div>
     <div class="hours item">
-        <h3 bind:this={hours}></h3>
+        <h3>{hours}</h3>
         <span>hours</span>
     </div>
     <div class="minutes item">
-        <h3 bind:this={minutes}></h3>
+        <h3>{minutes}</h3>
         <span>minutes</span>
     </div>
     <div class="seconds item">
-        <h3 bind:this={seconds}></h3>
+        <h3>{seconds}</h3>
         <span>seconds</span>
     </div>
 </section>

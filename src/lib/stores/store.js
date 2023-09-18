@@ -27,4 +27,20 @@ export const heard_from = writable('Where did you hear about us...');
 export const run_frequency = writable('0 to 5');
 
 // Amount
-export const amount = writable(100);
+export const amount = writable(50);
+
+//Loader
+export const loading = writable(true);
+export const data_loaded = writable(undefined);
+
+// Hero bg
+export const hero_bg_design_three = writable("")
+
+//Footer variables
+export const location = writable("")
+export const facebook = writable("")
+export const twitter = writable("")
+export const youtube = writable("")
+export const instagram = writable("")
+export const contact_number = writable("")
+export const contact_email = writable("")

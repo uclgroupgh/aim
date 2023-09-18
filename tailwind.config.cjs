@@ -59,7 +59,8 @@ module.exports = {
         'nestle_union': "url('/images/nestle_union.jpg')",
         'four_col': "url('/images/four_col_bg.svg')",
         'registration_bg': "url('/images/bg-form.svg')",
-        'registration_bg_after': "url('/images/bg-register.svg')"
+        'registration_bg_after': "url('/images/bg-register.svg')",
+        'registration_wrapper_two_bg': "url('/images/skyline.png')"
       },
       fontFamily: {
         Comfortaa: ["Comfortaa", "sans-serif"],

@@ -1,5 +1,7 @@
 <script>
     import Countdown from "./Countdown.svelte";
+    import { hero_bg_design_three } from "../stores/store";
+    export let hero_bg;
     export let slide_one;
     export let text_left_one;
     export let text_left_two;
@@ -9,7 +11,7 @@
 
 <style lang="postcss">
     .hero {
-        @apply bg-cover h-[130vh] relative bg-design3_hero_bg font-FNB;
+        @apply bg-cover h-[130vh] relative font-FNB bg-center;
     }
     .logo_wrapper {
         @apply h-32 pl-8 pt-10;
@@ -182,7 +184,25 @@
 
         /* Giner template */
         .hero {
-            @apply h-[70vh] bg-primary_turquoise relative mb-12;
+            @apply h-[100vh] bg-primary_turquoise relative mb-12 bg-[center_top];
+        }
+        .logo_wrapper {
+            @apply h-28;
+        }
+        .hero_text_left_wrapper {
+            @apply h-36 absolute top-40 -translate-y-0 left-2;
+        }
+        .hero_text_left_wrapper img {
+            @apply h-full w-auto;
+        }
+        .hero_text_right_wrapper {
+            @apply h-36 absolute top-64 right-4;
+        }
+        .hero_text_right_wrapper img {
+            @apply h-full w-auto;
+        }
+        .button {
+            @apply text-2xl rounded-full mt-6 font-FNB_bold font-bold text-primary_turquoise;
         }
         .abstract_svg {
             @apply absolute top-full w-full z-20;
@@ -238,7 +258,7 @@
     }
 </style>
 
-<section class="hero">
+<section class="hero" style="background-image: url('{$hero_bg_design_three}');">
     <div class="logo_wrapper">
         <img src="/images/desktop_header_logo.png" alt="fnb_logo" />
     </div>
@@ -274,9 +294,7 @@
             </div>
         </div>
     </div> -->
-
     <Countdown />
-
     <!-- <div class="hero_content">
         <div class="hero_content_left_col">
             <h2 class="hero_title">Accra Marathon 2023</h2><br/>

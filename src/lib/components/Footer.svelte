@@ -1,3 +1,7 @@
+<script>
+    import { facebook, twitter, youtube, instagram, contact_email, contact_number, location } from "../stores/store";
+</script>
+
 <style lang="postcss">
     /* Giner template start*/
     .footer {
@@ -171,6 +175,18 @@
         .footer_col_2, .footer_col_3 {
             @apply hidden;
         }
+        .email {
+            @apply mb-8;
+        }
+        .footer_col_4 {
+            @apply mt-6 flex-row-reverse;
+        }
+        .footer_col_4 a {
+            @apply h-28;
+        }
+        .footer_col_4 a img {
+            @apply h-full;
+        }
     }
 </style>
 
@@ -181,14 +197,14 @@
                 <a class="logo_wrapper" href="/">
                     <img class="logo_img" src="/images/desktop_header_logo.png" alt="Accra Marathon logo"/>
                 </a>
-                <p class="address">562 Nyonmotso St, Accra</p>
+                <p class="address">{$location}</p>
                 <ul>
                     <li class="phone">
                         <img src="/images/phone_icon.png" alt="phone icon" />
-                        <span>050 132 3781</span>
+                        <span>{$contact_number}</span>
                     </li>
                     <li class="email">
-                        <span>accramarathon2023@gmail.com</span>
+                        <span>{$contact_email}</span>
                     </li>
                 </ul>
                 <span class="copyright">Accra Marathon &#169; 2023. All Rights Reserved</span>
@@ -220,16 +236,16 @@
                 <h4></h4>
                 <ul>
                     <li>
-                        <a href="https://web.facebook.com/dansomankeepfitclub">Facebook</a>
+                        <a href={$facebook}>Facebook</a>
                     </li>
                     <li>
-                        <a href="#">Twitter</a>
+                        <a href={$twitter}>Twitter</a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/dkfc_rats_rabbits/">Instagram</a>
+                        <a href={$instagram}>Instagram</a>
                     </li>
                     <li>
-                        <a href="#">Youtube</a>
+                        <a href={$youtube}>Youtube</a>
                     </li>
                 </ul>
 
