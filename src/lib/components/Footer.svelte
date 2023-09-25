@@ -40,13 +40,13 @@
     .copyright {
         @apply font-thin text-xs text-gray;
     }
-    .footer_col_2 h4, .footer_col_3 h4, .footer_col_4 h4 {
+    .footer_col_3 h4 {
         @apply text-xl font-semibold mb-12 h-16;
     }
     .footer_col_2 ul li, .footer_col_3 ul li {
         @apply mb-4 text-base text-gray font-thin;
     }
-    .email_input {
+    /* .email_input {
         @apply flex flex-row;
     }
     .email_input button {
@@ -54,8 +54,8 @@
     }
     .email_input button img {
         @apply h-5 w-5 mx-auto;
-    }
-    input[type="email"] {
+    } */
+    /* input[type="email"] {
         @apply w-full h-[50px] px-[20px] border border-gray-input-border text-[1.1rem] font-normal;
         -webkit-transition: .35s ease;
         transition: .35s ease;
@@ -65,10 +65,10 @@
         border-color: #00A9AC;
         -webkit-box-shadow: 0px 0px 10px rgba(0,169,172,0.3);
         box-shadow: 0px 0px 10px rgba(0,169,172,0.3);
-    }
-    .footer_col_4 form p {
+    } */
+    /* .footer_col_4 form p {
         @apply mt-12 text-sm text-gray;
-    }
+    } */
     .footer_col_4 form p a {
         @apply font-bold text-primary_turquoise leading-7;
     } 
@@ -172,7 +172,7 @@
         .footer_col {
             @apply flex flex-col px-4;
         }
-        .footer_col_2, .footer_col_3 {
+        .footer_col_3 {
             @apply hidden;
         }
         .email {
@@ -195,12 +195,12 @@
         <div class="footer_content">
             <div class="footer_col footer_col_1">
                 <a class="logo_wrapper" href="/">
-                    <img class="logo_img" src="/images/desktop_header_logo.png" alt="Accra Marathon logo"/>
+                    <img class="logo_img" src="/images/desktop_header_logo.png" alt="FNB Accra Marathon 2023"/>
                 </a>
                 <p class="address">{$location}</p>
                 <ul>
                     <li class="phone">
-                        <img src="/images/phone_icon.png" alt="phone icon" />
+                        <img src="/images/phone_icon.png" alt="Call us today on " />
                         <span>{$contact_number}</span>
                     </li>
                     <li class="email">
@@ -233,7 +233,7 @@
                 </ul>
             </div> -->
             <div class="footer_col footer_col_3">
-                <h4></h4>
+                <h4> </h4>
                 <ul>
                     <li>
                         <a href={$facebook}>Facebook</a>
@@ -263,10 +263,10 @@
                 </form> -->
 
                 <a target="_blank" href="https://www.firstnationalbank.com.gh/">
-                    <img src="/images/fnb_footer_logo.png" alt="fnb_logo"/>
+                    <img src="/images/fnb_footer_logo.png" alt="First National Bank"/>
                 </a>
                 <a href="https://www.instagram.com/dkfc_rats_rabbits/" target="_blank">
-                    <img src="/images/dkfc_footer_logo.png" alt="dkfc_logo"/>
+                    <img src="/images/dkfc_footer_logo.png" alt="Dansoman Keep Fit Club"/>
                 </a>
             </div>
         </div>

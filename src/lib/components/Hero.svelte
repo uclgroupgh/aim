@@ -1,12 +1,6 @@
 <script>
     import Countdown from "./Countdown.svelte";
     import { hero_bg_design_three } from "../stores/store";
-    export let hero_bg;
-    export let slide_one;
-    export let text_left_one;
-    export let text_left_two;
-    export let text_right_one;
-    export let text_right_two;
 </script>
 
 <style lang="postcss">
@@ -204,42 +198,33 @@
         .button {
             @apply text-2xl rounded-full mt-6 font-FNB_bold font-bold text-primary_turquoise;
         }
-        .abstract_svg {
+        /* .abstract_svg {
             @apply absolute top-full w-full z-20;
-        }
-        .hero_content {
+        } */
+        /* .hero_content {
             @apply w-full h-full flex flex-row justify-center items-center px-4 py-2 max-w-[1300px] mx-auto;
-        }
-        .hero_slide {
+        } */
+        /* .hero_slide {
             @apply h-full w-full relative flex justify-center pt-16;
-        }
-        .center_img {
+        } */
+        /* .center_img {
             @apply w-auto h-3/5;
         }
         .center_img img {
             @apply mx-auto h-full -translate-x-10;
-        }
-        .hero_text_right, .hero_text_left, .hero_event  {
+        } */
+        /* .hero_text_right, .hero_text_left, .hero_event  {
             @apply absolute text-white text-[2rem] w-full h-full top-0;
         }
         .hero_text_right, .hero_event {
             @apply right-0;
-        }
-        .hero_text_left {
+        } */
+        /* .hero_text_left {
             @apply left-0;
-        }
-        .hero_text_right_content {
-            @apply font-Paladins_solid absolute top-[52%] left-[30%] leading-[5rem];
-        }
-        .hero_text_left_content {
-            @apply font-Paladins_outline absolute top-[7%] left-[2%] leading-[2rem];
-        }
-        .hero_event_content {
-            @apply text-sm font-saxMono font-semibold tracking-wide absolute top-[45%] left-[55%] w-max; 
-        }
-        .hero_event_content .amber_text {
+        } */
+        /* .hero_event_content .amber_text {
             @apply text-primary_amber font-bold block;
-        }
+        } */
     }
 
     /* // Small devices (landscape phones, less than 768px) */
@@ -260,15 +245,15 @@
 
 <section class="hero" style="background-image: url('{$hero_bg_design_three}');">
     <div class="logo_wrapper">
-        <img src="/images/desktop_header_logo.png" alt="fnb_logo" />
+        <img src="/images/desktop_header_logo.png" alt="FNB Accra Marathon 2023" />
     </div>
     <div class="hero_text_wrapper">
         <div class="hero_text_container">
             <div class="hero_text_left_wrapper">
-                <img src="/images/hero_text_left.png" alt="hero_text_left" />
+                <img src="/images/hero_text_left.png" alt="Accra Marathon - Hello Ghana" />
             </div>
             <div class="hero_text_right_wrapper">
-                <img src="/images/hero_text_right.png" alt="hero_text_right" />
+                <img src="/images/hero_text_right.png" alt="Accra Marathon - Let's run for a purpose" />
             </div>
         </div>
     </div>

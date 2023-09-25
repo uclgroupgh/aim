@@ -26,10 +26,10 @@
         let seconds_left = Math.floor((time_left % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-            $: days = days_left;
-            $: hours = hours_left;
-            $: minutes = minutes_left;
-            $: seconds = seconds_left;
+            days = days_left;
+            hours = hours_left;
+            minutes = minutes_left;
+            seconds = seconds_left;
 
         }, 1000);
     })
@@ -42,7 +42,7 @@
     .item {
         @apply p-2.5 min-w-[130px] flex flex-col items-center relative;
     }
-    .item img {
+    /* .item img {
         @apply absolute -translate-y-1/2 -translate-x-1/2;
     }
     .days img {
@@ -56,7 +56,7 @@
     }
     .seconds img {
         @apply top-[60%] left-[50%];
-    }
+    } */
     span {
         @apply text-xl capitalize text-primary_amber font-bold tracking-wide block z-30;
     }
@@ -73,7 +73,7 @@
     .item {
         @apply p-1.5 min-w-[0px] w-full flex flex-col items-center relative;
     }
-    .item img {
+    /* .item img {
         @apply absolute -translate-y-1/2 -translate-x-1/2;
     }
     .days img {
@@ -87,7 +87,7 @@
     }
     .seconds img {
         @apply top-[60%] left-[50%];
-    }
+    } */
     span {
         @apply text-xs capitalize text-white font-bold tracking-wide block z-30;
     }

@@ -1,22 +1,6 @@
 <script>
-    // /** @type {import('./$types').PageData} */
-    // export let data;
     import Hero from '../lib/components/Hero.svelte'
-    import Collage from '../lib/components/Collage.svelte'
-    import TextImageLeft from '../lib/components/TextImageLeft.svelte'
-    import TextImageRight from '../lib/components/TextImageRight.svelte'
-    import NewsletterSignup from '../lib/components/NewsletterSignup.svelte'
-    import Sponsors from '../lib/components/Sponsors.svelte'
     import { fade } from 'svelte/transition'
-    import MissionSection from '../lib/components/MissionSection.svelte';
-    import FourColumnSection from '../lib/components/FourColumnSection.svelte';
-    import RegisterSection from '../lib/components/RegisterSection.svelte';
-    import MapSection from '../lib/components/MapSection.svelte';
-    import { hero_bg_design_three, loading } from '../lib/stores/store'
-    import { onMount, onDestroy } from 'svelte';
-    import { browser } from '$app/environment'
-
-    const base_url = 'https://accramarathon.com/'
 
     // Hero variables
     // $: hero_bg = data.app_data.data1.data[0].background_color
@@ -43,16 +27,7 @@
     // $: map_paragraph = data.app_data.data3.data[0].paragraph 
 
 
-onMount(async () => {
-    // const response1 = await fetch('https://accramarathon.com/manager/endpoints/home_hero/getHomeHeros.php')
-    // const data1 = await response1.json()
-    // $hero_bg_design_three = base_url + data1.data[0].slide1_image
-    // if(data1 == undefined) {
-    //     $loading = true;
-    // } else {
-    //     $loading = false;
-    // }
-})
+
 </script>
 
 <svelte:head>
@@ -61,9 +36,8 @@ onMount(async () => {
 	<link rel="canonical" href="https://www.accramarathon.com/" />
 </svelte:head>
 
-<main>
+<main transition:fade>
     <Hero
-    hero_bg={$hero_bg_design_three}
     />
     <!-- <NewsletterSignup /> -->
     <!-- <Video />

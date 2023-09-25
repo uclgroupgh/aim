@@ -4,59 +4,76 @@
 <script>
   import Nationalities from "../data/Nationalities";
   import { fade, slide } from 'svelte/transition';
-  import { CivilService, Juniors, Adults, Corporate } from '../data/FinishTimes';
-  import { race_category, first_name, last_name, phone_number, email, nationality, gender, dob, emergency_name, emergency_number, has_medical_condition, medical_information, first_marathon_boolean, finish_time, finish_time_list, heard_from, run_frequency, amount } from '../stores/store';
   import HeardFrom from "../data/HeardFrom";
+  import { browser } from "$app/environment";
 
+  $: race_category = (browser && sessionStorage.getItem("race_category") ? sessionStorage.getItem("race_category") : '');
+  $: first_name = (browser && sessionStorage.getItem("first_name") ? sessionStorage.getItem("first_name") : '');
+  $: last_name = (browser && sessionStorage.getItem("last_name") ? sessionStorage.getItem("last_name") : '');
+  $: phone_number = (browser && sessionStorage.getItem("phone_number") ? sessionStorage.getItem("phone_number") : '');
+  $: email = (browser && sessionStorage.getItem("email") ? sessionStorage.getItem("email") : '');
+  $: nationality = (browser && sessionStorage.getItem("nationality") ? sessionStorage.getItem("nationality") : 'Select your nationality...');
+  $: gender = (browser && sessionStorage.getItem("gender") ? sessionStorage.getItem("gender") : 'Male');
+  $: dob_day = (browser && sessionStorage.getItem("dob_day") ? sessionStorage.getItem("dob_day") : '');
+  $: dob_month = (browser && sessionStorage.getItem("dob_month") ? sessionStorage.getItem("dob_month") : '');
+  $: dob_year = (browser && sessionStorage.getItem("dob_year") ? sessionStorage.getItem("dob_year") : '');
+
+  $: dob = (browser && sessionStorage.getItem("dob") ? sessionStorage.getItem("dob") : sessionStorage.setItem("dob", dob_year + '-' + dob_month + '-' + dob_day ));
+
+  $: emergency_name = (browser && sessionStorage.getItem("emergency_name") ? sessionStorage.getItem("emergency_name") : '');
+  $: emergency_number = (browser && sessionStorage.getItem("emergency_number") ? sessionStorage.getItem("emergency_number") : '');
+  $: has_medical_condition = (browser && sessionStorage.getItem("has_medical_condition") ? sessionStorage.getItem("has_medical_condition") : false);
+  $: medical_information = (browser && sessionStorage.getItem("medical_information") ? sessionStorage.getItem("medical_information") : '');
+  $: heard_from = (browser && sessionStorage.getItem("heard_from") ? sessionStorage.getItem("heard_from") : 'Where did you hear about us...');
+  let amount = 50.00;
+
+
+  $: has_first_name = (first_name.length < 3) ? false : true;
+  let has_first_name_error = false;
+  $: has_last_name = (last_name.length < 3) ? false : true;
+  let has_last_name_error = false;
+  $: has_phone_number = (phone_number.length < 10) ? false : true;
+  let has_phone_number_error = false;
+  $: has_email = (!emailPattern.test(email)) ? false : true;
+  let has_email_error = false;
+  $: has_day = (!dob_day || dob_day < 1 || dob_day > 31) ? false : true;
+  $: has_month = (!dob_month || dob_month < 1 || dob_month > 12) ? false : true;
+  $: has_year = (!dob_year || dob_year < 1903 || dob_year > 2016) ? false : true;
+  $: has_emergency_name = (emergency_name.length < 3) ? false : true;
+  let has_emergency_name_error = false;
+  $: has_emergency_number = (emergency_number < 10) ? false : true;
+  let has_emergency_number_error = false;
+  $: has_nationality = (nationality == 'Select your nationality...') ? false : true;
+  $: has_heard_from = (heard_from == 'Where did you hear about us...') ? false : true;
+
+  
   let day, month, year, category;
   let show_nationalities = false;
-  let show_finish_times = false;
   let show_heard_from = false;
-  let has_first_name = false;
-  let has_first_name_error = false;
-  let has_last_name = false;
-  let has_last_name_error = false;
-  let has_phone_number = false;
-  let has_phone_number_error = false;
-  let has_email = false;
-  let has_email_error = false;
-  let has_day = false;
-  let has_month = false;
-  let has_year = false;
-  let has_emergency_name = false;
-  let has_emergency_name_error = false;
-  let has_emergency_number = false;
-  let has_emergency_number_error = false;
-  let has_nationality = false;
-  let has_finish_time = false;
-  let has_heard_from = false;
   let show_first_page = true;
   let show_second_page = false;
-  let first_name_element, last_name_element, phone_number_element, email_element, nationality_input_element, dob_day_element, dob_month_element, dob_year_element, emergency_name_element, emergency_number_element, finish_time_element, heard_from_element;
+  let first_name_element, last_name_element, phone_number_element, email_element, nationality_input_element, dob_day_element, dob_month_element, dob_year_element, emergency_name_element, emergency_number_element, heard_from_element;
+
+  let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 
   const set_selected_category = (e) => {
       category = e.target.htmlFor;
       switch (category) {
           case 'marathon':
-              race_category.set('1')
-              finish_time_list.set(Adults)
-              amount.set(20.00)
-              break;
-          case 'civil_service':
-              race_category.set('2')
-              finish_time_list.set(CivilService)
-              amount.set(20.00)
+              sessionStorage.setItem('race_category', '1')
+              race_category = '1';
+              amount = 50.00;
               break;
           case 'corporate':
-              race_category.set('3')
-              finish_time_list.set(Corporate)
-              amount.set(150.00)
+              sessionStorage.setItem('race_category', '3')
+              race_category = '3';
+              amount = 150.00;
               break;
           case 'juniors':
-              race_category.set('4')
-              finish_time_list.set(Juniors)  
-              amount.set(20.00)          
+              sessionStorage.setItem('race_category', '4')
+              race_category = '4';
+              amount = 20.00;
               break;
       
           default: '';
@@ -64,117 +81,113 @@
       }
   }
   // Participant information functions
-  const set_first_name = () => {
-      first_name.set(first_name_element.value)
-      if($first_name.length < 3) {
-          has_first_name = false;
+  const set_first_name = (e) => {
+    sessionStorage.setItem("first_name", e.target.value )
+      if(e.target.value.length < 3) {
           has_first_name_error = true;
+          has_first_name = false;
       } else {
-          has_first_name = true;
           has_first_name_error = false;
+          has_first_name = true;
       }
   }
-  const set_last_name = () => {
-      last_name.set(last_name_element.value)
-      if($last_name.length < 3) {
-          has_last_name = false;
+  const set_last_name = (e) => {
+    sessionStorage.setItem("last_name", e.target.value )
+      if(e.target.value.length < 3) {
           has_last_name_error = true;
+          has_last_name = false;
       } else {
-          has_last_name = true;
           has_last_name_error = false;
+          has_last_name = true;
       }
   }
-  const set_phone_number = () => {
-      phone_number.set(phone_number_element.value)
-      if($phone_number.length < 10) {
-          has_phone_number = false;
+  const set_phone_number = (e) => {
+    sessionStorage.setItem("phone_number", e.target.value )
+      if(e.target.value.length < 10) {
           has_phone_number_error = true;
+          has_phone_number = false;
       } else { 
-          has_phone_number = true;
           has_phone_number_error = false;
+          has_phone_number = true;
       }
   }
-  const set_email = () => {
-      let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      email.set(email_element.value)
-      if(emailPattern.test($email) == false) {
-          has_email = false;
+  const set_email = (e) => {
+      sessionStorage.setItem("email", e.target.value )
+      if(emailPattern.test(e.target.value) == false) {
           has_email_error = true;
+          has_email = false;
       } else {
-          has_email = true;
           has_email_error = false;
+          has_email = true;
       }
   }
   const set_selected_gender = (e) => {
-      gender.set(e.target.innerHTML)
+    sessionStorage.setItem("gender", e.target.innerHTML )
   }
   const select_nationality = (e) => {
-      nationality.set(e.target.innerHTML)
+    sessionStorage.setItem("nationality", e.target.innerHTML )
+    nationality = e.target.innerHTML
+    console.log(has_first_name, has_last_name, has_phone_number, has_email, has_day, has_month, has_year, has_nationality)
       toggle_nationalities();
   }
-  const set_day = () => {
-      day = dob_day_element.value
-      if(!day || day < 1 || day > 31) {
+  const set_day = (e) => {
+    sessionStorage.setItem("dob_day", e.target.value )
+      if(!e.target.value || e.target.value < 1 || e.target.value > 31) {
           has_day = false;
       } else {
           has_day = true;
       }
   }
-  const set_month = () => {
-      month = dob_month_element.value
-      if(!month || month < 1 || month > 12) {
+  const set_month = (e) => {
+    sessionStorage.setItem("dob_month", e.target.value )
+      if(!e.target.value || e.target.value < 1 || e.target.value > 12) {
           has_month = false;
       } else {
           has_month = true;
       }
   }
-  const set_year = () => {
-      year = dob_year_element.value
-      if(!year || year < 1903 || year > 2016) {
+  const set_year = (e) => {
+    sessionStorage.setItem("dob_year", e.target.value )
+      if(!e.target.value || e.target.value < 1903 || e.target.value > 2016) {
           has_year = false;
       } else {
           has_year = true;
       }
   }
 
-  $: dob.set(year + '-' + month + '-' + day);
 
-  const set_emergency_name = () => {
-      emergency_name.set(emergency_name_element.value)
-      if($emergency_name.length < 3){
-          has_emergency_name = false;
+  const set_emergency_name = (e) => {
+    sessionStorage.setItem("emergency_name", e.target.value)
+      if(e.target.value.length < 3){
           has_emergency_name_error = true;
+          has_emergency_name = false;
       } else {
-          has_emergency_name = true;
           has_emergency_name_error = false;
+          has_emergency_name = true;
       }
   }
-  const set_emergency_number = () => {
-      emergency_number.set(emergency_number_element.value)
-      if($emergency_number.length < 10) {
-          has_emergency_number = false;
+  const set_emergency_number = (e) => {
+    sessionStorage.setItem("emergency_number", e.target.value)
+      if(e.target.value.length < 10) {
           has_emergency_number_error = true;
+          has_emergency_number = false;
       } else {
-          has_emergency_number = true;
           has_emergency_number_error = false;
+          has_emergency_number = true;
       }
   }
 
   // Medical information functions
   const set_medical_information = (e) => {
-      medical_information.set(e.target.value)
+    sessionStorage.setItem("medical_information", e.target.value)
   }
 
   // About you
-  const select_finish_time = (e) => {
-      finish_time.set(e.target.innerHTML);
-      show_finish_times = false;
-      has_finish_time = true;
-  }
+  
   const select_heard_from = (e) => {
-      heard_from.set(e.target.innerHTML);
+      sessionStorage.setItem("heard_from", e.target.innerHTML);
+      heard_from = e.target.innerHTML
       show_heard_from = false;
-      has_heard_from = true;
   }
   const set_selected_first_marathon_answer = (e) => {
       if(e.target.innerHTML == 'Yes') {
@@ -187,73 +200,18 @@
       run_frequency.set(e.target.innerHTML)
   }
 
-
-  const check_nationality = () => {
-      if($nationality == '') {
-          if(!error_nodes.includes(nationality_element.parentElement.lastChild)) {
-              error_nodes.push(nationality_element.parentElement.lastChild)
-          } else {
-              return;
-          }
-      } else {
-          nationality_element.parentElement.lastChild.classList.remove('flex')
-          nationality_element.parentElement.lastChild.classList.add('hidden')
-          error_nodes.pop(nationality_element.parentElement.lastChild)
-      }
-  }
-  const check_finish_time = () => {
-      if($finish_time == '') {
-          if(!error_nodes.includes(finish_time_element.parentElement.lastChild)) {
-              error_nodes.push(finish_time_element.parentElement.lastChild)
-          } else {
-              return;
-          }
-      } else {
-          finish_time_element.parentElement.lastChild.classList.remove('flex')
-          finish_time_element.parentElement.lastChild.classList.add('hidden')
-          error_nodes.pop(finish_time_element.parentElement.lastChild)
-      }
-  }
-  const check_heard_from = () => {
-      if($heard_from == '') {
-          if(!error_nodes.includes(heard_from_element.parentElement.lastChild)) {
-              error_nodes.push(heard_from_element.parentElement.lastChild)
-          } else {
-              return;
-          }
-      } else {
-          heard_from_element.parentElement.lastChild.classList.remove('flex')
-          heard_from_element.parentElement.lastChild.classList.add('hidden')
-          error_nodes.pop(heard_from_element.parentElement.lastChild)
-      }
-  }
   //Select field toggle functions
   const toggle_nationalities = () => {
       show_nationalities = !show_nationalities
-      if(Nationalities.includes($nationality)) {
-          nationality_input_element.classList.remove('error')
-          has_nationality = true;
-      }else {
-          nationality_input_element.classList.add('error')
-          has_nationality = false;
-      }
-  }
-  const toggle_finish_times = () => {
-      if(show_heard_from) {
-          show_heard_from = false;
-      }
-      show_finish_times = !show_finish_times
   }
   const toggle_heard_from = () => {
-      if(show_finish_times) {
-          show_finish_times = false;
-      }
       show_heard_from = !show_heard_from
   }
 
   const go_to_second_page = () => {
       show_first_page = false;
       show_second_page = true;
+      console.log(has_medical_condition)
   }
   const go_to_first_page = () => {
       show_first_page = true;
@@ -275,22 +233,22 @@
   }
   const send_registered_user_data_to_server = () => {
       
-      const post_url = 'https://accramarathon.com/marathon/endpoints/atheletes/addAthelete.php'
+      const post_url = 'https://www.accramarathon.com/manager/endpoints/atheletes/addAthelete.php'
 
       var addBody = new FormData()
-          addBody.append("firstname", $first_name)
-          addBody.append("lastname", $last_name)
-          addBody.append("gender", $gender)
-          addBody.append("phone", $phone_number)
-          addBody.append("email", $email)
-          addBody.append("nationality", $nationality)
-          addBody.append("date_of_birth", $dob)
-          addBody.append("emergency_contact_name", $emergency_name)
-          addBody.append("emergency_contact_number", $emergency_number)
-          addBody.append("race_category_id", $race_category)
-          addBody.append("any_medical_condition", $has_medical_condition)
-          addBody.append("medical_info", $medical_information)
-          addBody.append("heard_about_race", $heard_from)
+          addBody.append("firstname", first_name)
+          addBody.append("lastname", last_name)
+          addBody.append("gender", gender)
+          addBody.append("phone", phone_number)
+          addBody.append("email", email)
+          addBody.append("nationality", nationality)
+          addBody.append("date_of_birth", dob)
+          addBody.append("emergency_contact_name", emergency_name)
+          addBody.append("emergency_contact_number", emergency_number)
+          addBody.append("race_category_id", race_category)
+          addBody.append("any_medical_condition", has_medical_condition)
+          addBody.append("medical_info", medical_information)
+          addBody.append("heard_about_race", heard_from)
 
       var addRequestOptions = {
           method: 'POST',
@@ -323,8 +281,8 @@
           
           let handler = PaystackPop.setup({
           key: 'pk_live_f3b23d0e4c62cbbc167417eb39caae2d55a3a944',
-          email: $email,
-          amount: $amount * 100,
+          email: email,
+          amount: amount * 100,
           currency: 'GHS',
           callback: send_registered_user_data_to_server,
           metadata:{
@@ -332,52 +290,52 @@
                   {
                   "display_name":"Racer's name",
                   "variable_name":"Participant's name",
-                  "value": $first_name + ' ' + $last_name
+                  "value": first_name + ' ' + last_name
                   },
                   {
                   "display_name":"Phone number",
                   "variable_name":"Phone number",
-                  "value": $phone_number
+                  "value": phone_number
                   },
                   {
                   "display_name":"Email",
                   "variable_name":"Email",
-                  "value": $email
+                  "value": email
                   },
                   {
                   "display_name":"Nationality",
                   "variable_name":"Nationality",
-                  "value": $nationality
+                  "value": nationality
                   },
                   {
                   "display_name":"Date of birth",
                   "variable_name":"Date of birth",
-                  "value": $dob
+                  "value": dob
                   },
                   {
                   "display_name":"Race category",
                   "variable_name":"Race category",
-                  "value": $race_category
+                  "value": race_category
                   },
                   {
                   "display_name":"Gender",
                   "variable_name":"Gender",
-                  "value": $gender
+                  "value": gender
                   },
                   {
                   "display_name":"Emergency contact name",
                   "variable_name":"Emergency contact name",
-                  "value": $emergency_name
+                  "value": emergency_name
                   },
                   {
                   "display_name":"Emergency contact number",
                   "variable_name":"Emergency contact number",
-                  "value": $emergency_number
+                  "value": emergency_number
                   },
                   {
                   "display_name":"Medical conditions",
                   "variable_name":"Medical conditions",
-                  "value": $medical_information
+                  "value": medical_information
                   }
               ]
           }
@@ -563,39 +521,39 @@
   {#if show_first_page}
       <div class="first_page">
           <div class="form_item">
-              <input type="text" class="" placeholder="First name" on:blur={set_first_name} bind:this={first_name_element}/>
+              <input type="text" class="" value={first_name} placeholder="First name" on:blur={set_first_name}/>
               {#if has_first_name}
-                <img src="/images/check.png" transition:fade class="valid_hint"/>
+                <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
               {/if}
               {#if has_first_name_error}
-                <img src="/images/close.png" transition:fade class="error_hint"/>
+                <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
               {/if}
           </div>
           <div class="form_item">
-              <input type="text" placeholder="Last name" on:blur={set_last_name} bind:this={last_name_element}/>
+              <input type="text" placeholder="Last name" value={last_name} on:blur={set_last_name}/>
               {#if has_last_name}
-                <img src="/images/check.png" transition:fade class="valid_hint"/>
+                <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
               {/if}
               {#if has_last_name_error}
-                <img src="/images/close.png" transition:fade class="error_hint"/>
+                <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
               {/if}
           </div>
           <div class="form_item">
-              <input type="tel" placeholder="Phone number" on:blur={set_phone_number} bind:this={phone_number_element}/>
+              <input type="tel" placeholder="Phone number" value={phone_number} on:blur={set_phone_number}/>
               {#if has_phone_number}
-                <img src="/images/check.png" transition:fade class="valid_hint"/>
+                <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
               {/if}
               {#if has_phone_number_error}
-                <img src="/images/close.png" transition:fade class="error_hint"/>
+                <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
               {/if}
           </div>
           <div class="form_item">
-              <input type="email" placeholder="Email" on:blur={set_email} bind:this={email_element}/>
+              <input type="email" placeholder="Email" value={email} on:blur={set_email}/>
               {#if has_email}
-                <img src="/images/check.png" transition:fade class="valid_hint"/>
+                <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
               {/if}
               {#if has_email_error}
-                <img src="/images/close.png" transition:fade class="error_hint"/>
+                <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
               {/if}
           </div>
           <div class="form_item">
@@ -615,18 +573,18 @@
           <div class="form_item">
               <div class="dob_wrapper">
                   <div class="dob_day">
-                      <input id="day" type="number" name="dob" placeholder="DD" min="1" max="31" on:change={set_day} bind:this={dob_day_element}/>
+                      <input id="day" type="number" name="dob" placeholder="DD" min="1" max="31" on:change={set_day} value={dob_day}/>
                   </div>
                   <div class="dob_month">
-                      <input id="month" type="number" name="dob" placeholder="MM" min="1" max="12" on:change={set_month} bind:this={dob_month_element}/>
+                      <input id="month" type="number" name="dob" placeholder="MM" min="1" max="12" on:change={set_month} value={dob_month}/>
                   </div>
                   <div class="dob_year">
-                      <input id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016" on:change={set_year} bind:this={dob_year_element}/>
+                      <input id="year" type="number" name="dob" placeholder="YYYY" min="1903" max="2016" on:change={set_year} value={dob_year}/>
                   </div>
               </div>
           </div>
           <div class="form_item nationality_input_wrapper">
-              <span class="nationality_input" on:click={toggle_nationalities} bind:this={nationality_input_element}>{$nationality}</span>
+              <span class="nationality_input" on:click={toggle_nationalities} >{nationality}</span>
               
               {#if show_nationalities}
                   <ul class="nationalities" transition:slide>
@@ -653,22 +611,22 @@
                 <div class="category_type_wrapper">
                     <input id="marathon" type="radio" name="race_category" checked/>
                     <div class="cell-bg"></div>
-                    <label for="marathon" on:click={set_selected_category}><span>Marathon</span><h3>&#x20B5; 20</h3></label>
+                    <label for="marathon" on:click={set_selected_category}><span>Marathon</span><h3>₵ 50</h3></label>
                 </div>
                 <div class="category_type_wrapper">
                     <input id="corporate" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="corporate" on:click={set_selected_category}><span>Corporate</span><h3>&#x20B5; 150</h3></label>
+                    <label for="corporate" on:click={set_selected_category}><span>Corporate</span><h3>₵ 150</h3></label>
                 </div>
-                <div class="category_type_wrapper">
+                <!-- <div class="category_type_wrapper">
                     <input id="civil_service" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="civil_service" on:click={set_selected_category}><span>Civil Service</span><h3>&#x20B5; 20</h3></label>
-                </div>
+                    <label for="civil_service" on:click={set_selected_category}><span>Civil Service</span><h3>₵ 20</h3></label>
+                </div> -->
                 <div class="category_type_wrapper">
                     <input id="juniors" type="radio" name="race_category"/>
                     <div class="cell-bg"></div>
-                    <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>&#x20B5; 20</h3></label>
+                    <label for="juniors" on:click={set_selected_category}><span>Juniors</span><h3>₵ 20</h3></label>
                 </div>
             </div>
         </div>
@@ -681,19 +639,19 @@
                         <input id="medical_yes" type="radio" name="medical_boolean"/>
                         <div class="cell-bg"></div>
                         <label for="medical_yes" on:click={() => {
-                            $has_medical_condition = true
+                            has_medical_condition = true
                         }}>Yes</label>
                     </div>
                     <div class="medical_boolean_wrapper">
                         <input id="medical_no" type="radio" name="medical_boolean" checked/>
                         <div class="cell-bg"></div>
                         <label for="medical_no" on:click={() => {
-                            $has_medical_condition = false
+                            has_medical_condition = false
                         }}>No</label>
                     </div>
                 </div>
     
-                {#if $has_medical_condition}
+                {#if has_medical_condition}
                     <div class="medical_condition" transition:fade>
                         <textarea class="medical_condition_info" id="medical_condition_info" name="medical_condition_info" rows="4" on:change={set_medical_information} placeholder="If yes, please provide details here"></textarea>
                     </div>
@@ -701,36 +659,25 @@
             </div>
         </div>
         <div class="form_item">
-            <input type="text" placeholder="Emergency contact name" on:blur={set_emergency_name} bind:this={emergency_name_element}/>
+            <input type="text" placeholder="Emergency contact name" on:blur={set_emergency_name} value={emergency_name}/>
             {#if has_emergency_name}
-              <img src="/images/check.png" transition:fade class="valid_hint"/>
+              <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
             {/if}
             {#if has_emergency_name_error}
-              <img src="/images/close.png" transition:fade class="error_hint"/>
+              <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
             {/if}
         </div>
         <div class="form_item">
-            <input type="tel" placeholder="Emergency contact number" on:blur={set_emergency_number} bind:this={emergency_number_element}/>
+            <input type="tel" placeholder="Emergency contact number" on:blur={set_emergency_number} value={emergency_number}/>
             {#if has_emergency_number}
-              <img src="/images/check.png" transition:fade class="valid_hint"/>
+              <img src="/images/check.png" transition:fade class="valid_hint" alt="valid input"/>
             {/if}
             {#if has_emergency_number_error}
-              <img src="/images/close.png" transition:fade class="error_hint"/>
+              <img src="/images/close.png" transition:fade class="error_hint" alt="invalid input"/>
             {/if}
         </div>
-        <!-- <div class="form_item finish_time_input_wrapper">
-            <span class="finish_time_input" on:click={toggle_finish_times} bind:this={finish_time_element}>{$finish_time}</span>
-            
-            {#if show_finish_times}
-                <ul class="finish_times" transition:slide>
-                    {#each $finish_time_list as finish_time}
-                        <li class="finish_time" on:click={select_finish_time}>{finish_time}</li>
-                    {/each}
-                </ul>
-            {/if}
-        </div> -->
         <div class="form_item heard_from_input_wrapper">
-            <span class="heard_from_input" on:click={toggle_heard_from} bind:this={heard_from_element}>{$heard_from}</span>
+            <span class="heard_from_input" on:click={toggle_heard_from} >{heard_from}</span>
             
             {#if show_heard_from}
                 <ul class="heard_froms" transition:slide>
@@ -746,7 +693,7 @@
             </div>
             {#if has_heard_from && has_emergency_number && has_emergency_name}
                 <div type="submit" class="submit_btn" transition:fade on:click={pay_with_paystack}>
-                    <span>Register &#8373; {$amount}</span>
+                    <span>Register &#8373; {amount}</span>
                 </div>
             {/if}
         </div>

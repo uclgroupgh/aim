@@ -1,14 +1,11 @@
-
-
 <script>
-    
     import "../../src/styles/global.css"
     // import Header from '../../lib/components/Header.svelte'
     import Footer from '../../src/lib/components/Footer.svelte'
     import { hero_bg_design_three } from "../lib/stores/store";
     // import Countdown from '../../lib/components/Countdown.svelte'
     import Loader from "../lib/components/Loader.svelte";
-    import { loading, data_loaded, location, facebook, youtube, instagram, twitter, contact_email, contact_number } from '../lib/stores/store'
+    import { loading, location, facebook, youtube, instagram, twitter, contact_email, contact_number, fetch_error } from '../lib/stores/store'
     import { onMount } from "svelte";
     
 
@@ -19,8 +16,8 @@
     onMount(async () => {
       try {
         const [response1, response2] = await Promise.all([
-        fetch('https://accramarathon.com/manager/endpoints/home_hero/getHomeHeros.php'),
-        fetch('https://accramarathon.com/manager/endpoints/info/getInfo.php?id=1')
+        fetch('https://www.accramarathon.com/manager/endpoints/home_hero/getHomeHeros.php'),
+        fetch('https://www.accramarathon.com/manager/endpoints/info/getInfo.php?id=1')
       ]);
 
       const [data1, data2] = await Promise.all([
@@ -37,6 +34,7 @@
       $contact_number = data2.data.phone
       } catch (error){
         console.log(`The error is: ${error}`);
+        $fetch_error = error
       }
       
     })
@@ -51,6 +49,5 @@
     <Loader /> 
   {:else}
       <slot />
-    <Footer 
-    />
+    <Footer />
   {/if}

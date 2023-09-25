@@ -1,12 +1,15 @@
 <script>
 
     import { fade } from "svelte/transition";
-    import { loading } from "../stores/store";
+    import { loading, fetch_error } from "../stores/store";
 
 </script>
 <style lang="postcss">
     .loader-wrapper {
         @apply w-full h-screen bg-white flex justify-center items-center fixed top-0 z-50;
+    }
+    .fetch_error {
+        @apply mt-16 font-semibold text-lg text-primary_red;
     }
     .loader {
     width: 50px;
@@ -57,4 +60,7 @@
 
 <div class="loader-wrapper" transition:fade>
     <div class="loader"></div>
+    {#if $fetch_error != ""}
+        <p class="fetch_error">{$fetch_error}</p>
+    {/if}
 </div>

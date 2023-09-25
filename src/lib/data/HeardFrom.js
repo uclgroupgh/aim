@@ -1,5 +1,5 @@
 const HeardFrom = [
-    'Run before',
+    'Returning athlete',
     'Word of mouth',
     'Google search',
     'Facebook',

@@ -4,18 +4,6 @@
  */
 
 @font-face {
-    font-family: "Paladins_solid";
-    src: url("../fonts/paladins/paladins.ttf");
-}
-@font-face {
-    font-family: "Paladins_outline";
-    src: url("../fonts/paladins/paladinsout.ttf");
-}
-@font-face {
-    font-family: "saxMono";
-    src: url("../fonts/saxmono/saxmono.ttf");
-}
-@font-face {
     font-family: "FNB";
     src: url("../fonts/FNB_sans/FNB-Sans-Regular.otf");
 }

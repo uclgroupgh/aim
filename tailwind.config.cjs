@@ -63,13 +63,6 @@ module.exports = {
         'registration_wrapper_two_bg': "url('/images/skyline.png')"
       },
       fontFamily: {
-        Comfortaa: ["Comfortaa", "sans-serif"],
-        saxMono: ["saxMono", "sans-serif"],
-        Open: ["Open Sans", "sans-serif"],
-        Londrina_solid: ["Londrina Solid", "cursive"],
-        Londrina_outline: ["Londrina Outline", "cursive"],
-        Paladins_solid: ["Paladins_solid", "cursive"],
-        Paladins_outline: ["Paladins_outline", "cursive"],
         FNB: ["FNB", "cursive"],
         FNB_bold: ["FNB_bold", "cursive"]
       },

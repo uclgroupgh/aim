@@ -7,7 +7,7 @@
 
 <style lang="postcss">
     .mission_section {
-        @apply relative px-16 pt-40 pb-36 font-saxMono max-w-[1300px] mx-auto;
+        @apply relative px-16 pt-40 pb-36 max-w-[1300px] mx-auto;
     }
     h4 {
         @apply text-center text-4xl font-bold mb-24;
